@@ -46,7 +46,7 @@ const syncAndSeed = async()=> {
 
 
 
-syncAndSeed
+
 
 
 
@@ -59,8 +59,63 @@ syncAndSeed
 //    Theme,
 //}
 
-// STEP 1: create data models
-// STEP 2: sync and seed
+// STEP 1: create data models - done
+// STEP 2: sync and seed - done
 // STEP 3: create routes (use RESTFUL routes, i.e. API/fun)
 // STEP 4: display the three tables in a web page 
 // STEP 5: allow viewing, deleting, creating, editing (CRUD)
+
+const express = require('express')
+const app = express()
+//const {models: {Movie,Actor,Role}} = require('./db')
+
+
+
+app.get('/', (req,res) => {
+    res.send(`
+    <html>
+        <body>
+            The Acme
+        </body>
+    </html>
+    `)
+})
+
+app.get('/api/functions', async(req,res,next)=> {
+    try {
+        res.send(await Fun.findAll())
+    }
+    catch(ex){
+        next(ex)
+    }
+})
+
+app.get('/api/statuses', async(req,res,next)=> {
+    try {
+        res.send(await Status.findAll())
+    }
+    catch(ex){
+        next(ex)
+    }
+})
+
+app.get('/api/themes', async(req,res,next)=> {
+    try {
+        res.send(await Theme.findAll())
+    }
+    catch(ex){
+        next(ex)
+    }
+})
+
+// 
+const port = process.env.PORT || 3000
+
+const init = async () => {
+    await syncAndSeed();
+    app.listen(port, ()=> {
+        console.log(`listening on port ${port}`)
+    })   
+}
+
+init()
