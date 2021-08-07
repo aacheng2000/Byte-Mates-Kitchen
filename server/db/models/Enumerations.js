@@ -31,7 +31,9 @@ const Theme = db.define("theme", {
 //https://stackoverflow.com/questions/16631064/declare-multiple-module-exports-in-node-js
 
 module.exports = {
-  Fun,
-  Status,
-  Theme,
+  models: {
+    Fun,
+    Status,
+    Theme,
+  },
 };
