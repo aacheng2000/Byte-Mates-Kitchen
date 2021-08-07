@@ -41,13 +41,11 @@ const User = db.define('user', {
   },
 
   phoneNumber: {
-    type: INTEGER,
-    allowNull: false
+    type: INTEGER
   },
 
   address: {
-    type: STRING,
-    allowNull: false
+    type: STRING
   },
 
   password: {
