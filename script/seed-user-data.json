@@ -1,0 +1,32 @@
+[
+  {
+    "username": "cody",
+    "firstName": "cody",
+    "lastName": "snyder",
+    "email": "snyder@gmail.com",
+    "phoneNumber": 1112223344,
+    "address": "1155 Big st.",
+    "password": "123",
+    "permission": "admin"
+  },
+  {
+    "username": "murphy",
+    "firstName": "murphy",
+    "lastName": "duncan",
+    "email": "duncan@gmail.com",
+    "phoneNumber": 4443332211,
+    "address": "8877 Small st.",
+    "password": "123",
+    "permission": "user"
+  },
+  {
+    "username": "moe",
+    "firstName": "moe",
+    "lastName": "jenkins",
+    "email": "jenkins@gmail.com",
+    "phoneNumber": 5554447799,
+    "address": "3359 Medium st.",
+    "password": "123",
+    "permission": "guest"
+  }
+]

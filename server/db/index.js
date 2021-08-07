@@ -5,7 +5,9 @@ const User = require("./models/User");
 const Cart = require("./models/Cart");
 const Order = require("./models/Order");
 const Product = require("./models/Product");
-const { Fun, Status, Theme } = require("./models/Enumerations");
+const {
+  models: { Fun, Status, Theme },
+} = require("./models/Enumerations");
 
 //associations could go here!
 Fun.hasMany(Product);

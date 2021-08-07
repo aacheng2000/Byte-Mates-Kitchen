@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Knive1",
+    "description": "Great Knive 1",
+    "price": 50.5,
+    "color": "Black",
+    "size": "Large",
+    "picture": "https://picsum.photos/seed/picsum/200/300"
+  },
+  {
+    "name": "Fork1",
+    "description": "Great Fork 1",
+    "price": 10.5,
+    "color": "Blue",
+    "size": "Small",
+    "picture": "https://picsum.photos/seed/picsum/200/300"
+  },
+  {
+    "name": "Spoon1",
+    "description": "Great Spoon 1",
+    "price": 20.5,
+    "color": "Green",
+    "size": "Large",
+    "picture": "https://picsum.photos/seed/picsum/200/300"
+  }
+]
