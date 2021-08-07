@@ -1,29 +1,81 @@
-'use strict'
+"use strict";
 
-const {db, models: {User} } = require('../server/db')
+const {db, models: {User, Product, Fun, Status, Theme} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
 async function seed() {
-  await db.sync({ force: true }) // clears db and matches models to tables
-  console.log('db synced!')
+  await db.sync({ force: true }); // clears db and matches models to tables
+  console.log("db synced!");
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ firstName: 'cody', lastName: 'snyder', email: 'snyder@gmail.com', phoneNumber: 1112223344, address: '1155 Big st.', password: '123', permission: 'admin' }),
-    User.create({ firstName: 'murphy', lastName: 'duncan', email: 'duncan@gmail.com', phoneNumber: 4443332211, address: '8877 Small st.', password: '123', permission: 'user' }),
-  ])
-
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
+    User.create({ username: 'cody', firstName: 'cody', lastName: 'snyder', email: 'snyder@gmail.com', phoneNumber: 1112223344, address: '1155 Big st.', password: '123', permission: 'admin' }),
+    User.create({ username: 'murphy', firstName: 'murphy', lastName: 'duncan', email: 'duncan@gmail.com', phoneNumber: 4443332211, address: '8877 Small st.', password: '123', permission: 'user' }),
+    User.create({ username: 'moe', firstName: 'moe', lastName: 'jenkins', email: 'jenkins@gmail.com', phoneNumber: 5554447799, address: '3359 Medium st.', password: '123', permission: 'guest' }),
+  ]);
+  
+  // Creating Products
+  const products = await Promise.all([
+    Product.create({
+      name: "Knive1",
+      description: "Great Knive 1",
+      price: 50.5,
+      color: "Black",
+      size: "Large",
+      picture: "https://picsum.photos/seed/picsum/200/300",
+    }),
+    Product.create({
+      name: "Fork1",
+      description: "Great Fork 1",
+      price: 10.5,
+      color: "Blue",
+      size: "Small",
+      picture: "https://picsum.photos/seed/picsum/200/300",
+    }),
+    Product.create({
+      name: "Spoon1",
+      description: "Great Spoon 1",
+      price: 20.5,
+      color: "Green",
+      size: "Large",
+      picture: "https://picsum.photos/seed/picsum/200/300",
+    })
+  ]);
+  
+//Creating Enumerations
+  const [fun1, fun2, fun3, status1, status2, status3, theme1,theme2,theme3,theme4,theme5] = await Promise.all([
+    Fun.create({ id: 1, name: 'Knives' }),
+    Fun.create({ id: 2, name: 'Forks' }),
+    Fun.create({ id: 3, name: 'Spoons' }),
+    Status.create({ id: 1, name: 'Current' }),
+    Status.create({ id: 2, name: 'Closed' }),
+    Status.create({ id: 3, name: 'Wishlist' }),
+    Theme.create({ id: 1, name: 'Holidays & Gifts' }),
+    Theme.create({ id: 2, name: 'BBQ' }),
+    Theme.create({ id: 3, name: 'Birthdays' }),
+    Theme.create({ id: 4, name: 'Date Nights' }),
+    Theme.create({ id: 5, name: 'Sale' }),
+  ]);
+  
+  console.log(`seeded ${products.length} products`);
+  console.log(`seeded ${users.length} users`);
+  console.log(`seeded successfully`);
+  
   return {
     users: {
       cody: users[0],
-      murphy: users[1]
-    }
-  }
+      murphy: users[1],
+      moe: users[2]
+    },
+    products: {
+      Knive1: products[0],
+      Fork1: products[1],
+      Spoon1: products[2],
+    },
+  };
 }
 
 /*
@@ -32,16 +84,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...')
+  console.log("seeding...");
   try {
-    await seed()
+    await seed();
   } catch (err) {
-    console.error(err)
-    process.exitCode = 1
+    console.error(err);
+    process.exitCode = 1;
   } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+    console.log("closing db connection");
+    await db.close();
+    console.log("db connection closed");
   }
 }
 
@@ -51,8 +103,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed()
+  runSeed();
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;

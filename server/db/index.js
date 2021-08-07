@@ -10,6 +10,7 @@ const { Fun, Status, Theme } = require("./models/Enumerations");
 //associations could go here!
 Fun.hasMany(Product);
 Product.belongsTo(Fun);
+
 Theme.hasMany(Product);
 Product.belongsTo(Theme);
 

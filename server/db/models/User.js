@@ -1,10 +1,9 @@
 const Sequelize = require('sequelize');
-const { DataTypes: {STRING, UUID, UUIDV4, DECIMAL } } = Sequelize;
+const { DataTypes: {STRING, UUID, UUIDV4, INTEGER, ENUM } } = Sequelize;
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const axios = require('axios');
-const { NUMBER } = require('sequelize');
 
 const SALT_ROUNDS = 5;
 
@@ -16,20 +15,20 @@ const User = db.define('user', {
 
   },
 
-  firstName: {
-    type: STRING,
-      allowNull: false,
-      validate: {
-          notEmpty: true
-      }
-  },
-
-  lastName: {
+  username: {
     type: STRING,
     allowNull: false,
     validate: {
-        notEmpty: true
+      notEmpty: true
     }
+  },
+
+  firstName: {
+    type: STRING
+  },
+
+  lastName: {
+    type: STRING
   },
 
   email: {
@@ -42,13 +41,11 @@ const User = db.define('user', {
   },
 
   phoneNumber: {
-    type: NUMBER,
-    allowNull: false
+    type: INTEGER
   },
 
   address: {
-    type: STRING,
-    allowNull: false
+    type: STRING
   },
 
   password: {
@@ -57,11 +54,8 @@ const User = db.define('user', {
   },
 
   permission: {
-    type: STRING,
-    isIn:{
-      args:[['admin','user', 'guest']],
-      msg:"Must be admin, user or guest"
-    }
+    type: ENUM,
+      values: ['admin', 'user', 'guest']
   }
 })
 
