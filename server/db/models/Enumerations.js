@@ -61,9 +61,12 @@ const syncAndSeed = async()=> {
 
 // STEP 1: create data models - done
 // STEP 2: sync and seed - done
-// STEP 3: create routes (use RESTFUL routes, i.e. API/fun)
+// STEP 3: create routes (use RESTFUL routes, i.e. API/fun) - done
+
 // STEP 4: display the three tables in a web page 
 // STEP 5: allow viewing, deleting, creating, editing (CRUD)
+// STEP 6: deploy to Heroku
+
 
 const express = require('express')
 const app = express()
@@ -71,15 +74,17 @@ const app = express()
 
 
 
-app.get('/', (req,res) => {
+app.get('/admin', (req,res) => {
     res.send(`
     <html>
         <body>
-            The Acme
+            
         </body>
     </html>
     `)
 })
+
+// RESTFUL ROUTES BELOW
 
 app.get('/api/functions', async(req,res,next)=> {
     try {
@@ -109,6 +114,7 @@ app.get('/api/themes', async(req,res,next)=> {
 })
 
 // 
+
 const port = process.env.PORT || 3000
 
 const init = async () => {
@@ -117,5 +123,30 @@ const init = async () => {
         console.log(`listening on port ${port}`)
     })   
 }
+
+// CLIENT SIDE - GET DATA FROM THE RESTFULROUTES ABOVE!
+
+// const express = require('express')
+// const path = require('path')
+// const app = express()
+
+// //route
+// app.get('/antiques', async(req,res,next)=> {
+//   try {
+//     const endhtml = `
+// 	<form method = 'POST' action = '/people'>
+// 	  <label for="fname">Name:</label><br>
+// 	  <input type="text" id="fname" name="fname"><br>
+// 	</form>
+//     `
+//     res.send('<html>'+(await antique.findAll()).map(x=>`<li>${x.name}</li>`).join('') + endhtml + "</html>") 
+//   }
+//   catch(ex){
+//     next(ex)
+//   }
+// })
+
+
+
 
 init()
