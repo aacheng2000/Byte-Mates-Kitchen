@@ -1,19 +1,67 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
+const { DataTypes: {STRING, UUID, UUIDV4, DECIMAL } } = Sequelize;
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+const { NUMBER } = require('sequelize');
 
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  username: {
-    type: Sequelize.STRING,
-    unique: true,
+  userId: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    primaryKey: true
+
+  },
+
+  firstName: {
+    type: STRING,
+      allowNull: false,
+      validate: {
+          notEmpty: true
+      }
+  },
+
+  lastName: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+        notEmpty: true
+    }
+  },
+
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+        notEmpty: true,
+        isEmail: true
+    }
+  },
+
+  phoneNumber: {
+    type: NUMBER,
     allowNull: false
   },
+
+  address: {
+    type: STRING,
+    allowNull: false
+  },
+
   password: {
-    type: Sequelize.STRING,
+    type: STRING,
+    allowNull: false
+  },
+
+  permission: {
+    type: STRING,
+    isIn:{
+      args:[['admin','user', 'guest']],
+      msg:"Must be admin, user or guest"
+    }
   }
 })
 
