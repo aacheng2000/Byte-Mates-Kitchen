@@ -21,8 +21,7 @@ const seedThemes = require("./seed-themes-data.json");
  */
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
-  console.log('THE data: *PRODUCT* ', seedProduct, ' *USERS*', seedUser )
-  
+
   // Creating Users
   const users = await Promise.all(seedUser.map((user) => User.create(user)));
 
@@ -47,7 +46,7 @@ async function seed() {
   const themes = await Promise.all(
     seedThemes.map((theme) => Theme.create(theme))
   );
-    
+
   console.log("db synced!");
   console.log(`seeded ${products.length} products`);
   console.log(`seeded ${users.length} users`);
@@ -71,7 +70,7 @@ async function seed() {
 */
 async function runSeed() {
   console.log("seeding...");
-  console.log('THE data: *PRODUCT* ', seedProduct, ' *USERS*', seedUser )
+  console.log("THE data: *PRODUCT* ", seedProduct, " *USERS*", seedUser);
   try {
     await seed();
   } catch (err) {
