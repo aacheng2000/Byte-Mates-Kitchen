@@ -49,7 +49,4 @@ const Product = db.define("product", {
   },
 });
 
-module.exports = {
-  db,
-  Product,
-};
+module.exports = Product;
