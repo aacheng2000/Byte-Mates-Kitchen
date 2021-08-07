@@ -1,9 +1,6 @@
 "use strict";
 
-const {
-  db,
-  models: { User, Product },
-} = require("../server/db");
+const {db, models: {User, Product, Fun, Status, Theme} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -47,11 +44,26 @@ async function seed() {
       picture: "https://picsum.photos/seed/picsum/200/300",
     })
   ]);
-
+  
+//Creating Enumerations
+  const [fun1, fun2, fun3, status1, status2, status3, theme1,theme2,theme3,theme4,theme5] = await Promise.all([
+    Fun.create({ id: 1, name: 'Knives' }),
+    Fun.create({ id: 2, name: 'Forks' }),
+    Fun.create({ id: 3, name: 'Spoons' }),
+    Status.create({ id: 1, name: 'Current' }),
+    Status.create({ id: 2, name: 'Closed' }),
+    Status.create({ id: 3, name: 'Wishlist' }),
+    Theme.create({ id: 1, name: 'Holidays & Gifts' }),
+    Theme.create({ id: 2, name: 'BBQ' }),
+    Theme.create({ id: 3, name: 'Birthdays' }),
+    Theme.create({ id: 4, name: 'Date Nights' }),
+    Theme.create({ id: 5, name: 'Sale' }),
+  ]);
+  
   console.log(`seeded ${products.length} products`);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
-
+  
   return {
     users: {
       cody: users[0],
