@@ -5,7 +5,7 @@ const {
 module.exports = router;
 
 //Display all products
-router.get("/api/products", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
       include: { Fun, Theme },
@@ -17,7 +17,7 @@ router.get("/api/products", async (req, res, next) => {
 });
 
 //Display single product
-router.get("/api/products/:productId", async (req, res, next) => {
+router.get("/:productId", async (req, res, next) => {
   try {
     const product = await Product.findOne({
       where: { id: req.params.productId },
@@ -30,7 +30,7 @@ router.get("/api/products/:productId", async (req, res, next) => {
 });
 
 //Edit single product
-router.put("/api/products/:productId", async (req, res, next) => {
+router.put("/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     const editedProduct = await product.update(req.body);
@@ -50,7 +50,7 @@ router.post("/api/products", async (req, res, next) => {
 });
 
 //Delete single product
-router.delete("/api/products/:productId", async (req, res, next) => {
+router.delete("/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     await product.destroy();
