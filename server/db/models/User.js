@@ -8,7 +8,7 @@ const axios = require('axios');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  userId: {
+  id: {
     type: UUID,
     defaultValue: UUIDV4,
     primaryKey: true
@@ -41,7 +41,7 @@ const User = db.define('user', {
   },
 
   phoneNumber: {
-    type: INTEGER
+    type: STRING
   },
 
   address: {

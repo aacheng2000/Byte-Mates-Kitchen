@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
-//const db = require('../db') // this is the postgres database that everyone is sharing
-const db = new Sequelize(
-  process.env.DATABASE_URL || "postgres://localhost/bytetest"
-);
+const db = require('../db') // this is the postgres database that everyone is sharing
+// const db = new Sequelize(
+//   process.env.DATABASE_URL || "postgres://localhost/bytetest"
+// );
 
 const Fun = db.define("fun", {
   id: {
@@ -34,6 +34,6 @@ module.exports = {
   models: {
     Fun,
     Status,
-    Theme,
+    Theme
   },
 };

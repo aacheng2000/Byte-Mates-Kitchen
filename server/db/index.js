@@ -10,23 +10,23 @@ const {
 } = require("./models/Enumerations");
 
 //associations could go here!
-Fun.hasMany(Product);
-Product.belongsTo(Fun);
+// Fun.hasMany(Product);
+// Product.belongsTo(Fun);
 
-Theme.hasMany(Product);
-Product.belongsTo(Theme);
+// Theme.hasMany(Product);
+// Product.belongsTo(Theme);
 
-Cart.belongsTo(User);
-User.hasMany(Cart);
+// Cart.belongsTo(User);
+// User.hasMany(Cart);
 
-Cart.hasMany(Order);
-Order.belongsTo(Cart);
+// Cart.hasMany(Order);
+// Order.belongsTo(Cart);
 
-Cart.belongsTo(Status);
-Status.hasMany(Cart);
+// Cart.belongsTo(Status);
+// Status.hasMany(Cart);
 
-Order.belongsTo(Product);
-Product.hasMany(Order);
+// Order.belongsTo(Product);
+// Product.hasMany(Order);
 
 module.exports = {
   db,
