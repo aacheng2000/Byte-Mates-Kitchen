@@ -73,7 +73,9 @@ async function seed() {
       murphy: users[1],
     },
     products: {
-      Knive,
+      Knive1: products[0],
+      Fork1: products[1],
+      Spoon1: products[2],
     },
   };
 }
