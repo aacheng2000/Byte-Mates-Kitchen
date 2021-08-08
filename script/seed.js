@@ -70,6 +70,8 @@ async function seed() {
     order1.save(),
     order2.save()
   ])
+  const carts = [cart1, cart2]
+  const orders = [order1, order2]
 
   console.log("db synced!");
   console.log(`seeded ${products.length} products`);
@@ -77,10 +79,10 @@ async function seed() {
   console.log(`seeded successfully`);
 
   return {
-    //users,
+    users,
     products,
-    //carts,
-    //orders,
+    carts,
+    orders,
     funs,
     statuses,
     themes,
