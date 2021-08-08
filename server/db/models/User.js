@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { DataTypes: {STRING, UUID, UUIDV4, INTEGER, ENUM } } = Sequelize;
+const { DataTypes: {STRING, UUID, UUIDV4, ENUM } } = Sequelize;
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
