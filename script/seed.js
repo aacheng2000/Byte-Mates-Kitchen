@@ -22,16 +22,12 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
 
   // Creating Users
-  const users = await Promise.all(seedUser.map((user) => User.create(user)));
-
+  const [cody, murphy, moe] = await Promise.all(seedUser.map((user) => User.create(user)));
+  const users = [cody, murphy, moe]
   // Creating Products
   const products = await Promise.all(
     seedProduct.map((product) => Product.create(product))
   );
-
-  //Creating Carts & Orders
-  //const carts = await Promise.all(Cart.create());
-  //const orders = await Promise.all(Order.create());
 
   //Creating Enumerations - Functions
   const funs = await Promise.all(seedFunctions.map((fun) => Fun.create(fun)));
@@ -45,6 +41,36 @@ async function seed() {
   const themes = await Promise.all(
     seedThemes.map((theme) => Theme.create(theme))
   );
+  
+  //Creating Carts & Orders
+  const [cart1, cart2] = await Promise.all([
+    Cart.create({}),
+    Cart.create({})
+  ]);
+  const [order1, order2] = await Promise.all([
+    Order.create({}),
+    Order.create({})
+  ]);
+
+  //creates cart and order associations
+  cart1.userId = cody.id
+  cart1.statusId = 1
+  cart2.userId = murphy.id
+  cart2.statusId = 2
+  order1.cartId = cart1.id
+  order1.productId = 1
+  order2.cartId = cart2.id
+  order2.productId = 2
+
+  //saves created associations to db
+  await Promise.all([
+    cart1.save(),
+    cart2.save(),
+    order1.save(),
+    order2.save()
+  ])
+  const carts = [cart1, cart2]
+  const orders = [order1, order2]
 
   console.log("db synced!");
   console.log(`seeded ${products.length} products`);
@@ -54,8 +80,8 @@ async function seed() {
   return {
     users,
     products,
-    //carts,
-    //orders,
+    carts,
+    orders,
     funs,
     statuses,
     themes,
