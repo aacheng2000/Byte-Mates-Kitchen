@@ -2,11 +2,10 @@
 
 const {
   db,
-  User,
   Cart,
   Order,
   Product,
-  models: { Fun, Status, Theme },
+  models: { Fun, Status, Theme, User },
 } = require("../server/db");
 
 const seedProduct = require("./seed-product-data.json");
