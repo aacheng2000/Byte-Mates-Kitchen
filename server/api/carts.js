@@ -6,7 +6,7 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const carts = await Cart.findAll({
-        include: {Cart, User, Order, Status}
+        include: [User, Order, Status]
     })
     res.json(carts)
   } catch (err) {
@@ -17,14 +17,19 @@ router.get('/', async (req, res, next) => {
 //shows the user their cart
 router.get('/:id', async (req, res, next) => {
     try {
+        const data = (await User.findAll({
+          where: {username: req.params.id}
+        }))[0].dataValues
+        console.log('this is the get cart route _userid~~~~', data.id)
         const userCart = await Cart.findAll({
             where: {
-                userId: req.params.id,
+                userId: data.id,
                 statusId: 1
-            }
+            },
+            include: [Order]
         })
         res.json(userCart)
     } catch (error) {
-        next(err)
+        next(error)
     }
 })
