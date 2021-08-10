@@ -8,7 +8,7 @@ module.exports = router;
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
-      include: { Fun, Theme },
+      include: [Fun, Theme],
     });
     res.json(products);
   } catch (err) {
@@ -21,7 +21,7 @@ router.get("/:productId", async (req, res, next) => {
   try {
     const product = await Product.findOne({
       where: { id: req.params.productId },
-      include: { Fun, Theme },
+      include: [Fun, Theme],
     });
     res.send(product);
   } catch (err) {
