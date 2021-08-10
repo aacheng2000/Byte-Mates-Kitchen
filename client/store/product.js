@@ -1,9 +1,4 @@
 import axios from "axios";
-import history from "../history";
-
-const initialState = {
-  products: [],
-};
 
 /**
  * ACTION TYPES
@@ -20,8 +15,8 @@ const setProducts = (products) => ({ type: SET_PRODUCTS, products });
  */
 export const fetchAllProducts = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/products");
-    return dispatch(setProducts);
+    const res = await axios.get("/api/products");
+    return dispatch(setProducts(res.data));
   } catch (err) {
     console.log(err);
   }
@@ -30,10 +25,10 @@ export const fetchAllProducts = () => async (dispatch) => {
 /**
  * REDUCER
  */
-export default function (state = initialState, action) {
+export default function (state = [], action) {
   switch (action.type) {
     case SET_PRODUCTS:
-      return { ...state, products: action.products };
+      return action.products;
     default:
       return state;
   }

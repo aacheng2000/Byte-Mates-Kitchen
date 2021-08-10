@@ -7,14 +7,13 @@ import AllProducts from "./AllProducts";
  * COMPONENT
  */
 
-export const Home = props => {
-  const {username} = props
-  const token = window.localStorage.getItem('token')
-  
+export const Home = (props) => {
+  const { username } = props;
+  const token = window.localStorage.getItem("token");
+
   return (
     <div>
       <h3>Welcome, {username}</h3>
-      <AllProducts />
     </div>
   );
 };
