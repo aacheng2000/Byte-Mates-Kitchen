@@ -30,13 +30,13 @@ Product.hasMany(Order);
 
 module.exports = {
   db,
-  Cart,
-  Order,
-  Product,
   models: {
     Fun,
     Status,
     Theme,
-    User
+    User,
+    Cart,
+    Order,
+    Product,
   },
 };
