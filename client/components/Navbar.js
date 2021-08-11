@@ -7,7 +7,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <nav>
       <h4 className="image-with-link-to-main-page">
-        image 'Byte mates kitchen' with link to main page
+        <Link to="/home">
+          image 'Byte mates kitchen' with link to main page
+        </Link>
       </h4>
       <div className="nav-btn" id="all-products">
         <Link to="/products">All Products</Link>
