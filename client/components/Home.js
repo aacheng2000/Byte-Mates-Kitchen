@@ -2,19 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AllProducts from "./AllProducts";
+import AllUsers from "./AllUsers";
 
 /**
  * COMPONENT
  */
 
-export const Home = props => {
-  const {username} = props
-  const token = window.localStorage.getItem('token')
-  
+export const Home = (props) => {
+  const { username } = props;
+  const token = window.localStorage.getItem("token");
+
   return (
     <div>
       <h3>Welcome, {username}</h3>
-      <AllProducts />
+      <AllUsers />
     </div>
   );
 };

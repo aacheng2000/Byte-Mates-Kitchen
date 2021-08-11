@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchAllProducts } from "../store/product";
 
 class AllProducts extends React.Component {
   constructor() {
@@ -10,18 +11,16 @@ class AllProducts extends React.Component {
 
   componentDidMount() {
     console.log("AllProducts Component Mounted!!");
+    this.props.fetchAllProducts();
   }
 
   render() {
-    console.log(this.state.products);
     if (!this.props.products) return <h4>Loading...</h4>;
 
     return (
       <div>
-        <h1>Byte-Mates-Kitchen</h1>
         <h2>All Products</h2>
-
-        {/* {this.props.products.map((product) => {
+        {this.props.products.map((product) => {
           return (
             <ul key={product.id}>
               <li>
@@ -30,23 +29,18 @@ class AllProducts extends React.Component {
               <li>
                 <Link to={`/products/${product.id}`}>{product.picture}</Link>
               </li>
-              <button
-                className="remove"
-                // onClick={() =>
-                //   this.props.deleteSingleCampus(
-                //     this.props.campus,
-                //     this.props.campus.id
-                //   )
-                // }
-              >
-              Add to Cart
-              </button>
+              <button className="addToCart">Add to Cart</button>
             </ul>
           );
-        })} */}
+        })}
       </div>
     );
   }
 }
 
-export default AllProducts;
+const mapStateToProps = (state) => {
+  return state;
+};
+const mapDispatchToProps = { fetchAllProducts };
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);

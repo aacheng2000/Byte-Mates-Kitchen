@@ -24,11 +24,6 @@ async function seed() {
   );
   const users = [cody, murphy, moe];
 
-  // Creating Products
-  const products = await Promise.all(
-    seedProduct.map((product) => Product.create(product))
-  );
-
   //Creating Enumerations - Functions
   const funs = await Promise.all(seedFunctions.map((fun) => Fun.create(fun)));
 
@@ -42,12 +37,26 @@ async function seed() {
     seedThemes.map((theme) => Theme.create(theme))
   );
 
+  // Creating Products
+  const products = await Promise.all(
+    seedProduct.map((product) => Product.create(product))
+  );
+
+  //saves created associations to db
+  // await Promise.all([cart1.save(), cart2.save(), order1.save(), order2.save()]);
+  // const carts = [cart1, cart2];
+  // const orders = [order1, order2];
+
   //Creating Carts & Orders
   const [cart1, cart2] = await Promise.all([Cart.create({}), Cart.create({})]);
   const [order1, order2] = await Promise.all([
     Order.create({}),
     Order.create({}),
   ]);
+
+  //creates product and order associations
+  cart1.statusId = 1;
+  cart2.statusId = 2;
 
   //creates cart and order associations
   cart1.userId = cody.id;
