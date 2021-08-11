@@ -41,9 +41,6 @@ async function seed() {
   const products = await Promise.all(
     seedProduct.map((product) => Product.create(product))
   );
-  //creates product and order associations
-  cart1.statusId = 1;
-  cart2.statusId = 2;
 
   //saves created associations to db
   // await Promise.all([cart1.save(), cart2.save(), order1.save(), order2.save()]);
@@ -56,6 +53,10 @@ async function seed() {
     Order.create({}),
     Order.create({}),
   ]);
+
+  //creates product and order associations
+  cart1.statusId = 1;
+  cart2.statusId = 2;
 
   //creates cart and order associations
   cart1.userId = cody.id;
