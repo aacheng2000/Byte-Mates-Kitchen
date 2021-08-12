@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchSingleProduct } from "../store/product";
+import { fetchSingleProduct } from "../store/singleProduct";
 
 class SingleProduct extends Component {
   constructor() {
@@ -12,7 +12,6 @@ class SingleProduct extends Component {
   componentDidMount() {
     console.log("SingleProduct Component Mounted!!");
     const productId = this.props.match.params.productId;
-    // console.log("what is this??", this.props.fetchSingleProduct(productId));
     this.props.fetchSingleProduct(productId);
     console.log("check singleProduct", this.props);
   }
@@ -25,6 +24,7 @@ class SingleProduct extends Component {
         <ul key={this.props.singleProduct.id}>
           <li>Name: {this.props.singleProduct.name}</li>
         </ul>
+        <button>Add to Cart</button>
       </div>
     );
   }
