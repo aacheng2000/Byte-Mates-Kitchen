@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProduct";
-import {addOrder} from "../store/order"
+import { addOrder } from "../store/order";
 
 class SingleProduct extends Component {
   constructor() {
     super();
     this.state = { singleProduct: null };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -17,10 +17,9 @@ class SingleProduct extends Component {
     this.props.fetchSingleProduct(productId);
   }
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    this.props.addCampus({ ...this.state });
-    this.setState({ name: "", address: "" });
+  addToCart(cartId, productId) {
+    this.props.addOrder(cartId, productId);
+    console.log("product added to cart!!");
   }
 
   render() {
@@ -34,7 +33,14 @@ class SingleProduct extends Component {
           <li>Price: ${this.props.singleProduct.price}</li>
           {/* {this.props.singleProduct.color === "N/A" ? } */}
         </ul>
-        <button type="submit">Add to Cart</button>
+        <button
+          type="submit"
+          onClick={() =>
+            this.addToCart(this.props.cart[0], this.props.singleProduct.id)
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }
