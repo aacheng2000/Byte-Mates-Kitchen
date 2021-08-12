@@ -10,7 +10,7 @@ import AllUsers from "./AllUsers";
 
 export const Home = (props) => {
   const { username } = props;
-  const token = window.localStorage.getItem("token");
+  //do we need this? const token = window.localStorage.getItem("token");
 
   return (
     <div>

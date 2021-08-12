@@ -14,22 +14,26 @@ describe('User model', () => {
   describe('instanceMethods', () => {
     describe('generateToken', () => {
       it('returns a token with the id of the user', async() => {
-        const token = await users.cody.generateToken();
+      const token = await users[0].generateToken();
         const { id } = await jwt.verify(token, process.env.JWT);
-        expect(id).to.equal(users.cody.id);
+        expect(id).to.equal(users[0].id);
+      //const token = await users[0]
+      //expect(token).to.equal(3)
       })
     }) // end describe('correctPassword')
     describe('authenticate', () => {
       let user;
       beforeEach(async()=> user = await User.create({
         username: 'lucy',
-        password: 'loo'
+        password: 'loo',
+        email: 'lucy@gmail.com'
       }));
       describe('with correct credentials', ()=> {
         it('returns a token', async() => {
           const token = await User.authenticate({
             username: 'lucy',
-            password: 'loo'
+            password: 'loo',
+            email: 'lucy@gmail.com'
           });
           expect(token).to.be.ok;
         })
@@ -40,7 +44,7 @@ describe('User model', () => {
           try {
             await User.authenticate({
               username: 'lucy@gmail.com',
-              password: '123'
+              password: '123',
             });
             throw 'nooo';
           }
