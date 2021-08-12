@@ -25,7 +25,7 @@ export const fetchAllProducts = () => async (dispatch) => {
     console.log(err);
   }
 };
-export const fetchSingleProducts = (productId) => async (dispatch) => {
+export const fetchSingleProduct = (productId) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/products/${productId}`);
     return dispatch(setSingleProduct(res.data));
@@ -42,7 +42,12 @@ export default function (state = [], action) {
     case SET_PRODUCTS:
       return action.products;
     case SET_SINGLEPRODUCT:
-      return { ...state, singleStudent: action.singleStudent };
+      return { ...state, singleProduct: action.state };
+    // return state.map((singleProduct) =>
+    //   singleProduct.id === action.singleProduct.id
+    //     ? action.singleProduct
+    //     : singleProduct
+    // );
     default:
       return state;
   }

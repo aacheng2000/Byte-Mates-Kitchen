@@ -30,6 +30,7 @@ class AllProducts extends React.Component {
                 <Link to={`/products/${product.id}`}>{product.picture}</Link>
               </li>
               <button className="addToCart">Add to Cart</button>
+              <button className="addToWishList">Add to Wishlist</button>
             </ul>
           );
         })}
