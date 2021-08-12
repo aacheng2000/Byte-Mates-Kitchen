@@ -30,6 +30,7 @@ class AllProducts extends React.Component {
                 <a href ={`/products/${product.id}`}><img  src = {product.picture}></img></a>
               </li>
               <button className="addToCart">Add to Cart</button>
+              <button className="addToWishList">Add to Wishlist</button>
             </ul>
           );
         })}
