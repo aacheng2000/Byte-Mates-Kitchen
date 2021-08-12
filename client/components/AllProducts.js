@@ -27,7 +27,7 @@ class AllProducts extends React.Component {
                 <Link to={`/products/${product.id}`}>{product.name}</Link>
               </li>
               <li>
-                <Link to={`/products/${product.id}`}>{product.picture}</Link>
+                <a href ={`/products/${product.id}`}><img  src = {product.picture}></img></a>
               </li>
               <button className="addToCart">Add to Cart</button>
             </ul>

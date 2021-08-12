@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AllProducts from "./AllProducts";
 import {myCart} from '../store'
+import AllUsers from "./AllUsers";
+
 
 /**
  * COMPONENT
@@ -22,6 +24,7 @@ class Home extends Component  {
   return (
     <div>
       <h3>Welcome, {username}</h3>
+      <AllUsers />
     </div>
   );
 };
