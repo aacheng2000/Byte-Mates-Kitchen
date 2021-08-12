@@ -20,7 +20,6 @@ router.get('/:id', async (req, res, next) => {
         const data = (await User.findAll({
           where: {username: req.params.id}
         }))[0].dataValues
-        console.log('this is the get cart route _userid~~~~', data.id)
         const userCart = await Cart.findAll({
             where: {
                 userId: data.id,

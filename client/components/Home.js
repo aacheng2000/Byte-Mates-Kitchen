@@ -1,14 +1,22 @@
-import React from "react";
+import React, {Component} from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AllProducts from "./AllProducts";
+import {myCart} from '../store'
 
 /**
  * COMPONENT
  */
 
-export const Home = (props) => {
-  const { username } = props;
+class Home extends Component  {
+  componentDidMount(){
+    this.props.loadCartData(
+      this.props.username
+      )
+  }
+
+  render(){
+  const { username } = this.props;
   const token = window.localStorage.getItem("token");
 
   return (
@@ -17,6 +25,7 @@ export const Home = (props) => {
     </div>
   );
 };
+}
 
 /**
  * CONTAINER
@@ -26,5 +35,12 @@ const mapState = (state) => {
     username: state.auth.username,
   };
 };
+const mapDispatch = dispatch => {
+  return {
+    loadCartData(username) {
+      dispatch(myCart(username))
+    }
+  }
+}
 
-export default connect(mapState)(Home);
+export default connect(mapState, mapDispatch)(Home);
