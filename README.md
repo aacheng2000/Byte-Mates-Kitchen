@@ -45,7 +45,7 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 
 ### Heroku
-
+ 
 1.  Set up the [Heroku command line tools][heroku-cli]
 2.  `heroku login`
 3.  Add a git remote for heroku:
