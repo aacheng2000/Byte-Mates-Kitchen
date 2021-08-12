@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProduct";
+import {addOrder} from "../store/order"
 
 class SingleProduct extends Component {
   constructor() {
@@ -33,6 +34,6 @@ class SingleProduct extends Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchSingleProduct };
+const mapDispatchToProps = { fetchSingleProduct, addOrder };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);

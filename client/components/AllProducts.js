@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../store/allProducts";
+import {addOrder} from "../store/order"
 
 class AllProducts extends React.Component {
   constructor() {
@@ -44,6 +45,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts };
+const mapDispatchToProps = { fetchAllProducts, addOrder };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
