@@ -17,8 +17,8 @@ class SingleProduct extends Component {
     this.props.fetchSingleProduct(productId);
   }
 
-  addToCart(cartId, productId) {
-    this.props.addOrder(cartId, productId);
+  addToCart(_cartId, _productId) {
+    this.props.addOrder({cartId: _cartId, productId: _productId});
     console.log("product added to cart!!");
   }
 
@@ -36,7 +36,7 @@ class SingleProduct extends Component {
         <button
           type="submit"
           onClick={() =>
-            this.addToCart(this.props.cart[0], this.props.singleProduct.id)
+            this.addToCart(this.props.cart[0].id, this.props.singleProduct.id)
           }
         >
           Add to Cart

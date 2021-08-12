@@ -25,7 +25,7 @@ export const myOrders = (cart) => async (dispatch) => {
 
 export const addOrder = (orderDetails) => async (dispatch) => {
   const res = await axios.post(`/api/orders/add`, orderDetails);
-  return dispatch(setAddOrder(res));
+  return dispatch(setAddOrder(res.data));
 };
 
 /**
@@ -36,7 +36,8 @@ export default function (state = {}, action) {
     case SET_ORDERS:
       return action.cart;
     case ADD_ORDER:
-      return { ...state, orders: [...state.orders, action.orderDetails] };
+      console.log('this is my state.orders~~~~', state)
+      return { orders: [...state, action.orderDetails] };
     default:
       return state;
   }

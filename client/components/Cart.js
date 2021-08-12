@@ -8,6 +8,7 @@ import {myOrders} from '../store'
 class Cart extends Component {
     constructor(props){
       super(props)
+      this.state = { orders: [] };
       this.cartStyle = {
         display: 'flex',
         flexDirection: 'column',
