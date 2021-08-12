@@ -4,13 +4,13 @@ import axios from "axios";
  * ACTION TYPES
  */
 const SET_ORDERS = "SET_ORDERS";
-const ADD_ORDER = 'ADD_ORDER'
+const ADD_ORDER = "ADD_ORDER";
 
 /**
  * ACTION CREATORS
  */
 const setOrders = (cart) => ({ type: SET_ORDERS, cart });
-const setAddOrder = (orderDetails) => ({ type: ADD_ORDER, orderDetails})
+const setAddOrder = (orderDetails) => ({ type: ADD_ORDER, orderDetails });
 
 /**
  * THUNK CREATORS
@@ -25,8 +25,8 @@ export const myOrders = (cart) => async (dispatch) => {
 
 export const addOrder = (orderDetails) => async (dispatch) => {
   const res = await axios.post(`/api/orders/add`, orderDetails);
-  return dispatch(setAddOrder(orderDetails))
-}
+  return dispatch(setAddOrder(res));
+};
 
 /**
  * REDUCER
@@ -36,7 +36,7 @@ export default function (state = {}, action) {
     case SET_ORDERS:
       return action.cart;
     case ADD_ORDER:
-      return {...state, orders: [...state.orders, action.orderDetails]}
+      return { ...state, orders: [...state.orders, action.orderDetails] };
     default:
       return state;
   }
