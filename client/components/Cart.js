@@ -1,24 +1,29 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {myCart} from '../store'
+import {myOrders} from '../store'
 /**
  * COMPONENT
  */
 class Cart extends Component {
     componentDidMount() {
-        this.props.loadInitialData(this.props.username)
+      const curCart = (this.props.cart.filter((_cart) =>
+          _cart.statusId === 1
+          ))[0].id
+        this.props.loadOrderData(curCart)
       }
+
     render(){
-        const {username} = this.props
         console.log('My carts component props~~~', this.props)
+        const {username} = this.props
+        const allOrders = this.props.orders
         return (
             <div>
                 <h3>Welcome to your cart, {username}</h3>
                 <h3>Here is what is in your cart:</h3>
                 <div>
-                    {this.props.cart[0] ? this.props.cart[0].orders.map((order) => {
+                    {allOrders[0] ? allOrders.map((order) => {
                         return(
-                            <div key={order.productId}>Product id: {order.productId}</div>
+                            <div key={order.id}>Product id: {order.id}</div>
                         )
                     }): ''}
                 </div>
@@ -34,13 +39,14 @@ class Cart extends Component {
 const mapState = state => {
   return {
     username: state.auth.username,
-    cart: state.cart
+    cart: state.cart,
+    orders: state.order
   }
 }
 const mapDispatch = dispatch => {
     return {
-      loadInitialData(username) {
-        dispatch(myCart(username))
+      loadOrderData(cartId) {
+        dispatch(myOrders(cartId))
       }
     }
   }
