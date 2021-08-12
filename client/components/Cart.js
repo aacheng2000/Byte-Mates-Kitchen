@@ -1,3 +1,4 @@
+import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils'
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {myOrders} from '../store'
@@ -5,12 +6,29 @@ import {myOrders} from '../store'
  * COMPONENT
  */
 class Cart extends Component {
+    constructor(props){
+      super(props)
+      this.cartStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        borderStyle: 'solid',
+        padding: '10px'
+      }
+      this.itemsStyle = {
+        display: 'flex',
+        padding: '10px',
+        justifyContent: 'space-around'
+      }
+    }
     componentDidMount() {
+      if(this.props.cart[0]){
       const curCart = (this.props.cart.filter((_cart) =>
-          _cart.statusId === 1
+          _cart.isPending === true
           ))[0].id
         this.props.loadOrderData(curCart)
       }
+    }
+    
 
     render(){
         console.log('My carts component props~~~', this.props)
@@ -19,13 +37,21 @@ class Cart extends Component {
         return (
             <div>
                 <h3>Welcome to your cart, {username}</h3>
-                <h3>Here is what is in your cart:</h3>
-                <div>
+                <h3>Contents of your cart:</h3>
+                <div style = {this.cartStyle}>
                     {allOrders[0] ? allOrders.map((order) => {
                         return(
-                            <div key={order.id}>Product id: {order.id}</div>
+                          <div key={order.id} style = {this.itemsStyle}>
+                            <img src = {order.product.picture} />
+                            <div>
+                              <div>{order.product.name}</div>
+                              <div>${order.product.price}</div>
+                            </div>
+                          </div>
                         )
-                    }): ''}
+                    }):       
+                    <div>Your cart is empty</div>
+                    }
                 </div>
             </div>
         )  
