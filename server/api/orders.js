@@ -28,3 +28,12 @@ router.get('/:id', async (req, res, next) => {
         next(error)
     }
 })
+
+router.post('/add', async (req, res, next) => {
+  try {
+    const newOrder = await Order.create(req.body)
+    res.send(newOrder)
+  } catch (error) {
+    next(error)
+  }
+})
