@@ -8,8 +8,7 @@ class SingleUser extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
-        this.props.loadSingleUser(this.props.match.params.id)
+        this.props.fetchSingleUser(this.props.match.params.id)
     }
 
     render() {
@@ -40,12 +39,8 @@ const mapStateToProps = ({ singleUser }) => {
     return {
         singleUser
     }
-  }
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadSingleUser: (id) => dispatch(fetchSingleUser(id))
-    }
 };
+
+const mapDispatchToProps = { fetchSingleUser };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleUser)
