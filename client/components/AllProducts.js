@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "../store/product";
+import { fetchAllProducts } from "../store/allProducts";
+import {addOrder} from "../store/order"
 
 class AllProducts extends React.Component {
   constructor() {
@@ -27,9 +28,12 @@ class AllProducts extends React.Component {
                 <Link to={`/products/${product.id}`}>{product.name}</Link>
               </li>
               <li>
-                <a href ={`/products/${product.id}`}><img  src = {product.picture}></img></a>
+                <a href={`/products/${product.id}`}>
+                  <img src={product.picture}></img>
+                </a>
               </li>
               <button className="addToCart">Add to Cart</button>
+              <button className="addToWishList">Add to Wishlist</button>
             </ul>
           );
         })}
@@ -41,6 +45,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts };
+const mapDispatchToProps = { fetchAllProducts, addOrder };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);

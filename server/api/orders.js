@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { Cart, User, Order, Status}} = require('../db')
+const { models: { Cart, Order, Product}} = require('../db')
 module.exports = router
 
 //shows all orders. need to make admin route to edit orders 
@@ -14,11 +14,11 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//shows the user their order
+//shows the user their orders
 router.get('/:id', async (req, res, next) => {
     try {
         const userCart = await Order.findAll({
-            include: [Cart],
+            include: [Cart, Product],
             where: {
                 cartId: req.params.id,
             }
@@ -27,4 +27,13 @@ router.get('/:id', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+})
+
+router.post('/add', async (req, res, next) => {
+  try {
+    const newOrder = await Order.create(req.body)
+    res.send(newOrder)
+  } catch (error) {
+    next(error)
+  }
 })

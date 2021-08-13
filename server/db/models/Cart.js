@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { UUID, UUIDV4 },
+  DataTypes: { UUID, UUIDV4, BOOLEAN },
 } = Sequelize;
 
 const Cart = db.define("cart", {
@@ -10,6 +10,11 @@ const Cart = db.define("cart", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
+  isPending: {
+    type: BOOLEAN,
+    allowNull: false,
+    defaultValue: true
+  }
 });
 
 module.exports = Cart;
