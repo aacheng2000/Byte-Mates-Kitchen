@@ -7,7 +7,7 @@
     "phoneNumber": "1112223344",
     "address": "1155 Big st.",
     "password": "123",
-    "permission": "admin"
+    "isAdmin": true
   },
   {
     "username": "murphy",
@@ -17,7 +17,7 @@
     "phoneNumber": "4443332211",
     "address": "8877 Small st.",
     "password": "123",
-    "permission": "user"
+    "isAdmin": false
   },
   {
     "username": "moe",
@@ -27,6 +27,6 @@
     "phoneNumber": "5554447799",
     "address": "3359 Medium st.",
     "password": "123",
-    "permission": "guest"
+    "isAdmin": false
   }
 ]
