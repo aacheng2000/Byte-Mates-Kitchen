@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../store/allProducts";
 import {addOrder} from "../store/order"
+import {myCart} from '../store'
 
 class AllProducts extends React.Component {
   constructor() {
@@ -11,17 +12,17 @@ class AllProducts extends React.Component {
   }
 
   componentDidMount() {
-    console.log("AllProducts Component Mounted!!");
     this.props.fetchAllProducts();
   }
 
-  addToCart(_cartId, _productId) {
-    this.props.addOrder({cartId: _cartId, productId: _productId});
+  async addToCart(_productId) {
+    await this.props.myCart(this.props.auth.username)
+    this.props.addOrder({cartId: this.props.cart[0].id, productId: _productId});
   }
 
   render() {
+    console.log('all Products props!!~~~~~~~~', this.props)
     if (!this.props.products) return <h4>Loading...</h4>;
-
     return (
       <div>
         <h2>All Products</h2>
@@ -37,7 +38,7 @@ class AllProducts extends React.Component {
                 </a>
               </li>
               <button onClick={() =>
-            this.addToCart(this.props.cart[0].id, product.id)
+            this.addToCart(product.id)
           } className="addToCart">Add to Cart</button>
               <button className="addToWishList">Add to Wishlist</button>
             </ul>
@@ -51,6 +52,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts, addOrder };
+const mapDispatchToProps = { fetchAllProducts, addOrder, myCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
