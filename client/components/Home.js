@@ -10,6 +10,8 @@ import AllUsers from "./AllUsers";
  * COMPONENT
  */
 
+
+
 class Home extends Component  {
   componentDidMount(){
     this.props.loadCartData(
@@ -20,6 +22,7 @@ class Home extends Component  {
   render(){
   const { username } = this.props;
   const token = window.localStorage.getItem("token");
+
 
   return (
     <div>
