@@ -2,13 +2,12 @@
 
 const {
   db,
-  models: { Fun, Status, Theme, User, Product, Cart, Order },
+  models: { Fun, Theme, User, Product, Cart, Order },
 } = require("../server/db");
 
 const seedProduct = require("./seed-product-data.json");
 const seedUser = require("./seed-user-data.json");
 const seedFunctions = require("./seed-functions-data.json");
-const seedStatus = require("./seed-status-data.json");
 const seedThemes = require("./seed-themes-data.json");
 
 /**
@@ -27,11 +26,6 @@ async function seed() {
   //Creating Enumerations - Functions
   const funs = await Promise.all(seedFunctions.map((fun) => Fun.create(fun)));
 
-  //Creating Enumerations - Status
-  const statuses = await Promise.all(
-    seedStatus.map((status) => Status.create(status))
-  );
-
   //Creating Enumerations - Theme
   const themes = await Promise.all(
     seedThemes.map((theme) => Theme.create(theme))
@@ -42,36 +36,26 @@ async function seed() {
     seedProduct.map((product) => Product.create(product))
   );
 
-  //saves created associations to db
-  // await Promise.all([cart1.save(), cart2.save(), order1.save(), order2.save()]);
-  // const carts = [cart1, cart2];
-  // const orders = [order1, order2];
-
   //Creating Carts & Orders
-  const [cart1, cart2] = await Promise.all([Cart.create({}), Cart.create({})]);
-  const [order1, order2] = await Promise.all([
-    Order.create({}),
-    Order.create({}),
+  const [cart1, cart2, cart3] = await Promise.all([
+    Cart.create({userId: cody.id}), 
+    Cart.create({userId: murphy.id}),
+    Cart.create({userId: moe.id})
+  ]);
+  const orders = await Promise.all([
+    Order.create({cartId: cart1.id, productId: 1}),
+    Order.create({cartId: cart1.id, productId: 2}),
+    Order.create({cartId: cart1.id, productId: 3}),
+    Order.create({cartId: cart2.id, productId: 4}),
+    Order.create({cartId: cart2.id, productId: 5}),
+    Order.create({cartId: cart2.id, productId: 6}),
+    Order.create({cartId: cart2.id, productId: 7}),
+    Order.create({cartId: cart3.id, productId: 8}),
+    Order.create({cartId: cart3.id, productId: 9})
   ]);
 
-  //creates product and order associations
-  cart1.statusId = 1;
-  cart2.statusId = 2;
 
-  //creates cart and order associations
-  cart1.userId = cody.id;
-  cart1.statusId = 1;
-  cart2.userId = murphy.id;
-  cart2.statusId = 2;
-  order1.cartId = cart1.id;
-  order1.productId = 1;
-  order2.cartId = cart2.id;
-  order2.productId = 2;
-
-  //saves created associations to db
-  await Promise.all([cart1.save(), cart2.save(), order1.save(), order2.save()]);
-  const carts = [cart1, cart2];
-  const orders = [order1, order2];
+  const carts = [cart1, cart2, cart3];
 
   console.log("db synced!");
   console.log(`seeded ${products.length} products`);
@@ -84,8 +68,7 @@ async function seed() {
     carts,
     orders,
     funs,
-    statuses,
-    themes,
+    themes
   };
 }
 

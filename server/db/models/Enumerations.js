@@ -12,14 +12,6 @@ const Fun = db.define("fun", {
   name: Sequelize.STRING,
 });
 
-const Status = db.define("status", {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-  },
-  name: Sequelize.STRING,
-});
-
 const Theme = db.define("theme", {
   id: {
     type: Sequelize.INTEGER,
@@ -33,7 +25,6 @@ const Theme = db.define("theme", {
 module.exports = {
   models: {
     Fun,
-    Status,
     Theme
   },
 };

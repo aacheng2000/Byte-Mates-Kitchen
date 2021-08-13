@@ -1,41 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchAllProducts } from "../store/product";
+import { fetchSingleProduct } from "../store/singleProduct";
+import { addOrder } from "../store/order";
 
-class SingleCampus extends Component {
+class SingleProduct extends Component {
   constructor() {
     super();
-    this.state = { singleCampus: null };
+    this.state = { singleProduct: null };
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
-    console.log("SingleCampus Component Mounted!!");
-    const campusId = this.props.match.params.campusId;
-    this.props.fetchSingleCampus(campusId);
+    console.log("SingleProduct Component Mounted!!");
+    const productId = this.props.match.params.productId;
+    this.props.fetchSingleProduct(productId);
+  }
+
+  addToCart(_cartId, _productId) {
+    this.props.addOrder({cartId: _cartId, productId: _productId});
+    console.log("product added to cart!!");
   }
 
   render() {
-    if (!this.props.singleCampus) return <h4>Loading...</h4>;
+    if (!this.props.singleProduct) return <h4>Loading...</h4>;
 
     return (
       <div>
-        <h1>Show Campus</h1>
-
-        <ul key={this.props.singleCampus.id}>
-          <li>Name: {this.props.singleCampus.name}</li>
-          <li>Image: {this.props.singleCampus.imageUrl}</li>
-          <li>Address: {this.props.singleCampus.address}</li>
-          <li>Description: {this.props.singleCampus.description}</li>
-          <li>
-            Students:
-            {this.props.singleCampus.students &&
-              this.props.singleCampus.students.map((student) => {
-                return <span key={student.id}> {student.firstName}</span>;
-              })}
-          </li>
+        <ul key={this.props.singleProduct.id}>
+          <li>Name: {this.props.singleProduct.name}</li>
+          <li>Description: {this.props.singleProduct.description}</li>
+          <li>Price: ${this.props.singleProduct.price}</li>
+          {/* {this.props.singleProduct.color === "N/A" ? } */}
         </ul>
-        <EditCampus campus={this.props.singleCampus} />
+        <button
+          type="submit"
+          onClick={() =>
+            this.addToCart(this.props.cart[0].id, this.props.singleProduct.id)
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }
@@ -44,6 +49,6 @@ class SingleCampus extends Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchSingleCampus };
+const mapDispatchToProps = { fetchSingleProduct, addOrder };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleCampus);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
