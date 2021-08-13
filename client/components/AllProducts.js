@@ -15,6 +15,10 @@ class AllProducts extends React.Component {
     this.props.fetchAllProducts();
   }
 
+  addToCart(_cartId, _productId) {
+    this.props.addOrder({cartId: _cartId, productId: _productId});
+  }
+
   render() {
     if (!this.props.products) return <h4>Loading...</h4>;
 
@@ -32,7 +36,9 @@ class AllProducts extends React.Component {
                   <img src={product.picture}></img>
                 </a>
               </li>
-              <button className="addToCart">Add to Cart</button>
+              <button onClick={() =>
+            this.addToCart(this.props.cart[0].id, product.id)
+          } className="addToCart">Add to Cart</button>
               <button className="addToWishList">Add to Wishlist</button>
             </ul>
           );

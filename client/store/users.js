@@ -25,7 +25,6 @@ export const fetchUsers = () => {
     }
 }
 
-
  /**
  * REDUCER
  */

@@ -9,6 +9,11 @@ class SingleProduct extends Component {
     super();
     this.state = { singleProduct: null };
     this.addToCart = this.addToCart.bind(this);
+    this.singleStyle = {
+      display: 'flex',
+      padding: '10px',
+      justifyContent: 'space-around'
+    }
   }
 
   componentDidMount() {
@@ -19,7 +24,6 @@ class SingleProduct extends Component {
 
   addToCart(_cartId, _productId) {
     this.props.addOrder({cartId: _cartId, productId: _productId});
-    console.log("product added to cart!!");
   }
 
   render() {
@@ -27,20 +31,23 @@ class SingleProduct extends Component {
 
     return (
       <div>
-        <ul key={this.props.singleProduct.id}>
-          <li>Name: {this.props.singleProduct.name}</li>
-          <li>Description: {this.props.singleProduct.description}</li>
-          <li>Price: ${this.props.singleProduct.price}</li>
-          {/* {this.props.singleProduct.color === "N/A" ? } */}
-        </ul>
+        <div style = {this.singleStyle}>
+          <img src = {this.props.singleProduct.picture} />
+          <ul key={this.props.singleProduct.id}>
+            <li>Name: {this.props.singleProduct.name}</li>
+            <li>Description: {this.props.singleProduct.description}</li>
+            <li>Price: ${this.props.singleProduct.price}</li>
+            {/* {this.props.singleProduct.color === "N/A" ? } */}
+          </ul>
+        </div>
         <button
-          type="submit"
-          onClick={() =>
-            this.addToCart(this.props.cart[0].id, this.props.singleProduct.id)
-          }
-        >
-          Add to Cart
-        </button>
+            type="submit"
+            onClick={() =>
+              this.addToCart(this.props.cart[0].id, this.props.singleProduct.id)
+            }
+          >
+            Add to Cart
+          </button>
       </div>
     );
   }
