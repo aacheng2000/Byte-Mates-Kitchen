@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProduct";
 import { addOrder } from "../store/order";
+import {myCart} from '../store'
 
 class SingleProduct extends Component {
   constructor() {
@@ -22,8 +23,9 @@ class SingleProduct extends Component {
     this.props.fetchSingleProduct(productId);
   }
 
-  addToCart(_cartId, _productId) {
-    this.props.addOrder({cartId: _cartId, productId: _productId});
+  async addToCart(_productId) {
+    await this.props.myCart(this.props.auth.username)
+    this.props.addOrder({cartId: this.props.cart[0].id, productId: _productId});
   }
 
   render() {
@@ -43,7 +45,7 @@ class SingleProduct extends Component {
         <button
             type="submit"
             onClick={() =>
-              this.addToCart(this.props.cart[0].id, this.props.singleProduct.id)
+              this.addToCart(this.props.singleProduct.id)
             }
           >
             Add to Cart
@@ -56,6 +58,6 @@ class SingleProduct extends Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchSingleProduct, addOrder };
+const mapDispatchToProps = { fetchSingleProduct, addOrder, myCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);

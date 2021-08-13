@@ -14,6 +14,7 @@ import AllUsers from "./AllUsers";
 
 class Home extends Component  {
   componentDidMount(){
+    console.log('what does username look like in home?~~~~', this.props.username)
     this.props.loadCartData(
       this.props.username
       )
@@ -22,7 +23,7 @@ class Home extends Component  {
   render(){
   const { username } = this.props;
   const token = window.localStorage.getItem("token");
-
+    console.log('home state~~~~~', this.props)
 
   return (
     <div>
