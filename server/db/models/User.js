@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { DataTypes: {STRING, UUID, UUIDV4, ENUM } } = Sequelize;
+const { DataTypes: {STRING, UUID, UUIDV4, BOOLEAN } } = Sequelize;
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
@@ -53,9 +53,8 @@ const User = db.define('user', {
     allowNull: false
   },
 
-  permission: {
-    type: ENUM,
-      values: ['admin', 'user', 'guest']
+  isAdmin: {
+    type: BOOLEAN  
   }
 })
 

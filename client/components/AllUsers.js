@@ -1,6 +1,7 @@
-import React, {Component, Fragment, useEffect} from 'react';
-import {connect} from 'react-redux';
-import {fetchUsers} from '../store';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../store';
+import { Link } from "react-router-dom";
 
 /**
 * COMPONENT
@@ -8,18 +9,20 @@ import {fetchUsers} from '../store';
 //({ users }) => 
 class AllUsers extends Component {
     componentDidMount() {
-        this.props.loadUsers()
+        this.props.loadUsers();
     }
     render() {
-        const {users} = this.props
+        const { users } = this.props
         return (
             <ul>
                 {users.map(user => {
                     return (
-                        <li key={user.id}>
-                        {user.username}
-                        </li>
-                    )
+                        <Link key={user.id} to={`/users/${user.id}`}>
+                            <li>
+                                {user.username}
+                            </li>
+                        </Link>
+                    ) 
                 })}
             </ul>
         )

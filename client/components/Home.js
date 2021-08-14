@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
+
 import AllProducts from "./AllProducts";
 import { myCart } from '../store'
 import AllUsers from "./AllUsers";
+import Cart from "./Cart";
 
 
 /**
@@ -18,6 +20,7 @@ class Home extends Component {
       this.props.username
     )
   }
+
 
   render() {
     const { username } = this.props;
@@ -64,6 +67,7 @@ class Home extends Component {
     );
   };
 }
+
 
 /**
  * CONTAINER

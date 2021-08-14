@@ -2,6 +2,7 @@ import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils'
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {myOrders} from '../store'
+import { Link } from "react-router-dom";
 /**
  * COMPONENT
  */
@@ -45,7 +46,7 @@ class Cart extends Component {
                           <div key={order.id} style = {this.itemsStyle}>
                             <img src = {order.product.picture} />
                             <div>
-                              <div>{order.product.name}</div>
+                              <div><Link to={`/products/${order.product.id}`}>{order.product.name}</Link></div>
                               <div>${order.product.price}</div>
                             </div>
                           </div>

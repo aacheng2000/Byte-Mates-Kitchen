@@ -31,7 +31,7 @@ export const addOrder = (orderDetails) => async (dispatch) => {
 /**
  * REDUCER
  */
-export default function (state = {}, action) {
+export default function (state = [], action) {
   switch (action.type) {
     case SET_ORDERS:
       return action.cart;
