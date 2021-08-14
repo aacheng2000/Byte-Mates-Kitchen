@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { STRING, TEXT, DECIMAL },
+  DataTypes: { STRING, TEXT, DECIMAL, INTEGER },
 } = Sequelize;
 
 const Product = db.define("product", {
@@ -47,6 +47,12 @@ const Product = db.define("product", {
       isUrl: true,
     },
   },
+  funId: {
+    type: INTEGER
+  },
+  themeId: {
+    type: INTEGER
+  }
 });
 
 module.exports = Product;
