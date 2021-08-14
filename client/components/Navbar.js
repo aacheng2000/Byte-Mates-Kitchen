@@ -61,17 +61,17 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             
 
               
-          </div>
-        )}
-      </div>
+          
+        
+      
       <div>
       <a class = "nav-btn" href = "/wishlist">Wishlist<img src = "heart.png" class = "imgNav"></img></a>
       <a class = "nav-btn" href = "/cart">Cart<img src = "cart.png" class = "imgNav"></img></a>
-      
-
       </div>
 
-
+      </div>
+)}
+</div>
     </nav>
     </span>
     <hr />
