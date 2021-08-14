@@ -15,10 +15,11 @@ const setAddOrder = (orderDetails) => ({ type: ADD_ORDER, orderDetails });
 /**
  * THUNK CREATORS
  */
-export const myOrders = (cart) => async (dispatch) => {
+export const myOrders = (username) => async (dispatch) => {
   const token = window.localStorage.getItem("token");
   if (token) {
-    const res = await axios.get(`/api/orders/${cart}`);
+    const data = (await axios.get(`/api/carts/${username}`)).data
+    const res = await axios.get(`/api/orders/${data.id}`);
     return dispatch(setOrders(res.data));
   }
 };
@@ -37,7 +38,7 @@ export default function (state = [], action) {
       return action.cart;
     case ADD_ORDER:
       console.log('this is my state.orders~~~~', state)
-      return { orders: [...state, action.orderDetails] };
+      return [...state, action.orderDetails];
     default:
       return state;
   }
