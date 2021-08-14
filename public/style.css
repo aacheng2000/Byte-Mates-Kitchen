@@ -6,6 +6,7 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 label {
@@ -49,10 +50,6 @@ form div {
   
 }
 
-a {
-  color:black;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -82,15 +79,12 @@ a {
   display: block;
 }
 
-
-
-
 #header-search {
   width: 50vh;
 }
 
 #unlogged-nav {
-  display:flex;
+  display: flex;
 }
 
 #pic4 {
