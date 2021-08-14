@@ -6,6 +6,7 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 label {
@@ -31,8 +32,8 @@ form div {
   font-size: 20px;
 }
 
-.all-products {
-}
+/* .all-products {
+} */
 
 .imgNav {
   height: 20px;
@@ -46,10 +47,6 @@ form div {
   border-radius: 0rem;
   padding: 0rem;
   cursor: pointer;
-}
-
-a {
-  color: black;
 }
 
 .dropdown {
@@ -89,8 +86,8 @@ a {
   display: flex;
 }
 
-#unlogged-nav a {
-}
+/* #unlogged-nav a {
+} */
 
 #pic4 {
   height: 200px;
