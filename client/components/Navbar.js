@@ -2,15 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
+//import UP, PUBLIC FOLDER, STYLE.CSS
+//import '.../public/style.css'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <nav>
-      <h4 className="image-with-link-to-main-page">
-        <Link to="/home">
-          image 'Byte mates kitchen' with link to main page
-        </Link>
-      </h4>
+  <div id="wholeBar">
+      <div id="leftColumn" className="image-with-link-to-main-page">
+        <a href = "/home"><img src = "./group.png" id="pic4"></img></a></div>
+      <span id = "rightColumn">
+      <div id="navTitle">Byte-Mates-Kitchen</div>
+      <nav id = "navBar">
       <div className="nav-btn" id="all-products">
         <Link to="/products">All Products</Link>
       </div>
@@ -49,19 +50,30 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <div id="unlogged-nav">
             {/* The navbar will show these links before you log in */}
 
-            <Link className="nav-btn" to="/cart">
-              Cart
-            </Link>
-            <Link className="nav-btn" to="/login">
-              Login
-            </Link>
-            <Link className="nav-btn" to="/signup">
-              Sign Up
-            </Link>
+
+          
+            <div><a className = "nav-btn" href = "/login">Sign In / Track Order<img src = "admin.png" class = "imgNav"></img></a></div>
+
+            
+
+            <div><a className = "nav-btn" href = "/signup">Sign up<img src = "arrow.png" class = "imgNav"></img></a></div>
+            
+            
+
+              
           </div>
         )}
       </div>
+      <div>
+      <a class = "nav-btn" href = "/wishlist">Wishlist<img src = "heart.png" class = "imgNav"></img></a>
+      <a class = "nav-btn" href = "/cart">Cart<img src = "cart.png" class = "imgNav"></img></a>
+      
+
+      </div>
+
+
     </nav>
+    </span>
     <hr />
   </div>
 );

@@ -71,6 +71,9 @@ export default function(state = [], action) {
     };
     case SET_SINGLE_USER: {
       return action.singleUser
+    };
+    case EDIT_USER: {
+      return state.map((user) => user.id === action.user.id ? action.user : user)
     }
     default: {
       return state
