@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {models: {User}} = require('../db/models/User')
+const Cart = require('../db/models/Cart')
 module.exports = router
 
 
@@ -48,7 +49,9 @@ router.put("/:id", async (req, res, next) => {
 // Create user
 router.post("/", async (req, res, next) => {
   try {
-    res.status(201).send(await User.create(req.body));
+    const newUser = await User.create(req.body)
+    await Cart.create({userId:newUser.id})
+    res.status(201).send(newUser);
   } catch (err) {
     next(err);
   }
