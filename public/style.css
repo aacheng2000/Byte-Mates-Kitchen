@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  color: black;
+  background-color:rgb(248,242,231)
 }
 
 a {
@@ -12,31 +14,91 @@ label {
 
 nav {
   display: flex;
-  margin: 1em;
+  margin-left:3em;
+  margin-right:3em;
   justify-content: space-between;
   align-items: baseline;
+  color:black;
+  background-color:rgb(248,242,231);
+
 }
 
 form div {
-  margin: 1em;
+  margin: 0em;
   display: inline-block;
+}
+
+.search-bar{
+  font-size: 20px;
 }
 
 .all-products {
   
 }
 
+.imgNav {
+  height: 20px;
+  width: 20px;
+  margin: 0px 5px;
+}
+
 .nav-btn {
-  margin: 0.5rem;
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  margin: 1.0rem;
+  border: 0px solid black;
+  border-radius: 0.0rem;
+  padding: 0.0rem;
+}
+
+a {
+ color:black;  
 }
 
 #header-search {
   width: 50vh;
 }
 
+#unlogged-nav {
+display:flex;
+}
+
 #unlogged-nav a {
 
+}
+
+#pic4 {
+  height: 200px;
+}
+
+#topLine {
+  font-size: 20px;
+  display: flex;
+}
+
+#wholeBar {
+  display:flex;
+width:100%;
+border-bottom-width: 3px;
+border-color: rgb(0,0,0);
+border-bottom-style: solid;
+}
+#navTitle {
+  font-size: 70px;
+  text-align:center;
+  margin-top:50px;
+}
+#rightColumn{
+  width:100%;
+  
+}
+#navBar {
+  color: red;
+  margin-top: 40px;
+  font-size:15px;
+  margin-left:80px;
+}
+#homeTable {
+  width:100%;
+}
+#homeTableFirstRow {
+  height:200px;
 }
