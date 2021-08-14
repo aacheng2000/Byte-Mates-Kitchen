@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
 import { logout } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
@@ -27,8 +27,19 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         {isLoggedIn ? (
           <div id="logged-nav">
             {/* The navbar will show these links after you log in */}
-            <Link className="nav-btn" to="/home">
-              Home
+            
+            <div className="dropdown">
+              <Link to="/home"><button className="nav-btn">Home</button></Link>
+                <div className="dropdown-content">
+                  <a href="#">Profile settings</a>
+                  <a href="#">Order</a>
+                  <a href="#">History</a>
+                  <a href="#">Wishlist</a>
+                </div>
+            </div>
+            
+            <Link className="nav-btn" to="/cart">
+              Cart
             </Link>
             <a className="nav-btn" href="#" onClick={handleClick}>
               Logout
@@ -38,6 +49,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <div id="unlogged-nav">
             {/* The navbar will show these links before you log in */}
 
+            <Link className="nav-btn" to="/cart">
+              Cart
+            </Link>
             <Link className="nav-btn" to="/login">
               Login
             </Link>
@@ -46,9 +60,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             </Link>
           </div>
         )}
-      </div>
-      <div>
-        <Link to="/cart">Cart</Link>
       </div>
     </nav>
     <hr />

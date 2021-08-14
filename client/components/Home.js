@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
-import AllProducts from "./AllProducts";
 import {myCart} from '../store'
-import AllUsers from "./AllUsers";
+import Cart from "./Cart";
 
 
 /**
@@ -14,25 +13,22 @@ import AllUsers from "./AllUsers";
 
 class Home extends Component  {
   componentDidMount(){
-    console.log('what does username look like in home?~~~~', this.props.username)
     this.props.loadCartData(
       this.props.username
-      )
+    )
   }
 
   render(){
-  const { username } = this.props;
-  const token = window.localStorage.getItem("token");
-    console.log('home state~~~~~', this.props)
+    const { username } = this.props;
+    const token = window.localStorage.getItem("token");
 
-  return (
-    <div>
-      <h3>Welcome, {username}</h3>
-      <AllUsers />
-    </div>
-  );
+    return (
+      <div>
+        <Cart />
+      </div>
+    );
+  };
 };
-}
 
 /**
  * CONTAINER
