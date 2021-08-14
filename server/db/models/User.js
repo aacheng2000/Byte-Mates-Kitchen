@@ -33,7 +33,7 @@ const User = db.define('user', {
 
   email: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
         notEmpty: true,
         isEmail: true
