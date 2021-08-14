@@ -5,6 +5,7 @@ import axios from 'axios';
  */
 const SET_USERS = 'SET_USERS';
 const SET_SINGLE_USER = 'SET_SINGLE_USER';
+const EDIT_USER = 'EDIT_USER';
 
 /**
  * ACTION CREATORS
@@ -18,6 +19,12 @@ const setSingleUser = (singleUser) => ({
   type: SET_SINGLE_USER,
   singleUser
 });
+
+const editUser = (user) = {
+  type: EDIT_USER,
+  user
+
+}
 
  /**
  * THUNK CREATORS
@@ -44,6 +51,14 @@ export const fetchSingleUser = (id) => {
         console.log(err)
       }
   }
+};
+
+export const editUser = (user, history) => {
+  return async (dispatch) => {
+    const newUser = await axios.put(`/api/users/${user.id}`, user);
+    dispatch(editUser(newUser.data));
+    history.push('/home');
+  };
 };
 
  /**

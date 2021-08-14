@@ -22,10 +22,6 @@ form div {
   display: inline-block;
 }
 
-.all-products {
-  
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -40,7 +36,9 @@ form div {
   z-index: 1;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -64,8 +62,4 @@ form div {
 
 #header-search {
   width: 50vh;
-}
-
-#unlogged-nav a {
-
 }

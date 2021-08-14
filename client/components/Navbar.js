@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
