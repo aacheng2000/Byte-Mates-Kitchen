@@ -1,7 +1,7 @@
 import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils'
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {myCart, myOrders} from '../store'
+import {myCart, myOrders, deleteOrder} from '../store'
 import { Link } from "react-router-dom";
 /**
  * COMPONENT
@@ -25,7 +25,17 @@ class Cart extends Component {
         const myName =  this.props.match.params.id
         this.props.loadOrderData(myName)
     }
+
+    componentDidUpdate(prevProps) {
+      if(prevProps.orders.length !== this.props.orders.length){
+        const myName =  this.props.match.params.id
+        this.props.loadOrderData(myName)
+      }
+    }
     
+    deleteFunc(orderId) {
+      this.props.deleteOrderThunk(orderId)
+    }
 
     render(){
         console.log('My carts component props~~~', this.props)
@@ -43,6 +53,9 @@ class Cart extends Component {
                             <div>
                               <div><Link to={`/products/${order.product.id}`}>{order.product.name}</Link></div>
                               <div>${order.product.price}</div>
+                              <button onClick={() => this.deleteFunc(order.id)}>
+                                Delete
+                                </button>
                             </div>
                           </div>
                         )
@@ -72,6 +85,9 @@ const mapDispatch = dispatch => {
       },
       loadOrderData(cartId) {
         dispatch(myOrders(cartId))
+      },
+      deleteOrderThunk(orderId) {
+        dispatch(deleteOrder(orderId))
       }
     }
   }
