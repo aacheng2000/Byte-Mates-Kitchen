@@ -17,10 +17,10 @@ router.get('/', async (req, res, next) => {
 //shows the user their cart
 router.get('/:id', async (req, res, next) => {
     try {
-        const data = (await User.findAll({
+        const data = await User.findOne({
           where: {username: req.params.id}
-        }))[0].dataValues
-        const userCart = await Cart.findAll({
+        })
+        const userCart = await Cart.findOne({
             where: {
                 userId: data.id,
                 isPending: true

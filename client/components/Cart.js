@@ -1,7 +1,7 @@
 import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils'
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {myOrders} from '../store'
+import {myCart, myOrders} from '../store'
 import { Link } from "react-router-dom";
 /**
  * COMPONENT
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 class Cart extends Component {
     constructor(props){
       super(props)
-      this.state = { orders: [] };
       this.cartStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -23,18 +22,14 @@ class Cart extends Component {
       }
     }
     componentDidMount() {
-      if(this.props.cart[0]){
-      const curCart = (this.props.cart.filter((_cart) =>
-          _cart.isPending === true
-          ))[0].id
-        this.props.loadOrderData(curCart)
-      }
+        const myName =  this.props.match.params.id
+        this.props.loadOrderData(myName)
     }
     
 
     render(){
         console.log('My carts component props~~~', this.props)
-        const {username} = this.props
+        const username = this.props.match.params.id
         const allOrders = this.props.orders
         return (
             <div>
@@ -66,13 +61,15 @@ class Cart extends Component {
  */
 const mapState = state => {
   return {
-    username: state.auth.username,
     cart: state.cart,
     orders: state.order
   }
 }
 const mapDispatch = dispatch => {
     return {
+      loadCartData(username) {
+      dispatch(myCart(username))
+      },
       loadOrderData(cartId) {
         dispatch(myOrders(cartId))
       }

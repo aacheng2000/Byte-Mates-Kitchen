@@ -25,12 +25,12 @@ class SingleProduct extends Component {
 
   async addToCart(_productId) {
     await this.props.myCart(this.props.auth.username)
-    this.props.addOrder({cartId: this.props.cart[0].id, productId: _productId});
+    this.props.addOrder({cartId: this.props.cart.id, productId: _productId});
   }
 
   render() {
     if (!this.props.singleProduct) return <h4>Loading...</h4>;
-
+    console.log('my single product props~~~~~~~~', this.props)
     return (
       <div>
         <div style = {this.singleStyle}>

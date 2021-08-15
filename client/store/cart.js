@@ -8,7 +8,7 @@ const SET_CART = "SET_CART";
 /**
  * ACTION CREATORS
  */
-const setCart = (user) => ({ type: SET_CART, user });
+const setCart = (cart) => ({ type: SET_CART, cart });
 
 /**
  * THUNK CREATORS
@@ -27,7 +27,7 @@ export const myCart = (userName) => async (dispatch) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_CART:
-      return action.user;
+      return action.cart;
     default:
       return state;
   }
