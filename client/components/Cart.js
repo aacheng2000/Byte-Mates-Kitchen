@@ -1,14 +1,15 @@
-import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils'
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {myCart, myOrders, deleteOrder} from '../store'
 import { Link } from "react-router-dom";
+import QuantityCounter from './QuantityCounter' 
 /**
  * COMPONENT
  */
 class Cart extends Component {
     constructor(props){
       super(props)
+      this.state = {editCart: false};
       this.cartStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -54,6 +55,11 @@ class Cart extends Component {
                             <div>
                               <div><Link to={`/products/${order.product.id}`}>{order.product.name}</Link></div>
                               <div>${order.product.price}</div>
+                              <QuantityCounter 
+                              quantity={order.quantity} 
+                              orderId={order.id}
+                              username={username}
+                              />
                               <button onClick={() => this.deleteFunc(order.id)}>
                                 Delete
                                 </button>
@@ -84,8 +90,8 @@ const mapDispatch = dispatch => {
       loadCartData(username) {
       dispatch(myCart(username))
       },
-      loadOrderData(cartId) {
-        dispatch(myOrders(cartId))
+      loadOrderData(username) {
+        dispatch(myOrders(username))
       },
       deleteOrderThunk(orderId) {
         dispatch(deleteOrder(orderId))
