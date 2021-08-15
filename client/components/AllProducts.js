@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../store/allProducts";
-import {addOrder} from "../store/order"
-import {myCart} from '../store'
+import { addOrder } from "../store/order"
+import { myCart } from '../store'
 
 class AllProducts extends React.Component {
   constructor() {
@@ -17,7 +17,9 @@ class AllProducts extends React.Component {
 
   async addToCart(_productId) {
     await this.props.myCart(this.props.auth.username)
-    this.props.addOrder({cartId: this.props.cart[0].id, productId: _productId});
+
+    this.props.addOrder({cartId: this.props.cart.id, productId: _productId});
+
   }
 
   render() {
@@ -25,25 +27,28 @@ class AllProducts extends React.Component {
     if (!this.props.products) return <h4>Loading...</h4>;
     return (
       <div>
-        <h2>All Products</h2>
+        <h2>All Products</h2><div id = "productContainer">
         {this.props.products.map((product) => {
-          return (
-            <ul key={product.id}>
-              <li>
+        
+          return (<div id="productItem"><center>
+            <div key={product.id}>
+              <div id = "productName">
                 <Link to={`/products/${product.id}`}>{product.name}</Link>
-              </li>
-              <li>
+              </div>
+              <div>
                 <a href={`/products/${product.id}`}>
-                  <img src={product.picture}></img>
+                  <div id = "picSquare"><img id = "productImage" src={product.picture}></img></div> {/* Zoe, added image tag - not sure if you like this */}
                 </a>
-              </li>
+              </div></div><div>
               <button onClick={() =>
             this.addToCart(product.id)
           } className="addToCart">Add to Cart</button>
               <button className="addToWishList">Add to Wishlist</button>
-            </ul>
+            </div></center>
+            </div>
           );
         })}
+      </div>
       </div>
     );
   }
