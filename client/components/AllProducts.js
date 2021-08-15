@@ -17,7 +17,9 @@ class AllProducts extends React.Component {
 
   async addToCart(_productId) {
     await this.props.myCart(this.props.auth.username)
-    this.props.addOrder({ cartId: this.props.cart[0].id, productId: _productId });
+
+    this.props.addOrder({cartId: this.props.cart.id, productId: _productId});
+
   }
 
   render() {

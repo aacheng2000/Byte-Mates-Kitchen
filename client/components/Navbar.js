@@ -5,7 +5,7 @@ import { logout } from "../store";
 //import UP, PUBLIC FOLDER, STYLE.CSS
 //import '.../public/style.css'
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, username }) => (
   <div id="wholeBar">
       <div id="leftColumn" className="image-with-link-to-main-page">
         <a href = "/home"><img src = "./group.png" id="pic4"></img></a></div>
@@ -40,7 +40,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                  </div>
              </div> 
             
-            <Link className="nav-btn" to="/cart">
+            <Link className="nav-btn" to={`/cart/${username}`}>
               Cart
             </Link>
             <a className="nav-btn" href="#" onClick={handleClick}>
@@ -72,6 +72,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
 
               
           
+
           
       {/* this was originally here   )}          */}
       
@@ -98,6 +99,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
    )}
    </div>
 
+
     </nav>
     </span>
     <hr />
@@ -110,6 +112,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+    username: state.auth.username
   };
 };
 

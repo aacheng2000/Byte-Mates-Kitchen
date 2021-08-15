@@ -1,11 +1,12 @@
 body {
   font-family: sans-serif;
   color: black;
-  background-color:rgb(248,242,231)
+  background-color: rgb(248, 242, 231);
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 label {
@@ -14,13 +15,12 @@ label {
 
 nav {
   display: flex;
-  margin-left:3em;
-  margin-right:3em;
+  margin-left: 3em;
+  margin-right: 3em;
   justify-content: space-between;
   align-items: baseline;
-  color:black;
-  background-color:rgb(248,242,231);
-
+  color: black;
+  background-color: rgb(248, 242, 231);
 }
 
 form div {
@@ -28,15 +28,13 @@ form div {
   display: inline-block;
 }
 
-.search-bar{
+.search-bar {
   font-size: 20px;
 
 }
 
-.all-products {
-  
-}
-
+/* .all-products {
+} */
 
 .imgNav {
   height: 20px;
@@ -45,8 +43,9 @@ form div {
 }
 
 .nav-btn {
-  margin: 1.0rem;
+  margin: 1rem;
   border: 0px solid black;
+
   border-radius: 0.0rem;
   padding: 0.0rem;
   cursor: pointer;
@@ -58,6 +57,7 @@ a {
  color:black;  
 }
 
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -68,11 +68,13 @@ a {
   position: absolute;
   background-color: #f1f0f0;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -85,20 +87,16 @@ a {
   display: block;
 }
 
-
-
-
 #header-search {
   width: 50vh;
 }
 
 #unlogged-nav {
-display:flex;
+  display: flex;
 }
 
-#unlogged-nav a {
-
-}
+/* #unlogged-nav a {
+} */
 
 #leftColumn {
   height:210px;  
@@ -115,13 +113,14 @@ display:flex;
 }
 
 #wholeBar {
-  display:flex;
-width:100%;
-border-bottom-width: 3px;
-border-color: rgb(0,0,0);
-border-bottom-style: solid;
+  display: flex;
+  width: 100%;
+  border-bottom-width: 3px;
+  border-color: rgb(0, 0, 0);
+  border-bottom-style: solid;
 }
 #navTitle {
+
   font-size: 50px;
   text-align:center;
   margin-top:20px;
@@ -129,22 +128,26 @@ border-bottom-style: solid;
 #rightColumn{
   width:100%;
   height:210px;
+
 }
 #navBar {
   
   align-items: flex-start;
   color: red;
+
   margin-top: 75px;
   font-size:15px;
   margin-left:80px;
   min-width:1000px;
   
   
+
 }
 #homeTable {
-  width:100%;
+  width: 100%;
 }
 #homeTableFirstRow {
+
   height:100px;
 }
 
@@ -204,3 +207,4 @@ margin-top: 15px;
 #all-products {
 
 }
+
