@@ -22,20 +22,20 @@ class Cart extends Component {
         justifyContent: 'space-around'
       }
     }
-    componentDidMount() {
+    async componentDidMount() {
         const myName =  this.props.match.params.id
-        this.props.loadOrderData(myName)
+        await this.props.loadOrderData(myName)
     }
 
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
       if(prevProps.orders.length !== this.props.orders.length){
         const myName =  this.props.match.params.id
-        this.props.loadOrderData(myName)
+        await this.props.loadOrderData(myName)
       }
     }
     
-    deleteFunc(orderId) {
-      this.props.deleteOrderThunk(orderId)
+    async deleteFunc(orderId) {
+      await this.props.deleteOrderThunk(orderId)
     }
 
     render(){
@@ -43,10 +43,28 @@ class Cart extends Component {
         const username = this.props.match.params.id
         const allOrders = this.props.orders
         return (
+          <div>
+          <div className='cartBar'>
+             <div>
+              <h3>Welcome to your cart, {username}</h3>
+              <h3>Contents of your cart:</h3>
+            </div>
             <div>
-                <h3>Welcome to your cart, {username}</h3>
-                <h3>Contents of your cart:</h3>
-                
+              <div>
+                Subtotal ({allOrders[0] ? allOrders.length:'0' } items): $ 
+                {
+                  allOrders.reduce((acc, cur) => {
+                    return acc + (cur.product.price * 1) * cur.quantity
+                  }, 0).toLocaleString('en-US')
+                }
+              </div>
+           
+              <button>
+               Proceed to Checkout
+              </button>
+            </div>
+          </div>
+         
                 <div style = {this.cartStyle}>
                     {allOrders[0] ? allOrders.map((order) => {
                         return(
