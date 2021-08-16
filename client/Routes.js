@@ -5,6 +5,9 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import AllProducts from "./components/AllProducts";
+import AllForks from "./components/AllForks";
+import AllKnives from "./components/AllKnives";
+import AllSpoons from "./components/AllSpoons";
 import SingleProduct from "./components/SingleProduct";
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
@@ -28,9 +31,16 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/cart/:id" component={Cart} />
             <Route path="/products" exact component={AllProducts} />
+            <Route path="/category/forks" exact component={AllForks} />
+            <Route path="/category/knives" exact component={AllKnives} />
+            <Route path="/category/spoons" exact component={AllSpoons} />
             <Route exact path="/users/:id" component={SingleUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
-            <Route exact path="/products/:productId" component={SingleProduct} />
+            <Route
+              exact
+              path="/products/:productId"
+              component={SingleProduct}
+            />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -39,7 +49,14 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component={AllProducts} />
-            <Route exact path="/products/:productId" component={SingleProduct} />
+            <Route path="/category/forks" exact component={AllForks} />
+            <Route path="/category/knives" exact component={AllKnives} />
+            <Route path="/category/spoons" exact component={AllSpoons} />
+            <Route
+              exact
+              path="/products/:productId"
+              component={SingleProduct}
+            />
           </Switch>
         )}
       </div>
