@@ -31,6 +31,7 @@ class Cart extends Component {
     const username = this.props.match.params.id;
     const allOrders = this.props.orders;
     return (
+      <div>
       <div className="cartBar">
         <div>
           <h3>Welcome to your cart, {username}</h3>
@@ -58,7 +59,7 @@ class Cart extends Component {
             )}
           </div>
         </div>
-
+        </div>
         <div className="cartStyle">
           {allOrders[0] ? (
             allOrders.map((order) => {
