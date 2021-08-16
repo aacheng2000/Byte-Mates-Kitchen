@@ -9,18 +9,6 @@ import QuantityCounter from './QuantityCounter'
 class Cart extends Component {
     constructor(props){
       super(props)
-      this.state = {editCart: false};
-      this.cartStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        borderStyle: 'solid',
-        padding: '10px'
-      }
-      this.itemsStyle = {
-        display: 'flex',
-        padding: '10px',
-        justifyContent: 'space-around'
-      }
     }
     async componentDidMount() {
         const myName =  this.props.match.params.id
@@ -58,19 +46,23 @@ class Cart extends Component {
                   }, 0).toLocaleString('en-US')
                 }
               </div>
-           
-              <button>
-               Proceed to Checkout
-              </button>
+              <Link to={`/checkout/${username}`}>
+                <button className='cartBtn'>
+                Proceed to Checkout
+                </button>
+              </Link>  
+              
             </div>
           </div>
          
-                <div style = {this.cartStyle}>
+                <div className='cartStyle'>
                     {allOrders[0] ? allOrders.map((order) => {
                         return(
-                          <div key={order.id} style = {this.itemsStyle}>
-                            <img src = {order.product.picture} />
+                          <div key={order.id} className='cartItemStyle'>
                             <div>
+                              <img src = {order.product.picture} />
+                            </div>
+                            <div className='cartItemDetails'>
                               <div><Link to={`/products/${order.product.id}`}>{order.product.name}</Link></div>
                               <div>${order.product.price}</div>
                               <QuantityCounter 
@@ -78,9 +70,11 @@ class Cart extends Component {
                               orderId={order.id}
                               username={username}
                               />
-                              <button onClick={() => this.deleteFunc(order.id)}>
-                                Delete
-                                </button>
+                              <div>
+                                <button className='cartBtn' onClick={() => this.deleteFunc(order.id)}>
+                                  Delete
+                                  </button>
+                              </div>
                             </div>
                           </div>
                         )

@@ -10,9 +10,9 @@ import Cart from "./Cart";
 
 class Home extends Component {
   componentDidMount() {
-    this.props.loadCartData(
-      this.props.username
-    )
+    // this.props.loadCartData(
+    //   this.props.username
+    // )
   }
 
   render() {

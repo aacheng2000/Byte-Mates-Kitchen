@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
+import Checkout from "./components/Checkout"
+import Complete from  "./components/Complete"
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
@@ -31,6 +33,8 @@ class Routes extends Component {
             <Route exact path="/users/:id" component={SingleUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route exact path="/products/:productId" component={SingleProduct} />
+            <Route exact path="/checkout/:id" component={Checkout} />
+            <Route exact path="/complete" component={Complete} />
             <Redirect to="/home" />
           </Switch>
         ) : (
