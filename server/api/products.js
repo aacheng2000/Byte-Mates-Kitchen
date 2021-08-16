@@ -59,3 +59,16 @@ router.delete("/:productId", async (req, res, next) => {
     next(error);
   }
 });
+
+//Display Forks
+router.get("/:fork", async (req, res, next) => {
+  try {
+    const fun = await Product.findOne({
+      where: { funId: req.params.funId },
+      include: [Fun, Theme],
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
