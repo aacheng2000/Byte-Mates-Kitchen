@@ -23,46 +23,45 @@ class AllForks extends React.Component {
   }
 
   render() {
-    return <div>ALL FORKS</div>;
-    // console.log("all forks props!!~~~~~~~~", this.props);
-    // if (!this.props.forks) return <h4>Loading...</h4>;
-    // return (
-    //   <div>
-    //     <h2>Our Forks Selection</h2>
-    //     <div id="productContainer">
-    //       {this.props.forks.map((fork) => {
-    //         return (
-    //           <div id="productItem" key={fork.id}>
-    //             <center>
-    //               <div>
-    //                 <div id="productName">
-    //                   <Link to={`/products/${product.id}`}>{product.name}</Link>
-    //                 </div>
-    //                 <div>
-    //                   <a href={`/products/${product.id}`}>
-    //                     <div id="picSquare">
-    //                       <img id="productImage" src={product.picture}></img>
-    //                     </div>{" "}
-    //                     {/* Zoe, added image tag - not sure if you like this */}
-    //                   </a>
-    //                 </div>
-    //               </div>
-    //               <div>
-    //                 <button
-    //                   onClick={() => this.addToCart(fork.id)}
-    //                   className="addToCart"
-    //                 >
-    //                   Add to Cart
-    //                 </button>
-    //                 <button className="addToWishList">Add to Wishlist</button>
-    //               </div>
-    //             </center>
-    //           </div>
-    //         );
-    //       })}
-    //     </div>
-    //   </div>
-    // );
+    if (!this.props.products) return <h4>Loading...</h4>;
+
+    return (
+      <div>
+        <h2>Our Forks Selection</h2>
+        <div id="productContainer">
+          {this.props.products.map((fork) => {
+            return (
+              <div id="productItem" key={fork.id}>
+                <center>
+                  <div>
+                    <div id="productName">
+                      <Link to={`/products/${fork.id}`}>{fork.name}</Link>
+                    </div>
+                    <div>
+                      <a href={`/products/${fork.id}`}>
+                        <div id="picSquare">
+                          <img id="productImage" src={fork.picture}></img>
+                        </div>{" "}
+                        {/* Zoe, added image tag - not sure if you like this */}
+                      </a>
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.addToCart(fork.id)}
+                      className="addToCart"
+                    >
+                      Add to Cart
+                    </button>
+                    <button className="addToWishList">Add to Wishlist</button>
+                  </div>
+                </center>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
   }
 }
 

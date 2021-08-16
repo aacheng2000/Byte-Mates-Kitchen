@@ -11,6 +11,7 @@ class Home extends Component {
   
   componentDidMount() {
 
+
     this.props.loadCartData(this.props.username)
     
    // const myName =  this.props.match.params.id
@@ -19,7 +20,6 @@ class Home extends Component {
       //      const allOrders2 = this.props.orders
        //     alert('==' + allOrders2.length)
   }
-
 
     this.props.loadCartData(this.props.username);
     // this.props.loadCartData(

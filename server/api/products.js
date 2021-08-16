@@ -125,33 +125,33 @@ router.get("/theme/sale", async (req, res, next) => {
   }
 });
 
-// //Edit single product
-// router.put("/:productId", async (req, res, next) => {
-//   try {
-//     const product = await Product.findByPk(req.params.productId);
-//     const editedProduct = await product.update(req.body);
-//     res.send(editedProduct);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+//Edit single product
+router.put("/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.productId);
+    const editedProduct = await product.update(req.body);
+    res.send(editedProduct);
+  } catch (err) {
+    next(err);
+  }
+});
 
-// //Create single product
-// router.post("/api/products", async (req, res, next) => {
-//   try {
-//     res.status(201).send(await Product.create(req.body));
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+//Create single product
+router.post("/api/products", async (req, res, next) => {
+  try {
+    res.status(201).send(await Product.create(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
 
-// //Delete single product
-// router.delete("/:productId", async (req, res, next) => {
-//   try {
-//     const product = await Product.findByPk(req.params.productId);
-//     await product.destroy();
-//     res.send(product);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+//Delete single product
+router.delete("/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.productId);
+    await product.destroy();
+    res.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
