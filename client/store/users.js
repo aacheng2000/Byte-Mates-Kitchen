@@ -15,16 +15,15 @@ const setUsers = (users) => ({
    users
 });
 
-const setSingleUser = (singleUser) => ({
+const setSingleUser = (user) => ({
   type: SET_SINGLE_USER,
-  singleUser
+  user
 });
 
-const editUser = (user) = {
+const editUser = (user) => ({
   type: EDIT_USER,
   user
-
-}
+});
 
  /**
  * THUNK CREATORS
@@ -43,17 +42,17 @@ export const fetchUsers = () => {
 
 export const fetchSingleUser = (id) => {
   return async (dispatch) => {
-      try {
-        const singleUser = (await axios.get(`/api/users/${id}`)).data;
-        dispatch(setSingleUser(singleUser));
-      }
-        catch(err) {
-        console.log(err)
-      }
+    try {
+      const singleUser = (await axios.get(`/api/users/${id}`)).data;
+      dispatch(setSingleUser(singleUser));
+    }
+      catch(err) {
+      console.log(err)
+    }
   }
 };
 
-export const editUser = (user, history) => {
+export const updateUser = (user, history) => {
   return async (dispatch) => {
     const newUser = await axios.put(`/api/users/${user.id}`, user);
     dispatch(editUser(newUser.data));
@@ -70,10 +69,10 @@ export default function(state = [], action) {
       return action.users
     };
     case SET_SINGLE_USER: {
-      return action.singleUser
+      return action.user
     };
     case EDIT_USER: {
-      return state.map((user) => user.id === action.user.id ? action.user : user)
+      return [...state].map((user) => user.id === action.user.id ? action.user : user)
     }
     default: {
       return state

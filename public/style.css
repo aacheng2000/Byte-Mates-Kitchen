@@ -28,8 +28,40 @@ form div {
   display: inline-block;
 }
 
-.search-bar{
+.addToCart {
+  margin-top: 15px;
+    width: 120px;
+    margin-right: 5px;
+  }
+  
+.addToWishList {
+  width: 120px;
+  margin-left: 5px;
+}
+
+.edit-btn {
+  background-color: rgb(115, 192, 0);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.footer {
+  background-color: rgb(255, 219, 153);
+  display: flex;
+  width: 98%;
+  justify-content: space-around;
+}
+
+.search-bar {
   font-size: 20px;
+}
+
+.single-user {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .imgNav {
@@ -159,17 +191,6 @@ margin: 15px;
 text-align:center;
 background-color: white;
 font-weight: bold;
-}
-
-.addToCart {
-margin-top: 15px;
-  width: 120px;
-  margin-right: 5px;
-}
-
-.addToWishList {
-  width: 120px;
-  margin-left: 5px;
 }
 
 #picSquare {

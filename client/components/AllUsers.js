@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 /**
 * COMPONENT
 */
-//({ users }) => 
+
 class AllUsers extends Component {
     componentDidMount() {
-        this.props.loadUsers();
+        this.props.fetchUsers();
     }
+
     render() {
         const { users } = this.props
         return (
@@ -33,10 +34,6 @@ const mapStateToProps = ({ users }) => ({
     users
 });
 
-const mapDispatch = dispatch => {
-    return {
-        loadUsers: () => dispatch(fetchUsers())
-    }
-}
+const mapDispatchToProps = { fetchUsers };
 
-export default connect(mapStateToProps, mapDispatch)(AllUsers);
+export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleUser } from '../store';
+import { Link } from 'react-router-dom';
 
 class SingleUser extends Component {
     constructor(){
@@ -8,39 +9,52 @@ class SingleUser extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchSingleUser(this.props.match.params.id)
+        this.props.loadUserData(this.props.match.params.id)
     }
 
     render() {
-        const { singleUser } = this.props
+        const { user } = this.props
         return (
-            <div className='single-user'>
-                <div>
-                    {singleUser.username}
+            <div>
+                <div className='single-user'>
+                    <div>
+                        Username: {user.username}
+                    </div>
+                    <div>
+                        First name: {user.firstName}
+                    </div>
+                    <div>
+                        Last name: {user.lastName}
+                    </div>
+                    <div>
+                        Emain: {user.email}
+                    </div>
+                    <div>
+                        Phone number: {user.phoneNumber}
+                    </div>
+                    <div>
+                        Address: {user.address}
+                    </div>
                 </div>
-                <div>
-                    {singleUser.lastName}
-                </div>
-                <div>
-                    {singleUser.email}
-                </div>
-                <div>
-                    {singleUser.phoneNumber}
-                </div>
-                <div>
-                    {singleUser.isAdmin}
-                </div>
+
+                <Link to={`edit/${user.id}`}>
+                    <button className='edit-btn'>Edit</button>
+                </Link>
             </div>
         )
     }
 };
 
-const mapStateToProps = ({ singleUser }) => {
+const mapStateToProps = ({ user }) => {
     return {
-        singleUser
+        user
     }
 };
 
-const mapDispatchToProps = { fetchSingleUser };
+const mapDispatchToProps = (dispatch) => { 
+    return {
+       loadUserData: (id) => { dispatch(fetchSingleUser(id)) }
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleUser)
