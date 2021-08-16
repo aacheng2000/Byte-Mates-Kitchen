@@ -2,29 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { logout } from "../store";
-import {myCart} from "../store"
 
+import {handleClick, isLoggedIn, username} from '../store'
 
 
 //import UP, PUBLIC FOLDER, STYLE.CSS
 //import '.../public/style.css'
 
 
-
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    
+  }
 
   //componentDidMount() {
   //    this.props.fetchAllProducts();
   //  }
 
 
-      
 
-  const Navbar = ({ order, handleClick, isLoggedIn, username }) => {
+  //const Navbar = ({ order, handleClick, isLoggedIn, username }) => {
 
   //let numOrders = order.length
-  
-//alert(order.length)
-  
 
   // componentDidUpdate(prevProps) {
   //   if(prevProps.orders.length !== this.props.orders.length){
@@ -32,8 +32,7 @@ import {myCart} from "../store"
   //     this.props.loadOrderData(myName)
   //   }
   // }
-   
-   return(
+  render() {
 
     <div id="wholeBar">
       <div id="leftColumn" className="image-with-link-to-main-page">
@@ -48,10 +47,6 @@ import {myCart} from "../store"
       <div className="nav-btn" id="all-products">
         <Link to="/products">All Products<img src = "square.png" class = "imgNav"></img></Link>
       </div>
-      
-      
-      
-      
       {/*<div><a className = "nav-btn" href = "/products">All Products<img src = "square.png" class = "imgNav"></img></a></div>*/}
       <div className="search-bar">
         <input
@@ -62,15 +57,12 @@ import {myCart} from "../store"
         />
         <button id="searchButton" type="submit">Search</button>
       </div>
-      
-      
-      
       <div className="logged-or-not">
-        {isLoggedIn ? (
+        {this.isLoggedIn ? (
           <div id="logged-nav" >
             {/* The navbar will show these links after you log in */}
             
-              <span className = "nav-btn" >Hello {username}!</span>
+              <span className = "nav-btn" >Hello {this.username}!</span>
             
             
             <img src = "flag.png" class = "imgNav">
@@ -87,10 +79,10 @@ import {myCart} from "../store"
                  </div>
              </div> 
             
-            <Link className="nav-btn" to={`/cart/${username}`}>
-              Cart ({order != "undefined" ? order.length:0})
+            <Link className="nav-btn" to={`/cart/${this.username}`}>
+              Cart ({this.numOrders})
             </Link>
-            <a className="nav-btn" href="#" onClick={handleClick}>
+            <a className="nav-btn" href="#" onClick={this.handleClick}>
               Logout
             </a>
           </div>
@@ -151,10 +143,10 @@ import {myCart} from "../store"
     </span>
     <hr />
   </div>
-)
+
   }
 
-
+}
 /**
  * CONTAINER
  */

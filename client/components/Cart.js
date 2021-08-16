@@ -44,7 +44,7 @@ class Cart extends Component {
         return (
             <div>
                 <h3>Welcome to your cart, {username}</h3>
-                <h3>Contents of your cart:</h3>
+                <h3>Contents of your cart:{allOrders.length}</h3>
                 
                 <div style = {this.cartStyle}>
                     {allOrders[0] ? allOrders.map((order) => {

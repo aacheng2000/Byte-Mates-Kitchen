@@ -49,8 +49,8 @@ form div {
   border-radius: 0.0rem;
   padding: 0.0rem;
   cursor: pointer;
-  background-color: rgb(248,242,231)
-  
+  background-color: rgb(248,242,231);
+  font-size: 18px;
 }
 
 a {
@@ -133,12 +133,12 @@ a {
 #navBar {
   
   align-items: flex-start;
-  color: red;
+  color: black;
 
   margin-top: 75px;
   font-size:15px;
   margin-left:80px;
-  min-width:1000px;
+  min-width:1050px;
   
   
 
@@ -207,4 +207,6 @@ margin-top: 15px;
 #all-products {
 
 }
+
+
 
