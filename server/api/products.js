@@ -29,46 +29,129 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-//Edit single product
-router.put("/:productId", async (req, res, next) => {
+//Display Knives
+router.get("/category/knives", async (req, res, next) => {
   try {
-    const product = await Product.findByPk(req.params.productId);
-    const editedProduct = await product.update(req.body);
-    res.send(editedProduct);
-  } catch (err) {
-    next(err);
-  }
-});
-
-//Create single product
-router.post("/api/products", async (req, res, next) => {
-  try {
-    res.status(201).send(await Product.create(req.body));
-  } catch (err) {
-    next(err);
-  }
-});
-
-//Delete single product
-router.delete("/:productId", async (req, res, next) => {
-  try {
-    const product = await Product.findByPk(req.params.productId);
-    await product.destroy();
-    res.send(product);
-  } catch (error) {
-    next(error);
-  }
-});
-
-//Display Forks
-router.get("/:fork", async (req, res, next) => {
-  try {
-    const fun = await Product.findOne({
-      where: { funId: req.params.funId },
-      include: [Fun, Theme],
+    const fun = await Product.findAll({
+      where: { funId: 1 },
     });
     res.send(fun);
   } catch (err) {
     next(err);
   }
 });
+
+//Display Forks
+router.get("/category/forks", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { funId: 2 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display Spoons
+router.get("/category/spoons", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { funId: 3 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display holidays and gifts
+router.get("/theme/holidaysgifts", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { themeId: 1 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display BBQ
+router.get("/theme/bbq", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { themeId: 2 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display Birthdays
+router.get("/theme/birthdays", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { themeId: 3 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display Date Nights
+router.get("/theme/datenights", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { themeId: 4 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//Display Date Nights
+router.get("/theme/sale", async (req, res, next) => {
+  try {
+    const fun = await Product.findAll({
+      where: { themeId: 5 },
+    });
+    res.send(fun);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// //Edit single product
+// router.put("/:productId", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.productId);
+//     const editedProduct = await product.update(req.body);
+//     res.send(editedProduct);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// //Create single product
+// router.post("/api/products", async (req, res, next) => {
+//   try {
+//     res.status(201).send(await Product.create(req.body));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// //Delete single product
+// router.delete("/:productId", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.productId);
+//     await product.destroy();
+//     res.send(product);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
