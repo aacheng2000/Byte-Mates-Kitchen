@@ -8,28 +8,22 @@ import { myCart } from "../store";
  */
 
 class Home extends Component {
-  
   componentDidMount() {
-
-
-    this.props.loadCartData(this.props.username)
-    
-   // const myName =  this.props.match.params.id
-  //  this.props.loadOrderData(myName)
-    
-      //      const allOrders2 = this.props.orders
-       //     alert('==' + allOrders2.length)
-  }
-
     this.props.loadCartData(this.props.username);
-    // this.props.loadCartData(
-    //   this.props.username
-    // )
+
+    // const myName =  this.props.match.params.id
+    //  this.props.loadOrderData(myName)
+
+    //      const allOrders2 = this.props.orders
+    //     alert('==' + allOrders2.length)
   }
 
-    
-    
-    
+  //   this.props.loadCartData(this.props.username);
+  //   // this.props.loadCartData(
+  //   //   this.props.username
+  //   // )
+  // }
+
   render() {
     const { username, isLoggedIn } = this.props;
     const token = window.localStorage.getItem("token");
@@ -65,7 +59,7 @@ class Home extends Component {
 const mapState = (state) => {
   return {
     username: state.auth.username,
-    order: state.order
+    order: state.order,
   };
 };
 
