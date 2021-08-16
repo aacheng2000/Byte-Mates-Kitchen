@@ -27,8 +27,8 @@ class AllProducts extends React.Component {
     return (
       <div>
         <h2>All Products</h2>
-        <div id="homeTableCategory">
-          <div id="homeTableFirstRow">
+        <div id="navBar">
+          <div className="nav-btn">
             <Link to="/category/knives">All Knives</Link>
             <Link to="/category/forks">All Forks</Link>
             <Link to="/category/spoons">All Spoons</Link>
