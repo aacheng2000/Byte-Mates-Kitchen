@@ -40,7 +40,7 @@ router.put("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
     const editedUser = await user.update(req.body);
-    res.json(editedUser);
+    res.send(editedUser);
   } catch (err) {
     next(err);
   }
@@ -50,7 +50,7 @@ router.put("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const newUser = await User.create(req.body)
-    await Cart.create({userId:newUser.id})
+    await Cart.create({userId: newUser.id})
     res.status(201).send(newUser);
   } catch (err) {
     next(err);
