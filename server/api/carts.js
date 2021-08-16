@@ -32,3 +32,27 @@ router.get('/:id', async (req, res, next) => {
         next(error)
     }
 })
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    await Cart.update(
+      {isPending: false},
+      {where: {id: req.params.id}}
+    )
+    res.send('cart retired')
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.post('/:id', async (req, res, next) => {
+  try {
+    const data = (await User.findOne({
+      where: {username: req.params.id}
+    })).dataValues.id
+    const newCart = await Cart.create({userId: data})
+    res.send(newCart)
+  } catch (error) {
+    console.log(error)
+  }
+})

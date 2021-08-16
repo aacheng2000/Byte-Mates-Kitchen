@@ -43,6 +43,17 @@ router.post('/add', async (req, res, next) => {
   }
 })
 
+router.put('/quantity/:id', async (req, res, next) => {
+  try {
+    await Order.update(
+      req.body,
+      {where: {id: req.params.id}}
+    )
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 router.delete('/delete/:id', async (req, res, next) => {
   try {
     const orderToDelete = await Order.findByPk(req.params.id)

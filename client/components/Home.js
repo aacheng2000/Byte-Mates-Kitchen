@@ -1,22 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
-
-import AllProducts from "./AllProducts";
-import { myCart } from '../store'
-import AllUsers from "./AllUsers";
-import Cart from "./Cart";
-
+import { Link } from "react-router-dom";
+import { myCart } from "../store";
 
 /**
  * COMPONENT
  */
 
-
-
 class Home extends Component {
   
   componentDidMount() {
+
     this.props.loadCartData(this.props.username)
     
    // const myName =  this.props.match.params.id
@@ -27,55 +21,43 @@ class Home extends Component {
   }
 
 
+    this.props.loadCartData(this.props.username);
+    // this.props.loadCartData(
+    //   this.props.username
+    // )
+  }
+
     
     
     
   render() {
-    const { username } = this.props;
+    const { username, isLoggedIn } = this.props;
     const token = window.localStorage.getItem("token");
-
 
     return (
       <div>
-      <h3>Welcome, {username}</h3>
-      <AllUsers />
-    <table id="homeTable">
-      <tr id = "homeTableFirstRow">
-        <td>Knives</td>
-        <td>Forks</td>
-        <td>Spoons</td>
-      </tr>
-      <tr>
-        <td>
-          
-          <b>Contact us</b><br />
-          <b>Text: XXX-XXX-XXXX</b><br />
-          <b>Email:</b> <a href = "">xxx@bytemateskitchen.com</a><br />
-          Mon-Fri: 8am-7pm EST<br />
-          Sat-Sun: 8am-6pm EST<br />
-          
-        </td>
-        <b>Our Company</b><br />
-        About Us<br />
-        Careers<br />
-        Store Locations and Events<br />
-        <td>
-        <b>Social Media</b><br />
-        Show us your look with:<br />
-        #CrateStyle<br />
-        #CrateKidsStyle
-        </td>
-        <td>
-  
-        </td>
-      </tr>
-    </table>
-    </div>
-
+        <h3>Welcome, {username}</h3>
+        <div id="homeTableCategory">
+          <div id="homeTableFirstRow">
+            <Link to="/category/knives">All Knives</Link>
+            <Link to="/category/forks">All Forks</Link>
+            <Link to="/category/spoons">All Spoons</Link>
+          </div>
+        </div>
+        {/* 
+        <table id="homeTableCategory">
+          <thead>
+            <tr id="homeTableFirstRow">
+              <td>Knives </td>
+              <td>Forks </td>
+              <td>Spoons </td>
+            </tr>
+          </thead>
+        </table> */}
+      </div>
     );
-  };
+  }
 }
-
 
 /**
  * CONTAINER
@@ -86,12 +68,13 @@ const mapState = (state) => {
     order: state.order
   };
 };
-const mapDispatch = dispatch => {
+
+const mapDispatch = (dispatch) => {
   return {
     loadCartData(username) {
-      dispatch(myCart(username))
-    }
-  }
-}
+      dispatch(myCart(username));
+    },
+  };
+};
 
 export default connect(mapState, mapDispatch)(Home);
