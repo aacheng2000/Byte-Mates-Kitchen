@@ -23,12 +23,19 @@ class AllKnives extends React.Component {
   }
 
   render() {
-    console.log("all forks props!!~~~~~~~~", this.props);
     if (!this.props.products) return <h4>Loading...</h4>;
-    // return <div>ALL SPOONS</div>;
+
     return (
       <div>
         <h2>Our Spoons Selection</h2>
+        <div id="homeTableCategory">
+          <div id="homeTableFirstRow">
+            <Link to="/home">Home</Link>
+            <Link to="/category/knives">All Knives</Link>
+            <Link to="/category/forks">All Forks</Link>
+            <Link to="/category/spoons">All Spoons</Link>
+          </div>
+        </div>
         <div id="productContainer">
           {this.props.products.map((spoon) => {
             return (

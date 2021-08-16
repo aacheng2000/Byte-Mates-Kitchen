@@ -28,6 +28,14 @@ class AllForks extends React.Component {
     return (
       <div>
         <h2>Our Forks Selection</h2>
+        <div id="homeTableCategory">
+          <div id="homeTableFirstRow">
+            <Link to="/home">Home</Link>
+            <Link to="/category/knives">All Knives</Link>
+            <Link to="/category/forks">All Forks</Link>
+            <Link to="/category/spoons">All Spoons</Link>
+          </div>
+        </div>
         <div id="productContainer">
           {this.props.products.map((fork) => {
             return (

@@ -30,7 +30,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h3>Welcome, {username}</h3>
+        <h2>Welcome, {username}</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
             <Link to="/category/knives">All Knives</Link>
@@ -38,16 +38,6 @@ class Home extends Component {
             <Link to="/category/spoons">All Spoons</Link>
           </div>
         </div>
-        {/* 
-        <table id="homeTableCategory">
-          <thead>
-            <tr id="homeTableFirstRow">
-              <td>Knives </td>
-              <td>Forks </td>
-              <td>Spoons </td>
-            </tr>
-          </thead>
-        </table> */}
       </div>
     );
   }
