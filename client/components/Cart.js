@@ -46,12 +46,15 @@ class Cart extends Component {
                   }, 0).toLocaleString('en-US')
                 }
               </div>
+              {allOrders[0] ?
               <Link to={`/checkout/${username}`}>
                 <button className='cartBtn'>
                 Proceed to Checkout
                 </button>
-              </Link>  
-              
+              </Link> 
+              :
+              <button>Add Items to Proceed</button>
+              }
             </div>
           </div>
          
