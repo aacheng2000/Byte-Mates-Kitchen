@@ -38,7 +38,7 @@ class QuantityCounter extends Component {
             <div>
                 <form onSubmit={this.handleQuantity}>
                     <label>Quantity: </label>
-                    <input 
+                    <input className='quantityField'
                     type='number' 
                     style= {{ flex: '10', padding: '5px' }}
                     placeholder={`${this.state.quantity}`}
@@ -46,10 +46,10 @@ class QuantityCounter extends Component {
                     onChange={this.handleChange}
                     min='1'
                     />
-                    <input 
+                    <input
                         type='submit' 
-                        value= 'Submit'
-                        className= 'btn'
+                        value= 'Update'
+                        className= 'cartBtn'
                         style={{flex: '1'}}
                         />
                 </form> 

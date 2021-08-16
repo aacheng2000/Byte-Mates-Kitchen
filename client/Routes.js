@@ -9,6 +9,8 @@ import AllForks from "./components/AllForks";
 import AllKnives from "./components/AllKnives";
 import AllSpoons from "./components/AllSpoons";
 import SingleProduct from "./components/SingleProduct";
+import Checkout from "./components/Checkout"
+import Complete from  "./components/Complete"
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
@@ -41,6 +43,9 @@ class Routes extends Component {
               path="/products/:productId"
               component={SingleProduct}
             />
+            <Route exact path="/checkout/:id" component={Checkout} />
+            <Route exact path="/complete" component={Complete} />
+
             <Redirect to="/home" />
           </Switch>
         ) : (

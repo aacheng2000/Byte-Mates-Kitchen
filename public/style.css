@@ -209,3 +209,35 @@ form div {
   justify-content: space-between;
   align-items: center;
 }
+
+.cartStyle {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  padding: 10px;
+}
+
+.cartItemStyle {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartItemStyle div{
+  width: 50%;
+}
+
+.cartBtn{
+  background-color: lightblue;
+}
+
+.quantityField{
+  width: 40px;
+  margin-right: 10px;
+}
+
+.cartItemDetails div {
+  padding: 10px
+}
+
