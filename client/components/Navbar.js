@@ -3,10 +3,15 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
+import {myCart} from "../store"
+
+
+
 //import UP, PUBLIC FOLDER, STYLE.CSS
 //import '.../public/style.css'
 
 // ({ handleClick, isLoggedIn, username, user })
+
 
 class Navbar extends Component {
   constructor(props){
@@ -53,6 +58,7 @@ class Navbar extends Component {
                 Search
               </button>
             </div>
+
 
             <div className="logged-or-not">
               {isLoggedIn ? (
@@ -136,6 +142,7 @@ class Navbar extends Component {
   }
 };
 
+
 /**
 * CONTAINER
 */
@@ -143,13 +150,19 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
+
+    order: state.order,
+
     usernameId: state.auth.id
+
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
+
     handleClick() { dispatch(logout()) },
+
   };
 };
 

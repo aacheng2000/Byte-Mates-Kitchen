@@ -76,6 +76,9 @@ form div {
   border-radius: 0rem;
   padding: 0rem;
   cursor: pointer;
+  background-color: rgb(248,242,231);
+  font-size: 18px;
+
 }
 
 .dropdown {
@@ -145,11 +148,17 @@ form div {
 
 #navBar {
   align-items: flex-start;
-  color: red;
+
+  color: black;
+
   margin-top: 75px;
-  font-size: 15px;
-  margin-left: 80px;
-  min-width: 1000px;
+  font-size:15px;
+  margin-left:80px;
+  min-width:1050px;
+  
+  
+
+
 }
 
 #homeTable {
@@ -240,4 +249,6 @@ form div {
 .cartItemDetails div {
   padding: 10px
 }
+
+
 
