@@ -26,11 +26,11 @@ class QuantityCounter extends Component {
         })
     } 
 
-    handleQuantity = (event) => {
+    handleQuantity = async(event) => {
         event.preventDefault()
-        this.props.changeQuantity(this.props.orderId, this.state.quantity)
+        await this.props.changeQuantity(this.props.orderId, this.state.quantity)
         alert('Quantity updated!')
-        this.props.loadOrderData(this.props.username)
+        await this.props.loadOrderData(this.props.username)
     }
 
     render() {
@@ -44,6 +44,7 @@ class QuantityCounter extends Component {
                     placeholder={`${this.state.quantity}`}
                     value={this.state.quantity}
                     onChange={this.handleChange}
+                    min='1'
                     />
                     <input 
                         type='submit' 
