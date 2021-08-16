@@ -9,7 +9,6 @@ import { myCart } from "../store";
 
 class Home extends Component {
   componentDidMount() {
-
     this.props.loadCartData(this.props.username);
     // this.props.loadCartData(
     //   this.props.username
