@@ -25,10 +25,10 @@ class Navbar extends Component {
       <div id="wholeBar">
 
         <div id="leftColumn" className="image-with-link-to-main-page">
-          <a href = "/home">
+          <Link to= "/home">
             <img src = "/group.png" id="pic4">
             </img>
-          </a>
+          </Link>
         </div>
 
         <span id = "rightColumn">
@@ -99,7 +99,6 @@ class Navbar extends Component {
               ) : (
                 <div id="unlogged-nav">
                   {/* The navbar will show these links before you log in */}
-
                   <div className="nav-btn" id="all-products">
                     <Link to="/login">
                       Sign In / Track Order
