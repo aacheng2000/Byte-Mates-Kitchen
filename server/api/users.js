@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: ['id', 'username']
     })
-    res.json(users)
+    res.send(users)
   } catch (err) {
     next(err)
   }
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res, next) => {
       }
 
     });
-    res.json(user);
+    res.send(user);
   } catch (err) {
     next(err);
   }
@@ -37,7 +37,7 @@ router.get("/:id", async (req, res, next) => {
 
 //Edit user
 router.put("/:id", async (req, res, next) => {
-  try {
+  try { 
     const user = await User.findByPk(req.params.id);
     const editedUser = await user.update(req.body);
     res.send(editedUser);
