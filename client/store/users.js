@@ -56,7 +56,7 @@ export const updateUser = (user, history) => {
   return async (dispatch) => {
     const newUser = await axios.put(`/api/users/${user.id}`, user);
     dispatch(editUser(newUser.data));
-    history.push('/home');
+    history.push(`/users/${user.id}`);
   };
 };
 
@@ -72,7 +72,7 @@ export default function(state = [], action) {
       return action.user
     };
     case EDIT_USER: {
-      return [...state].map((user) => user.id === action.user.id ? action.user : user)
+      return action.user
     }
     default: {
       return state

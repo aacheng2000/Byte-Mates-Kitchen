@@ -7,6 +7,7 @@ const SET_PRODUCTS = "SET_PRODUCTS";
 const SET_KNIVES = "SET_KNIVES";
 const SET_FORKS = "SET_FORKS";
 const SET_SPOONS = "SET_SPOONS";
+const ADD_PRODUCT = "ADD_PRODUCT";
 /**
  * ACTION CREATORS
  */
@@ -14,6 +15,7 @@ const setProducts = (products) => ({ type: SET_PRODUCTS, products });
 const setKnives = (knives) => ({ type: SET_KNIVES, knives });
 const setForks = (forks) => ({ type: SET_FORKS, forks });
 const setSpoons = (spoons) => ({ type: SET_SPOONS, spoons });
+const addProduct = (newProduct) => ({ type: ADD_PRODUCT, newProduct });
 
 /**
  * THUNK CREATORS
@@ -54,6 +56,15 @@ export const fetchAllSpoons = () => async (dispatch) => {
   }
 };
 
+export const addNewProduct = () => async (dispatch) => {
+  try {
+    const res = await axios.post("/api/products");
+    return dispatch(addProduct(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 /**
  * REDUCER
  */
@@ -67,6 +78,8 @@ export default function (state = [], action) {
       return action.forks;
     case SET_SPOONS:
       return action.spoons;
+    case ADD_PRODUCT:
+      return { ...state, products: [...state.products, action.newProduct] };
     default:
       return state;
   }

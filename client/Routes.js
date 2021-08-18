@@ -4,17 +4,24 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+import GuestCart from "./components/GuestCart";
 import AllProducts from "./components/AllProducts";
+import AdminProducts from "./components/AdminProducts";
+import AddProduct from "./components/AddProduct";
 import AllForks from "./components/AllForks";
 import AllKnives from "./components/AllKnives";
 import AllSpoons from "./components/AllSpoons";
 import SingleProduct from "./components/SingleProduct";
-import Checkout from "./components/Checkout"
-import Complete from  "./components/Complete"
+import Checkout from "./components/Checkout";
+import Complete from "./components/Complete";
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
+
 import Wishlist from "./components/Wishlist";
+
+import AllUsers from "./components/AllUsers";
+
 
 /**
  * COMPONENT
@@ -34,9 +41,12 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/cart/:id" component={Cart} />
             <Route path="/products" exact component={AllProducts} />
+            <Route path="/adminproducts" exact component={AdminProducts} />
+            <Route path="/addproducts" exact component={AddProduct} />
             <Route path="/category/forks" exact component={AllForks} />
             <Route path="/category/knives" exact component={AllKnives} />
             <Route path="/category/spoons" exact component={AllSpoons} />
+            <Route exact path="/users" component={AllUsers} />
             <Route exact path="/users/:id" component={SingleUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route
@@ -56,6 +66,7 @@ class Routes extends Component {
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route exact path="/cart" component={GuestCart} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/category/forks" exact component={AllForks} />
             <Route path="/category/knives" exact component={AllKnives} />

@@ -6,7 +6,6 @@ class EditUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
             firstName: '',
             lastName: '',
             email: '',
@@ -21,7 +20,6 @@ class EditUser extends Component {
     componentDidMount() {
         if (this.props.user.id) {
             this.setState({
-                username: this.props.user.username,
                 firstName: this.props.user.firstName,
                 lastName: this.props.user.lastName,
                 email: this.props.user.email,
@@ -34,7 +32,6 @@ class EditUser extends Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.user.id && this.props.user.id) {
             this.setState({
-                username: this.props.user.username,
                 firstName: this.props.user.firstName,
                 lastName: this.props.user.lastName,
                 email: this.props.user.email,
@@ -56,15 +53,12 @@ class EditUser extends Component {
     }
 
     render() {
-        const { username, firstName, lastName, email, phoneNumber, address } = this.state;
+        const { firstName, lastName, email, phoneNumber, address } = this.state;
         const { handleSubmit, handleChange } = this;
 
         return (
             <div>
                 <form id='user-form' onSubmit={handleSubmit}>
-                    <label htmlFor='username'>Username:</label>
-                    <input name='username' onChange={handleChange} value={username} />
-
                     <label htmlFor='firstName'>First name:</label>
                     <input name='firstName' onChange={handleChange} value={firstName} />
 

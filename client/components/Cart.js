@@ -38,10 +38,7 @@ class Cart extends Component {
           <h3>Contents of your cart:</h3>
         </div>
         <div>
-          <h3>Welcome to your cart, {username}</h3>
-          <h3>Contents of your cart:{allOrders.length}</h3>
-
-          <div style={this.cartStyle}>
+          <div>
             <div>
               Subtotal ({allOrders[0] ? allOrders.length : "0"} items): $
               {allOrders

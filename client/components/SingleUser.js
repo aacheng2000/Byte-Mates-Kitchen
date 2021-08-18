@@ -27,7 +27,7 @@ class SingleUser extends Component {
                         Last name: {user.lastName}
                     </div>
                     <div>
-                        Emain: {user.email}
+                        Email: {user.email}
                     </div>
                     <div>
                         Phone number: {user.phoneNumber}
