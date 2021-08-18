@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../store/allProducts";
 import { addOrder } from "../store/order";
 import { myCart } from "../store";
+import { addWishlistItem } from "../store/allWishlists";
 
 class AllProducts extends React.Component {
   constructor() {
@@ -17,9 +18,23 @@ class AllProducts extends React.Component {
 
   async addToCart(_productId) {
     await this.props.myCart(this.props.auth.username);
-
     this.props.addOrder({ cartId: this.props.cart.id, productId: _productId });
   }
+  
+  async addToWishlist(_productId) {
+    console.dir(this.props.auth)
+    await this.props.myCart(this.props.auth.username);
+    
+    const countExisting = this.props.wishlists.filter(x=>x.productId === _productId).length
+    
+    console.log('coutn existing = ' + countExisting)
+    
+    this.props.addWishlistItem({ userId: this.props.cart.userId, productId: _productId });
+  }
+  
+  
+  
+  
 
   render() {
     console.log("all Products props!!~~~~~~~~", this.props);
@@ -56,10 +71,13 @@ class AllProducts extends React.Component {
                     <button
                       onClick={() => this.addToCart(product.id)}
                       className="addToCart"
-                    >
-                      Add to Cart
+                    >Add to Cart
                     </button>
-                    <button className="addToWishList">Add to Wishlist</button>
+                    <button 
+                      onClick={() => this.addToWishlist(product.id)}
+                    className="addToWishList"
+                    >Add to Wishlist
+                    </button>
                   </div>
                 </center>
               </div>
@@ -74,6 +92,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts, addOrder, myCart };
+const mapDispatchToProps = { fetchAllProducts, addOrder, myCart, addWishlistItem };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);

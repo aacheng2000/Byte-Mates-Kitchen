@@ -9,6 +9,7 @@ import singleProduct from "./singleProduct";
 import order from "./order";
 import users from "./users";
 import user from './users';
+import wishlists from './allWishlists';
 
 const reducer = combineReducers({
   auth,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   singleProduct,
   users,
   order,
-  user
+  user,
+  wishlists
 });
 
 const middleware = composeWithDevTools(
@@ -32,3 +34,4 @@ export * from "./allProducts";
 export * from "./singleProduct";
 export * from "./order";
 export * from "./users";
+export * from "./allWishlists";
