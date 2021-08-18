@@ -20,14 +20,14 @@ class AddProduct extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value });
+  async handleChange(evt) {
+    await this.setState({ [evt.target.name]: evt.target.value });
   }
 
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addNewProduct({ ...this.state });
-    this.setState({
+    await this.props.addNewProduct({ ...this.state });
+    await this.setState({
       name: "",
       description: "",
       price: 0,
