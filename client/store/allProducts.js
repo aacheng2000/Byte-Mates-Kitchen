@@ -58,7 +58,7 @@ export const fetchAllSpoons = () => async (dispatch) => {
 
 export const addNewProduct = () => async (dispatch) => {
   try {
-    const res = await axios.post("/api/products", campus);
+    const res = await axios.post("/api/products");
     return dispatch(addProduct(res.data));
   } catch (err) {
     console.log(err);

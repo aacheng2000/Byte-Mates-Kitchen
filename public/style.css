@@ -76,9 +76,8 @@ form div {
   border-radius: 0rem;
   padding: 0rem;
   cursor: pointer;
-  background-color: rgb(248,242,231);
+  background-color: rgb(248, 242, 231);
   font-size: 18px;
-
 }
 
 .dropdown {
@@ -152,13 +151,9 @@ form div {
   color: black;
 
   margin-top: 75px;
-  font-size:15px;
-  margin-left:80px;
-  min-width:1050px;
-  
-  
-
-
+  font-size: 15px;
+  margin-left: 80px;
+  min-width: 1050px;
 }
 
 #homeTable {
@@ -210,8 +205,9 @@ form div {
   margin-top: 17px;
 }
 
-/* #all-products {
-} */
+#all-products {
+  display: flex;
+}
 
 .cartBar {
   display: flex;
@@ -233,22 +229,19 @@ form div {
   align-items: center;
 }
 
-.cartItemStyle div{
+.cartItemStyle div {
   width: 50%;
 }
 
-.cartBtn{
+.cartBtn {
   background-color: lightblue;
 }
 
-.quantityField{
+.quantityField {
   width: 40px;
   margin-right: 10px;
 }
 
 .cartItemDetails div {
-  padding: 10px
+  padding: 10px;
 }
-
-
-
