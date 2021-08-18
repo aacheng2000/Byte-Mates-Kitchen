@@ -5,11 +5,20 @@ const {models: {User}} = require("./models/User");
 const Cart = require("./models/Cart");
 const Order = require("./models/Order");
 const Product = require("./models/Product");
+const Wishlist = require("./models/Wishlist");
+
 const {
   models: { Fun, Theme },
 } = require("./models/Enumerations");
 
 //associations could go here!
+
+User.hasMany(Wishlist)
+Wishlist.belongsTo(User)
+
+Product.hasMany(Wishlist)
+Wishlist.belongsTo(Product)
+
 Fun.hasMany(Product);
 Product.belongsTo(Fun);
 
@@ -34,5 +43,6 @@ module.exports = {
     Cart,
     Order,
     Product,
+    Wishlist
   },
 };

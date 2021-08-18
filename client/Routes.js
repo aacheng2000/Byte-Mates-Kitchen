@@ -17,7 +17,11 @@ import Complete from "./components/Complete";
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
+
+import Wishlist from "./components/Wishlist";
+
 import AllUsers from "./components/AllUsers";
+
 
 /**
  * COMPONENT
@@ -52,6 +56,7 @@ class Routes extends Component {
             />
             <Route exact path="/checkout/:id" component={Checkout} />
             <Route exact path="/complete" component={Complete} />
+            <Route exact path="/wishlist/:id" component={Wishlist} />
 
             <Redirect to="/home" />
           </Switch>

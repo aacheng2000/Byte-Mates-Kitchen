@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { Fun, Theme, User, Product, Cart, Order },
+  models: { Fun, Theme, User, Product, Cart, Order, Wishlist },
 } = require("../server/db");
 
 const seedProduct = require("./seed-product-data.json");
@@ -54,6 +54,15 @@ async function seed() {
     Order.create({cartId: cart3.id, productId: 9})
   ]);
 
+  const wishlists = await Promise.all([
+    Wishlist.create({userId: cody.id, productId: 1}),
+    Wishlist.create({userId: cody.id, productId: 2}),
+    Wishlist.create({userId: murphy.id, productId: 3}),
+    Wishlist.create({userId: murphy.id, productId: 4}),
+    Wishlist.create({userId: moe.id, productId: 5}),
+    Wishlist.create({userId: moe.id, productId: 6})
+
+  ]);
 
   const carts = [cart1, cart2, cart3];
 
@@ -68,7 +77,8 @@ async function seed() {
     carts,
     orders,
     funs,
-    themes
+    themes,
+    wishlists
   };
 }
 

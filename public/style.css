@@ -245,3 +245,14 @@ form div {
 .cartItemDetails div {
   padding: 10px;
 }
+
+
+.Xfooter {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
+
+

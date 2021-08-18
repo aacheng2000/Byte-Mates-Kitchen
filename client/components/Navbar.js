@@ -56,8 +56,21 @@ class Navbar extends Component {
                     <div className="dropdown-content">
                       <Link to={`/users/${usernameId}`}>Profile details</Link>
 
-                      <a>Orders</a>
-                      <a>Wishlist</a>
+
+                      <Link to={`/users/${usernameId}`} >
+                        Profile details
+                      </Link>
+
+                      <a >Orders</a>
+                      
+                      
+                      <Link to={`/wishlist/${username}`} >
+                        Wishlist
+                      </Link>
+                      
+                      
+                      
+
                     </div>
                   </div>
 
@@ -102,12 +115,12 @@ class Navbar extends Component {
                     </Link>
                   </div>
 
-                  <div className="nav-btn">
+               {/*   <div className="nav-btn">
                     <Link to="/wishlist">
                       Wishlist
                       <img src="/heart.png" className="imgNav"></img>
                     </Link>
-                  </div>
+                  </div>     */}
 
                   <div className="nav-btn">
                     <Link to="/cart">
