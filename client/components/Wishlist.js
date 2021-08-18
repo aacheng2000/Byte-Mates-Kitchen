@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchWishlists, wishlists, deleteWishlistItem } from "../store/allWishlists"
-import { products } from "../store/allProducts"
+import { fetchWishlists, deleteWishlistItem } from "../store/allWishlists"
 import { addOrder, myCart } from "../store";
 
 class Wishlists extends React.Component {
@@ -53,6 +52,6 @@ class Wishlists extends React.Component {
 }
 
 const mapStateToProps = (state) => {return state;};
-const mapDispatchToProps = { fetchWishlists, deleteWishlistItem, wishlists, products, addOrder, myCart  };
+const mapDispatchToProps = { fetchWishlists, deleteWishlistItem, addOrder, myCart  };
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlists);
 
