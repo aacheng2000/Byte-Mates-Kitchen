@@ -56,10 +56,10 @@ export const fetchAllSpoons = () => async (dispatch) => {
   }
 };
 
-export const addNewProduct = () => async (dispatch) => {
+export const addNewProduct = (newProduct) => async (dispatch) => {
   try {
-    const res = await axios.post("/api/products");
-    return dispatch(addProduct(res.data));
+    const res = await axios.post("/api/products", newProduct);
+    return dispatch(addProduct(res.newProduct));
   } catch (err) {
     console.log(err);
   }
@@ -79,7 +79,7 @@ export default function (state = [], action) {
     case SET_SPOONS:
       return action.spoons;
     case ADD_PRODUCT:
-      return { ...state, products: [...state.products, action.newProduct] };
+      return [...state, action.newProduct];
     default:
       return state;
   }

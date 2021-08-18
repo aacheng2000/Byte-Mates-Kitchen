@@ -137,7 +137,7 @@ router.put("/:productId", async (req, res, next) => {
 });
 
 //Create single product
-router.post("/api/products", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Product.create(req.body));
   } catch (err) {
