@@ -3,39 +3,32 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
-import {myCart} from "../store"
+import { myCart } from "../store";
 
 class Navbar extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
   render() {
-    const { isLoggedIn, username, handleClick, usernameId, user} = this.props
-    console.log(user)
+    const { isLoggedIn, username, handleClick, usernameId, user } = this.props;
+    console.log(user);
     return (
       <div id="wholeBar">
-
         <div id="leftColumn" className="image-with-link-to-main-page">
-          <Link to= "/home">
-            <img src = "/group.png" id="pic4">
-            </img>
+          <Link to="/home">
+            <img src="/group.png" id="pic4"></img>
           </Link>
         </div>
 
-        <span id = "rightColumn">
+        <span id="rightColumn">
+          <div id="navTitle">Byte-Mates-Kitchen</div>
 
-          <div id="navTitle">
-            Byte-Mates-Kitchen
-          </div>
-
-          <nav id = "navBar">
-
+          <nav id="navBar">
             <div className="nav-btn" id="all-products">
               <Link to="/products">
                 All Products
-                <img src = "/square.png" className = "imgNav">
-                </img>
+                <img src="/square.png" className="imgNav"></img>
               </Link>
             </div>
 
@@ -51,63 +44,45 @@ class Navbar extends Component {
               </button>
             </div>
 
-
             <div className="logged-or-not">
               {isLoggedIn ? (
-                <div id="logged-nav">              
-
+                <div id="logged-nav">
                   {/* The navbar will show these links after you log in */}
                   <div className="dropdown">
-
                     <Link to="/home">
-                      <button className="nav-btn">
-                        Home
-                      </button>
+                      <button className="nav-btn">Home</button>
                     </Link>
 
                     <div className="dropdown-content">
+                      <Link to={`/users/${usernameId}`}>Profile details</Link>
 
-                      <Link to={`/users/${usernameId}`} >
-                        Profile details
-                      </Link>
-
-                      <a >Orders</a>
-                      <a >Wishlist</a>
+                      <a>Orders</a>
+                      <a>Wishlist</a>
                     </div>
-                  </div> 
+                  </div>
 
                   <Link className="nav-btn" to={`/cart/${username}`}>
                     Cart
-                    <img src = "/cart.png" className = "imgNav">
-                    </img>
+                    <img src="/cart.png" className="imgNav"></img>
                   </Link>
 
                   {user.isAdmin ? (
                     <div className="dropdown">
-                   
-                    <button className="nav-btn">
-                      Admin settings
-                    </button>
+                      <button className="nav-btn">Admin settings</button>
 
-                    <div className="dropdown-content">
+                      <div className="dropdown-content">
+                        <Link to={"/users"}>User profiles</Link>
 
-                      <Link to={'/users'} >
-                        User profiles
-                      </Link>
+                        <Link to={"/adminproducts"}>All products (Admin)</Link>
 
-                      <Link to={'/products'} >
-                        All products
-                      </Link>
-
-                      <a>All orders</a>
+                        <a>All orders</a>
+                      </div>
                     </div>
-                  </div>
                   ) : null}
 
                   <a className="nav-btn" onClick={handleClick}>
                     Logout
-                    <img src = "admin.png" className = "imgNav">
-                    </img>
+                    <img src="admin.png" className="imgNav"></img>
                   </a>
                 </div>
               ) : (
@@ -116,32 +91,28 @@ class Navbar extends Component {
                   <div className="nav-btn" id="all-products">
                     <Link to="/login">
                       Sign In / Track Order
-                      <img src = "admin.png" className = "imgNav">
-                      </img>
+                      <img src="admin.png" className="imgNav"></img>
                     </Link>
                   </div>
 
                   <div className="nav-btn" id="all-products">
                     <Link to="/signup">
                       Sign Up
-                      <img src = "/arrow.png" className = "imgNav">
-                      </img>
+                      <img src="/arrow.png" className="imgNav"></img>
                     </Link>
                   </div>
 
                   <div className="nav-btn">
                     <Link to="/wishlist">
                       Wishlist
-                      <img src = "/heart.png" className = "imgNav">
-                      </img>
+                      <img src="/heart.png" className="imgNav"></img>
                     </Link>
                   </div>
 
                   <div className="nav-btn">
                     <Link to="/cart">
                       Cart
-                      <img src = "/cart.png" className = "imgNav">
-                      </img>
+                      <img src="/cart.png" className="imgNav"></img>
                     </Link>
                   </div>
                 </div>
@@ -151,30 +122,28 @@ class Navbar extends Component {
         </span>
         <hr />
       </div>
-    )
+    );
   }
-};
-
+}
 
 /**
-* CONTAINER
-*/
+ * CONTAINER
+ */
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
     order: state.order,
     usernameId: state.auth.id,
-    user: state.auth
-
+    user: state.auth,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    
-    handleClick() { dispatch(logout()) },
-
+    handleClick() {
+      dispatch(logout());
+    },
   };
 };
 

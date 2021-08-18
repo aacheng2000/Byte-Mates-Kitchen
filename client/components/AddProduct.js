@@ -59,8 +59,38 @@ class AddProduct extends Component {
           placeholder="New Product Description..."
           name="description"
         />
+        <label htmlFor="price">Price: </label>
+        <input
+          value={price}
+          onChange={this.handleChange}
+          placeholder="New Product Price..."
+          name="price"
+        />
+        <label htmlFor="color">Color: </label>
+        <input
+          value={color}
+          onChange={this.handleChange}
+          placeholder="Color..."
+          name="color"
+        />
+        <label htmlFor="size">Size: </label>
+        <input
+          value={size}
+          onChange={this.handleChange}
+          placeholder="Size..."
+          name="size"
+        />
+        <label htmlFor="funId">Functional Category: </label>
+        <input
+          value={funId}
+          onChange={this.handleChange}
+          placeholder="Functional Category, 1, 2, or 3..."
+          name="funId"
+        />
         <button type="submit">Add New Product</button>
-        <Link to="/">Cancel</Link>
+        <button>
+          <Link to="/adminproducts">Cancel</Link>
+        </button>
       </form>
     );
   }
