@@ -17,7 +17,9 @@ class GuestCart extends Component {
   componentDidMount() {
     this.props.fetchAllProducts();
     const storageList = JSON.parse(window.localStorage.getItem('cart'))
+    if(storageList){
     this.setState({storageProduct: storageList.product});
+    }
   }
 
   deleteItem(productId) {

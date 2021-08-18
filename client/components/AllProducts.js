@@ -24,7 +24,11 @@ class AllProducts extends React.Component {
     await this.props.myCart(this.props.auth.username);
     this.props.addOrder({ cartId: this.props.cart.id, productId: _productId });
     } else {
+      if(cart){
       window.localStorage.setItem('cart', JSON.stringify({product: [...cart.product, _productId]}))
+      } else {
+        window.localStorage.setItem('cart', JSON.stringify({product: [_productId]}))
+      }
       }
     console.log('new cart~~~', JSON.parse(window.localStorage.getItem('cart')))
   }
