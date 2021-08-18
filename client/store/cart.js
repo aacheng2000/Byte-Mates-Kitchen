@@ -34,7 +34,6 @@ export const placeOrder = (cartId, username) => async (dispatch) => {
  * REDUCER
  */
 export default function (state = [], action) {
-  console.log(`the action is RIGHT HERE~!~!~!~!~!~!`, action)
   switch (action.type) {
     case SET_CART:
       return action.cart;

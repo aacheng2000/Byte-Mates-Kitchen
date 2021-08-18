@@ -5,22 +5,14 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 import {myCart} from "../store"
 
-
-
-//import UP, PUBLIC FOLDER, STYLE.CSS
-//import '.../public/style.css'
-
-// ({ handleClick, isLoggedIn, username, user })
-
-
 class Navbar extends Component {
   constructor(props){
     super(props)
   }
 
   render() {
-    const { isLoggedIn, username, handleClick, usernameId } = this.props
-
+    const { isLoggedIn, username, handleClick, usernameId, user} = this.props
+    console.log(user)
     return (
       <div id="wholeBar">
 
@@ -62,7 +54,7 @@ class Navbar extends Component {
 
             <div className="logged-or-not">
               {isLoggedIn ? (
-                <div id="logged-nav">
+                <div id="logged-nav">              
 
                   {/* The navbar will show these links after you log in */}
                   <div className="dropdown">
@@ -89,6 +81,28 @@ class Navbar extends Component {
                     <img src = "/cart.png" className = "imgNav">
                     </img>
                   </Link>
+
+                  {user.isAdmin ? (
+                    <div className="dropdown">
+                   
+                    <button className="nav-btn">
+                      Admin settings
+                    </button>
+
+                    <div className="dropdown-content">
+
+                      <Link to={'/users'} >
+                        User profiles
+                      </Link>
+
+                      <Link to={'/products'} >
+                        All products
+                      </Link>
+
+                      <a>All orders</a>
+                    </div>
+                  </div>
+                  ) : null}
 
                   <a className="nav-btn" onClick={handleClick}>
                     Logout
@@ -149,17 +163,16 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
-
     order: state.order,
-
-    usernameId: state.auth.id
+    usernameId: state.auth.id,
+    user: state.auth
 
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-
+    
     handleClick() { dispatch(logout()) },
 
   };

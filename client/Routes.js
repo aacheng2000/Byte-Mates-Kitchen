@@ -14,6 +14,7 @@ import Complete from  "./components/Complete"
 import { me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
+import AllUsers from "./components/AllUsers";
 
 /**
  * COMPONENT
@@ -36,6 +37,7 @@ class Routes extends Component {
             <Route path="/category/forks" exact component={AllForks} />
             <Route path="/category/knives" exact component={AllKnives} />
             <Route path="/category/spoons" exact component={AllSpoons} />
+            <Route exact path="/users" component={AllUsers} />
             <Route exact path="/users/:id" component={SingleUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route
