@@ -30,10 +30,10 @@ export const me = () => async dispatch => {
 
 export const authenticate = (username, password, method) => async dispatch => {
   try {
-    const ordersToCreate = JSON.parse(window.localStorage.getItem('cart'))
+    const ordersToCreate = JSON.parse(window.localStorage.getItem("cart"))
     const res = await axios.post(`/auth/${method}`, {username, password, ordersToCreate})
     window.localStorage.setItem(TOKEN, res.data.token)
-    window.localStorage.setItem('cart', JSON.stringify({product: []}))
+    window.localStorage.setItem("cart", null)
     dispatch(me())
   } catch (authError) {
     return dispatch(setAuth({error: authError}))
