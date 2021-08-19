@@ -13,6 +13,7 @@ const setSingleProduct = (singleProduct) => ({
   type: SET_SINGLEPRODUCT,
   singleProduct,
 });
+
 /**
  * THUNK CREATORS
  */
@@ -33,7 +34,6 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_SINGLEPRODUCT:
       return action.singleProduct;
-
     default:
       return state;
   }

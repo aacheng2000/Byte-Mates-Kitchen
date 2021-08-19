@@ -22,7 +22,6 @@ import Wishlist from "./components/Wishlist";
 
 import AllUsers from "./components/AllUsers";
 
-
 /**
  * COMPONENT
  */

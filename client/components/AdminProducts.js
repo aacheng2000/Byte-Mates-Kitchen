@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts, deleteSingleProduct } from "../store/allProducts";
-import AddProduct from "./AddProduct";
 
 class AdminProducts extends React.Component {
   constructor() {
@@ -39,11 +38,8 @@ class AdminProducts extends React.Component {
                   </div>
                 </div>
                 <div>
-                  <button
-                    onClick={() => console.log("edit product")}
-                    className="editProduct"
-                  >
-                    Edit Product
+                  <button className="editProduct">
+                    <Link to={`/products/${product.id}`}>Edit Product</Link>
                   </button>
                   <button
                     onClick={() => this.props.deleteSingleProduct(product.id)}
