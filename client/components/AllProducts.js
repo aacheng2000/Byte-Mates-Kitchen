@@ -17,10 +17,10 @@ class AllProducts extends React.Component {
   }
 
   async addToCart(_productId) {
-    const token = window.localStorage.getItem('token')
+    const loggedIn = this.props.auth.username
     const cart = JSON.parse(window.localStorage.getItem('cart'))
     console.log('storagecart =>', cart)
-    if(token){
+    if(loggedIn){
     await this.props.myCart(this.props.auth.username);
     this.props.addOrder({ cartId: this.props.cart.id, productId: _productId });
     } else {
