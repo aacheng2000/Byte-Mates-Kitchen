@@ -8,9 +8,25 @@ import products from "./allProducts";
 import singleProduct from "./singleProduct";
 import order from "./order";
 import users from "./users";
-import user from './singleUser';
-import wishlists from './allWishlists';
+import user from "./singleUser";
+import wishlists from "./allWishlists";
 import pastOrders from './pastOrders'
+import axios from "axios";
+
+const totalReducer = (state = 0, action) => {
+  if (action.type === "SET_TOTAL") {
+    return action.total;
+  }
+  return state;
+};
+
+export const fetchTotal = () => {
+  return async (dispatch) => {
+    const response = await axios.get("/api/products");
+    dispatch({ type: "SET_TOTAL", total: response.data.total });
+  };
+};
+
 
 const reducer = combineReducers({
   auth,
@@ -21,7 +37,8 @@ const reducer = combineReducers({
   order,
   user,
   wishlists,
-  pastOrders
+  total: totalReducer,
+  pastOrders,
 });
 
 const middleware = composeWithDevTools(

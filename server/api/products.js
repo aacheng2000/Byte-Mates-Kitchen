@@ -4,20 +4,42 @@ const {
 } = require("../db");
 module.exports = router;
 
-//Display all products
-router.get("/", async (req, res, next) => {
+// // Display all products for guest carts
+// router.get("/cartproducts", async (req, res, next) => {
+//   try {
+//     const products = await Product.findAll({
+//       include: [Fun, Theme],
+//     });
+//     res.json(products);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+//Paignation
+router.get("/:idx?", async (req, res, next) => {
   try {
-    const products = await Product.findAll({
-      include: [Fun, Theme],
+    const pageSize = process.env.PAGE_SIZE || 8;
+    const idx = req.params.idx ? req.params.idx * 1 : 0;
+    const [total, products] = await Promise.all([
+      Product.count(),
+      Product.findAll({
+        limit: pageSize,
+        offset: pageSize * idx,
+        include: [Fun, Theme],
+      }),
+    ]);
+    res.send({
+      total,
+      products,
     });
-    res.json(products);
   } catch (err) {
     next(err);
   }
 });
 
 //Display single product
-router.get("/:productId", async (req, res, next) => {
+router.get("/singleproduct/:productId", async (req, res, next) => {
   try {
     const product = await Product.findOne({
       where: { id: req.params.productId },
@@ -126,7 +148,7 @@ router.get("/theme/sale", async (req, res, next) => {
 });
 
 //Edit single product
-router.put("/:productId", async (req, res, next) => {
+router.put("/singleproduct/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     const editedProduct = await product.update(req.body);
@@ -146,7 +168,7 @@ router.post("/", async (req, res, next) => {
 });
 
 //Delete single product
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/singleproduct/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     await product.destroy();

@@ -15,7 +15,7 @@ import AllSpoons from "./components/AllSpoons";
 import SingleProduct from "./components/SingleProduct";
 import Checkout from "./components/Checkout";
 import Complete from "./components/Complete";
-import { me, myCart } from "./store";
+import { fetchTotal, me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
 
@@ -40,8 +40,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/cart/:id" component={Cart} />
+            <Route path="/products/:idx?" exact component={AllProducts} />
             <Route path="/history/:id" component={History} />
-            <Route path="/products" exact component={AllProducts} />
             <Route path="/adminproducts" exact component={AdminProducts} />
             <Route path="/addproducts" exact component={AddProduct} />
             <Route path="/category/forks" exact component={AllForks} />
@@ -52,7 +52,7 @@ class Routes extends Component {
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route
               exact
-              path="/products/:productId"
+              path="/products/singleproduct/:productId"
               component={SingleProduct}
             />
             <Route exact path="/checkout/:id" component={Checkout} />
@@ -68,13 +68,13 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/cart" component={GuestCart} />
-            <Route exact path="/products" component={AllProducts} />
+            <Route exact path="/products/:idx?" component={AllProducts} />
             <Route path="/category/forks" exact component={AllForks} />
             <Route path="/category/knives" exact component={AllKnives} />
             <Route path="/category/spoons" exact component={AllSpoons} />
             <Route
               exact
-              path="/products/:productId"
+              path="/products/singleproduct/:productId"
               component={SingleProduct}
             />
           </Switch>
@@ -99,6 +99,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchTotal());
     },
   };
 };
