@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProduct";
 import { addOrder } from "../store/order";
@@ -44,8 +43,7 @@ class SingleProduct extends Component {
   }
 
   render() {
-    const { user } = this.props;
-    // console.log("THIS IS USER IN SINGLEPRODUCT", user);
+    const { isAdmin } = this.props.auth;
 
     if (!this.props.singleProduct) return <h4>Loading...</h4>;
     console.log("my single product props~~~~~~~~", this.props);
@@ -66,12 +64,12 @@ class SingleProduct extends Component {
         >
           Add to Cart
         </button>
-        {/* {user.isAdmin ? ( */}
-        <div>
-          <h3>Edit Product Details Below (Admin View) </h3>
-          <EditProduct product={this.props.singleProduct} />
-        </div>
-        {/* ) : null} */}
+        {isAdmin ? (
+          <div>
+            <h3>Edit Product Details Below (Admin View) </h3>
+            <EditProduct product={this.props.singleProduct} />
+          </div>
+        ) : null}
       </div>
     );
   }

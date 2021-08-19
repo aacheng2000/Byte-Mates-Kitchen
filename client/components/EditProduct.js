@@ -21,7 +21,6 @@ class EditProduct extends Component {
   }
 
   componentDidMount() {
-    console.log("EDIT PRODCT PROPS~~", this.props);
     if (this.props.product.id) {
       this.setState({
         name: this.props.product.name,
@@ -35,8 +34,10 @@ class EditProduct extends Component {
     }
   }
   componentDidUpdate(prevProps) {
+    console.log("EDIT PRODCT PROPS~~", this.props);
     if (prevProps.product.id !== this.props.product.id) {
       this.setState({
+        id: this.props.id,
         name: this.props.product.name,
         description: this.props.product.description,
         price: this.props.product.price,
