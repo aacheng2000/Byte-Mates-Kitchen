@@ -27,6 +27,7 @@ class Wishlists extends React.Component {
     }
   }
 
+
   render() {
 
     return (
