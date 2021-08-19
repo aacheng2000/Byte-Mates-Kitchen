@@ -8,7 +8,7 @@ import products from "./allProducts";
 import singleProduct from "./singleProduct";
 import order from "./order";
 import users from "./users";
-import user from './users';
+import user from './singleUser';
 import wishlists from './allWishlists';
 
 const reducer = combineReducers({
@@ -34,4 +34,5 @@ export * from "./allProducts";
 export * from "./singleProduct";
 export * from "./order";
 export * from "./users";
+export * from "./singleUser";
 export * from "./allWishlists";

@@ -4,16 +4,13 @@ import { fetchSingleUser } from '../store';
 import { Link } from 'react-router-dom';
 
 class SingleUser extends Component {
-    constructor(){
-        super()
-    }
-
     componentDidMount() {
         this.props.loadUserData(this.props.match.params.id)
     }
 
     render() {
         const { user } = this.props
+        
         return (
             <div>
                 <div className='single-user'>
