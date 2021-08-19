@@ -52,6 +52,7 @@ form div {
   display: flex;
   width: 98%;
   justify-content: space-around;
+  margin-top: 100px;
 }
 
 .search-bar {
@@ -161,7 +162,23 @@ form div {
 }
 
 #homeTableFirstRow {
-  height: 100px;
+  display: flex;
+  height: 300px;
+  padding: 50px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homeitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: center;
+}
+
+.homeItem img {
+  height: 240px;
+  width: 130px;
 }
 
 #productContainer {
@@ -234,7 +251,8 @@ form div {
 }
 
 .cartBtn {
-  background-color: lightblue;
+  background-color: goldenrod;
+  margin: 10px;
 }
 
 .quantityField {
@@ -249,6 +267,8 @@ form div {
 .historyCartStyle {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pastCartStyle {
