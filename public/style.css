@@ -246,6 +246,31 @@ form div {
   padding: 10px;
 }
 
+.historyCartStyle {
+  display: flex;
+  flex-direction: column;
+}
+
+.pastCartStyle {
+  display: flex;
+  padding:10px;
+  justify-content: space-between;
+  align-items: center;
+  border-style: solid;
+}
+
+.pastCartStyle div {
+  width: 50%;
+}
+
+.dateHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
 
 .Xfooter {
    position: fixed;
