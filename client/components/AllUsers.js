@@ -14,6 +14,8 @@ class AllUsers extends Component {
 
     render() {
         const { users } = this.props
+        console.log(this.props)
+
         return (
             <ul>
                 {users.map(user => {
@@ -30,10 +32,18 @@ class AllUsers extends Component {
     }
 }
 
-const mapStateToProps = ({ users }) => ({
-    users
-});
+const mapStateToProps = ({ users }) => {
+    return {
+        users
+    }
+};
 
-const mapDispatchToProps = { fetchUsers };
+const mapDispatchToProps = ( dispatch ) => {
+    return {
+        fetchUsers() {
+            dispatch(fetchUsers())
+        }
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

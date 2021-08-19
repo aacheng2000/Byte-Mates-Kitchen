@@ -12,7 +12,7 @@ class Navbar extends Component {
 
   render() {
     const { isLoggedIn, username, handleClick, usernameId, user } = this.props;
-    
+
     return (
       <div id="wholeBar">
         <div id="leftColumn" className="image-with-link-to-main-page">
@@ -54,8 +54,6 @@ class Navbar extends Component {
                     </Link>
 
                     <div className="dropdown-content">
-                      <Link to={`/users/${usernameId}`}>Profile details</Link>
-
 
                       <Link to={`/users/${usernameId}`} >
                         Profile details
@@ -63,14 +61,10 @@ class Navbar extends Component {
 
                       <a >Orders</a>
                       
-                      
                       <Link to={`/wishlist/${username}`} >
                         Wishlist
                       </Link>
                       
-                      
-                      
-
                     </div>
                   </div>
 

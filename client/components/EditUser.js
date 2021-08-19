@@ -88,8 +88,7 @@ const mapStateToProps = ({ user }) => {
 };
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  updateUser: (user) => dispatch(updateUser(user, history)),
-
+  updateUser: (user) => dispatch(updateUser(user, history))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUser);
