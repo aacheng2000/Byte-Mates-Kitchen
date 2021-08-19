@@ -54,8 +54,6 @@ class Navbar extends Component {
                     </Link>
 
                     <div className="dropdown-content">
-                      <Link to={`/users/${usernameId}`}>Profile details</Link>
-
 
                       <Link to={`/users/${usernameId}`} >
                         Profile details
@@ -63,14 +61,10 @@ class Navbar extends Component {
 
                       <a >Orders</a>
                       
-                      
                       <Link to={`/wishlist/${username}`} >
                         Wishlist
                       </Link>
                       
-                      
-                      
-
                     </div>
                   </div>
 

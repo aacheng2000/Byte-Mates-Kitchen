@@ -18,6 +18,7 @@ const User = db.define('user', {
   username: {
     type: STRING,
     allowNull: false,
+    unique: true,
     validate: {
       notEmpty: true
     }
