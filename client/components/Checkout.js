@@ -22,7 +22,6 @@ class Checkout extends Component {
     render(){
         const username = this.props.match.params.id
         const allOrders = this.props.orders
-        console.log('checkout props!', this.props)
         return (
             <div>
                 <div className='cartBar'>
@@ -44,6 +43,25 @@ class Checkout extends Component {
                                 </Link>
                             </button>
                     </div>
+                </div>
+                <div><h2>Review Your Order</h2></div>
+                <div className="cartStyle">
+                    {allOrders[0] ? (
+                    allOrders.map((order) => {
+                    return (
+                        <div key={order.id} className="cartItemStyle">
+                            <div> <img src={order.product.picture} /> </div>
+                            <div className="cartItemDetails">
+                                <div>{order.product.name}</div>
+                                <div>${order.product.price}</div>
+                                <div>Quantity: {order.quantity}</div>
+                            </div>
+                        </div>
+                                    );
+                                })
+                            ) : (
+                        <div>Your cart is empty</div>
+                    )}
                 </div>
             </div>
             )

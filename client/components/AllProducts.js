@@ -5,6 +5,7 @@ import { fetchAllProducts } from "../store/allProducts";
 import { addOrder } from "../store/order";
 import { myCart } from "../store";
 import { addWishlistItem } from "../store/allWishlists";
+ 
 
 class AllProducts extends React.Component {
   constructor() {
