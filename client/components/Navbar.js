@@ -12,7 +12,7 @@ class Navbar extends Component {
 
   render() {
     const { isLoggedIn, username, handleClick, usernameId, user } = this.props;
-
+    console.log('my user:', user);
     return (
       <div id="wholeBar">
         <div id="leftColumn" className="image-with-link-to-main-page">
