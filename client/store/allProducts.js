@@ -27,12 +27,13 @@ const editSingleProduct = (singleProduct) => ({
   type: EDIT_SINGLEPRODUCT,
   singleProduct,
 });
+
 /**
  * THUNK CREATORS
  */
 export const fetchAllProducts = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/products");
+    const res = await axios.get("/api/products/:idx?");
     return dispatch(setProducts(res.data));
   } catch (err) {
     console.log(err);
@@ -68,7 +69,7 @@ export const fetchAllSpoons = () => async (dispatch) => {
 
 export const addNewProduct = (newProduct) => async (dispatch) => {
   try {
-    const res = (await axios.post("/api/products", newProduct)).data;
+    const res = (await axios.post("/api/products:idx?", newProduct)).data;
     return dispatch(addProduct(res));
   } catch (err) {
     console.log(err);
@@ -77,7 +78,7 @@ export const addNewProduct = (newProduct) => async (dispatch) => {
 
 export const deleteSingleProduct = (singleProductId) => async (dispatch) => {
   try {
-    await axios.delete(`/api/products/${singleProductId}`);
+    await axios.delete(`/api/products/singleproduct/${singleProductId}`);
     return dispatch(deleteProduct(singleProductId));
   } catch (err) {
     console.log(err);
@@ -86,7 +87,10 @@ export const deleteSingleProduct = (singleProductId) => async (dispatch) => {
 
 export const updateSingleProduct = (singleProduct, id) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/products/${id}`, singleProduct);
+    const res = await axios.put(
+      `/api/products/singleproduct/${id}`,
+      singleProduct
+    );
     return dispatch(editSingleProduct(res.data));
   } catch (err) {
     console.log(err);

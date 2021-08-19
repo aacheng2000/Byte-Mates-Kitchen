@@ -27,7 +27,20 @@ form div {
   margin: 0em;
   display: inline-block;
 }
-
+ul.pager {
+  display: flex;
+  font-family: sans-serif;
+  list-style-type: none;
+}
+ul.pager > li {
+  flex: 1;
+}
+li.selected {
+  background-color: rgb(248, 242, 231);
+}
+li.selected a {
+  color: burlywood;
+}
 .addToCart {
   margin-top: 15px;
   width: 120px;
@@ -246,13 +259,10 @@ form div {
   padding: 10px;
 }
 
-
 .Xfooter {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
-
-
