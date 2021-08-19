@@ -65,6 +65,7 @@ li.selected a {
   display: flex;
   width: 98%;
   justify-content: space-around;
+  margin-top: 100px;
 }
 
 .search-bar {
@@ -174,7 +175,23 @@ li.selected a {
 }
 
 #homeTableFirstRow {
-  height: 100px;
+  display: flex;
+  height: 300px;
+  padding: 50px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homeitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: center;
+}
+
+.homeItem img {
+  height: 240px;
+  width: 130px;
 }
 
 #productContainer {
@@ -247,7 +264,8 @@ li.selected a {
 }
 
 .cartBtn {
-  background-color: lightblue;
+  background-color: goldenrod;
+  margin: 10px;
 }
 
 .quantityField {
@@ -257,6 +275,34 @@ li.selected a {
 
 .cartItemDetails div {
   padding: 10px;
+}
+
+.historyCartStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pastCartStyle {
+  display: flex;
+  padding:10px;
+  justify-content: space-between;
+  align-items: center;
+  border-style: solid;
+}
+
+.pastCartStyle div {
+  width: 50%;
+}
+
+.dateHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .Xfooter {

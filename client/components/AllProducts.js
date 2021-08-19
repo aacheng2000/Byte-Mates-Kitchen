@@ -7,6 +7,7 @@ import { myCart } from "../store";
 import { addWishlistItem } from "../store/allWishlists";
 import axios from "axios";
 
+
 class AllProducts extends React.Component {
   constructor() {
     super();

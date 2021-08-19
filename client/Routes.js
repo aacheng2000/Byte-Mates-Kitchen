@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+import History from "./components/History"
 import GuestCart from "./components/GuestCart";
 import AllProducts from "./components/AllProducts";
 import AdminProducts from "./components/AdminProducts";
@@ -40,6 +41,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/cart/:id" component={Cart} />
             <Route path="/products/:idx?" exact component={AllProducts} />
+            <Route path="/history/:id" component={History} />
             <Route path="/adminproducts" exact component={AdminProducts} />
             <Route path="/addproducts" exact component={AddProduct} />
             <Route path="/category/forks" exact component={AllForks} />

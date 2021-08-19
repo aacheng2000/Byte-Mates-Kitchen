@@ -10,6 +10,7 @@ import order from "./order";
 import users from "./users";
 import user from "./singleUser";
 import wishlists from "./allWishlists";
+import pastOrders from './pastOrders'
 import axios from "axios";
 
 const totalReducer = (state = 0, action) => {
@@ -26,6 +27,7 @@ export const fetchTotal = () => {
   };
 };
 
+
 const reducer = combineReducers({
   auth,
   cart,
@@ -36,6 +38,7 @@ const reducer = combineReducers({
   user,
   wishlists,
   total: totalReducer,
+  pastOrders,
 });
 
 const middleware = composeWithDevTools(
@@ -52,3 +55,4 @@ export * from "./order";
 export * from "./users";
 export * from "./singleUser";
 export * from "./allWishlists";
+export * from "./pastOrders"

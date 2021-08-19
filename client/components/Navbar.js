@@ -59,7 +59,7 @@ class Navbar extends Component {
                         Profile details
                       </Link>
 
-                      <a >Orders</a>
+                      <Link to={`/history/${username}`}>Past Orders</Link>
                       
                       <Link to={`/wishlist/${username}`} >
                         Wishlist
