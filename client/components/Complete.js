@@ -5,13 +5,17 @@ export default class Complete extends Component {
     render(){
         console.log('im here!!!!')
         return(
-            <div>
+            <div className='historyCartStyle'>
                 <h2>
-                    Your Order is complete!
+                    Order complete!
                 </h2>
-                <Link to='/products'><button>
+                <h2>
+                    We hope our service was as delicious as your business!
+                </h2>
+                <Link to='/products'><button className='cartBtn'>
                     Continue Shopping
                 </button></Link>
+                <img src="robo.gif"/>
             </div>
         )
     }

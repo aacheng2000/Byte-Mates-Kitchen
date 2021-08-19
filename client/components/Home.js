@@ -1,28 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { myCart } from "../store";
 
 /**
  * COMPONENT
  */
 
 class Home extends Component {
-  componentDidMount() {
-    this.props.loadCartData(this.props.username);
-
-    // const myName =  this.props.match.params.id
-    //  this.props.loadOrderData(myName)
-
-    //      const allOrders2 = this.props.orders
-    //     alert('==' + allOrders2.length)
-  }
-
-  //   this.props.loadCartData(this.props.username);
-  //   // this.props.loadCartData(
-  //   //   this.props.username
-  //   // )
-  // }
 
   render() {
     const { username, isLoggedIn } = this.props;
@@ -33,9 +17,25 @@ class Home extends Component {
         <h2>Welcome, {username}</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <Link to="/category/knives">All Knives</Link>
-            <Link to="/category/forks">All Forks</Link>
-            <Link to="/category/spoons">All Spoons</Link>
+            <div className='homeItem'>
+              <Link to="/category/knives">
+                <div>All Knives</div>
+                <img src="knifie.png"/>
+              </Link>
+            </div>
+            <div className='homeItem'>
+              <Link to="/category/forks">
+              <div>All Forks</div>
+              <img src="forkie.png"/>
+              </Link>
+            </div>
+              <div className='homeItem'>
+                <Link to="/category/spoons">
+                <div>All Spoons</div>
+                <img src="spoonie.png"/>
+                </Link>
+              </div>
+              
           </div>
         </div>
       </div>
@@ -53,12 +53,5 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    loadCartData(username) {
-      dispatch(myCart(username));
-    },
-  };
-};
 
-export default connect(mapState, mapDispatch)(Home);
+export default connect(mapState)(Home);
