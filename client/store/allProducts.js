@@ -9,6 +9,8 @@ const SET_FORKS = "SET_FORKS";
 const SET_SPOONS = "SET_SPOONS";
 const ADD_PRODUCT = "ADD_PRODUCT";
 const DELETE_PRODUCT = "DELETE_PRODUCT";
+const EDIT_SINGLEPRODUCT = "EDIT_SINGLEPRODUCT";
+
 /**
  * ACTION CREATORS
  */
@@ -20,6 +22,10 @@ const addProduct = (newProduct) => ({ type: ADD_PRODUCT, newProduct });
 const deleteProduct = (singleProductId) => ({
   type: DELETE_PRODUCT,
   singleProductId,
+});
+const editSingleProduct = (singleProduct) => ({
+  type: EDIT_SINGLEPRODUCT,
+  singleProduct,
 });
 /**
  * THUNK CREATORS
@@ -78,6 +84,15 @@ export const deleteSingleProduct = (singleProductId) => async (dispatch) => {
   }
 };
 
+export const updateSingleProduct = (singleProduct, id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/products/${id}`, singleProduct);
+    return dispatch(editSingleProduct(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 /**
  * REDUCER
  */
@@ -96,6 +111,10 @@ export default function (state = [], action) {
     case DELETE_PRODUCT:
       return [...state].filter(
         (product) => product.id !== action.singleProductId
+      );
+    case EDIT_SINGLEPRODUCT:
+      return state.map((product) =>
+        product.id === action.singleProduct.id ? action.singleProduct : product
       );
     default:
       return state;
