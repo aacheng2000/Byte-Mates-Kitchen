@@ -28,6 +28,7 @@ class Cart extends Component {
 
   render() {
     console.log("My carts component props~~~", this.props);
+    console.log('look here!!!!', window.localStorage.getItem('token'))
     const username = this.props.match.params.id;
     const allOrders = this.props.orders;
     return (
