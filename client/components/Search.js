@@ -11,6 +11,7 @@ class AllProducts extends React.Component {
   constructor() {
     super();
     this.state = { products: null };
+  
   }
 
   componentDidMount() {
@@ -59,7 +60,7 @@ class AllProducts extends React.Component {
           
         </div>
         <div id="productContainer">
-          {this.props.products.filter(z=>z.name.toUpperCase().includes(this.props.match.params.id.toUpperCase())).map((product) => {
+           {this.props.match.params.id ==='undefined' ? null : this.props.products.filter(z=>z.name.toUpperCase().includes(this.props.match.params.id.toUpperCase())).map((product) => {
             return (
               <div id="productItem" key={product.id}>
                 <center>
