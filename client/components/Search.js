@@ -72,7 +72,7 @@ class AllProducts extends React.Component {
                 .includes(this.props.match.params.id.toUpperCase())
             ).length
           }
-        </h2>
+        </h2> 
         <div id="navBar"></div>
         <div id="productContainer">
           {this.props.match.params.id === "undefined"
