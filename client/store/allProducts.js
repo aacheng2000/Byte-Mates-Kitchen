@@ -114,7 +114,7 @@ export const updateSingleProduct = (singleProduct, id) => async (dispatch) => {
 export default function (state = [], action) {
   switch (action.type) {
     case SET_PRODUCTS:
-      return action.products;
+      return [...state, action.products];
     case SET_PRODUCTS_TOTAL:
       return action.products;
     case SET_KNIVES:
