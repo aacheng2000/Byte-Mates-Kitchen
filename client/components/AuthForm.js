@@ -8,24 +8,24 @@ import {authenticate} from '../store'
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className='signInFormDiv'>
+      <form className='authSignUpForm' onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
-            <small>Username</small>
+            <h3>{displayName==='Login'? 'Username': 'Create New Username'}</h3>
           </label>
-          <input name="username" type="text" />
+          <input className='authSignInput' name="username" type="text" />
         </div>
         <div>
           <label htmlFor="password">
-            <small>Password</small>
+            <h3>{displayName==='Login'? 'Password': 'Create New Password'}</h3>
           </label>
-          <input name="password" type="password" />
+          <input className='authSignInput' name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className='loginBtn' type="submit">{displayName}</button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error && error.response && <div> <h3 className='authSignErr'>{error.response.data}</h3> </div>}
       </form>
     </div>
   )

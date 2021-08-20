@@ -73,6 +73,37 @@ li.selected a {
   margin-top: 100px;
 }
 
+.signInFormDiv{
+  text-align: center;
+}
+
+.authSignUpForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.authSignUpForm div{
+  padding:10px
+}
+
+.authSignInput{
+  width: calc(50% - 30px);
+  height: 30px;
+  background-color: antiquewhite;
+  font-size: 20px;
+  letter-spacing: 2px;
+  }
+
+.loginBtn{
+  font-size: 18px;
+  padding: 16px 22px;
+  background-color: rgb(255, 219, 153)
+}
+
+.authSignErr{
+  color: firebrick;
+}
+
 .search-bar {
   font-size: 20px;
 }
@@ -382,6 +413,7 @@ li.selected a {
   border: none;
 }
 
+
 button:active {
   background-color: #d782d9;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
@@ -401,4 +433,11 @@ button:active {
 h1,
 h3 {
   text-align: center;
+}
+
+.flexedContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 5px;
 }
