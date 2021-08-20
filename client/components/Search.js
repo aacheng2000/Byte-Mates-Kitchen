@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "../store/allProducts";
+import { fetchAllProductsTotal } from "../store/allProducts";
 import { addOrder } from "../store/order";
 import { myCart } from "../store";
 import { addWishlistItem } from "../store/allWishlists";
@@ -14,7 +14,7 @@ class AllProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllProducts();
+    this.props.fetchAllProductsTotal();
   }
 
   async addToCart(_productId) {
@@ -101,6 +101,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts, addOrder, myCart, addWishlistItem };
+const mapDispatchToProps = { fetchAllProductsTotal, addOrder, myCart, addWishlistItem };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);

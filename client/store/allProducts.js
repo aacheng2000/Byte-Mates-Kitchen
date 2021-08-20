@@ -4,6 +4,7 @@ import axios from "axios";
  * ACTION TYPES
  */
 const SET_PRODUCTS = "SET_PRODUCTS";
+const SET_PRODUCTS_TOTAL = "SET_PRODUCTS_TOTAL";
 const SET_KNIVES = "SET_KNIVES";
 const SET_FORKS = "SET_FORKS";
 const SET_SPOONS = "SET_SPOONS";
@@ -15,6 +16,7 @@ const EDIT_SINGLEPRODUCT = "EDIT_SINGLEPRODUCT";
  * ACTION CREATORS
  */
 const setProducts = (products) => ({ type: SET_PRODUCTS, products });
+const setProductsTotal = (products) => ({ type: SET_PRODUCTS_TOTAL, products });
 const setKnives = (knives) => ({ type: SET_KNIVES, knives });
 const setForks = (forks) => ({ type: SET_FORKS, forks });
 const setSpoons = (spoons) => ({ type: SET_SPOONS, spoons });
@@ -35,6 +37,15 @@ export const fetchAllProducts = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/products/:idx?");
     return dispatch(setProducts(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchAllProductsTotal = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/products/fullCatalog");
+    return dispatch(setProductsTotal(res.data));
   } catch (err) {
     console.log(err);
   }
@@ -103,6 +114,8 @@ export const updateSingleProduct = (singleProduct, id) => async (dispatch) => {
 export default function (state = [], action) {
   switch (action.type) {
     case SET_PRODUCTS:
+      return action.products;
+    case SET_PRODUCTS_TOTAL:
       return action.products;
     case SET_KNIVES:
       return action.knives;
