@@ -182,7 +182,7 @@ li.selected a {
   align-items: center;
 }
 
-.homeitem {
+.homeItem {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -192,6 +192,22 @@ li.selected a {
 .homeItem img {
   height: 240px;
   width: 130px;
+}
+
+.homeItem div{
+  margin: 10px;
+  align-self: center;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.homeTitle{
+  margin: 10px;
+  align-self: center;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #productContainer {
