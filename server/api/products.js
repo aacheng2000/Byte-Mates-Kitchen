@@ -20,7 +20,7 @@ module.exports = router;
 router.get("/:idx?", async (req, res, next) => {
   try {
     const pageSize = process.env.PAGE_SIZE || 8;
-    const idx = req.params.idx ? req.params.idx * 1 : 0;
+    const idx = req.params.idx * 1 ? req.params.idx * 1 : 0;
     const [total, products] = await Promise.all([
       Product.count(),
       Product.findAll({
