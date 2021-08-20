@@ -43,10 +43,12 @@ class AllKnives extends React.Component {
                 <center>
                   <div>
                     <div id="productName">
-                      <Link to={`/products/${spoon.id}`}>{spoon.name}</Link>
+                      <Link to={`/products/singleproduct/${spoon.id}`}>
+                        {spoon.name}
+                      </Link>
                     </div>
                     <div>
-                      <a href={`/products/${spoon.id}`}>
+                      <a href={`/products/singleproduct/${spoon.id}`}>
                         <div id="picSquare">
                           <img id="productImage" src={spoon.picture}></img>
                         </div>{" "}
