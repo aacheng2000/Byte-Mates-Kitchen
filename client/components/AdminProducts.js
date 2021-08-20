@@ -31,10 +31,10 @@ class AdminProducts extends React.Component {
               <div key={product.id}>
                 <div>
                   <div id="productName">
-                    <div>{product.id}</div>
-                    <div>{product.name}</div>
+                    <div>Product ID: {product.id}</div>
+                    <div>Name: {product.name}</div>
+                    <div>Price: ${product.price}</div>
                     {/* <div>{product.description}</div>
-                    <div>{product.price}</div>
                     <div>{product.size}</div>
                     <div>{product.picture}</div>
                     <div>{product.funId}</div> */}
@@ -42,7 +42,9 @@ class AdminProducts extends React.Component {
                 </div>
                 <div>
                   <button className="editProduct">
-                    <Link to={`/products/${product.id}`}>Edit Product</Link>
+                    <Link to={`/products/singleproduct/${product.id}`}>
+                      Edit Product
+                    </Link>
                   </button>
                   <button
                     onClick={() => this.props.deleteSingleProduct(product.id)}
