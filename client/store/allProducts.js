@@ -80,7 +80,7 @@ export const fetchAllSpoons = () => async (dispatch) => {
 
 export const addNewProduct = (newProduct) => async (dispatch) => {
   try {
-    const res = (await axios.post("/api/products:idx?", newProduct)).data;
+    const res = (await axios.post("/api/products", newProduct)).data;
     return dispatch(addProduct(res));
   } catch (err) {
     console.log(err);
