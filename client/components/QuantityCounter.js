@@ -36,7 +36,7 @@ class QuantityCounter extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleQuantity}>
+                <form className='flexedContainer' onSubmit={this.handleQuantity}>
                     <label>Quantity: </label>
                     <input className='quantityField'
                     type='number' 

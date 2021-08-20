@@ -72,6 +72,7 @@ class Cart extends Component {
                       </Link>
                     </div>
                     <div>${order.product.price}</div>
+                    <div className='flexedContainer'>
                     <QuantityCounter
                       quantity={order.quantity}
                       orderId={order.id}
@@ -84,6 +85,7 @@ class Cart extends Component {
                       >
                         Delete
                       </button>
+                      </div>
                     </div>
                   </div>
                 </div>
