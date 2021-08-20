@@ -3,30 +3,13 @@ import axios from "axios";
 /**
  * ACTION TYPES
  */
-const SET_PRODUCTS = "SET_PRODUCTS";
-const SET_KNIVES = "SET_KNIVES";
-const SET_FORKS = "SET_FORKS";
-const SET_SPOONS = "SET_SPOONS";
-const ADD_PRODUCT = "ADD_PRODUCT";
-const DELETE_PRODUCT = "DELETE_PRODUCT";
-const EDIT_SINGLEPRODUCT = "EDIT_SINGLEPRODUCT";
+const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
 
 /**
  * ACTION CREATORS
  */
 const setProducts = (products) => ({ type: SET_PRODUCTS, products });
-const setKnives = (knives) => ({ type: SET_KNIVES, knives });
-const setForks = (forks) => ({ type: SET_FORKS, forks });
-const setSpoons = (spoons) => ({ type: SET_SPOONS, spoons });
-const addProduct = (newProduct) => ({ type: ADD_PRODUCT, newProduct });
-const deleteProduct = (singleProductId) => ({
-  type: DELETE_PRODUCT,
-  singleProductId,
-});
-const editSingleProduct = (singleProduct) => ({
-  type: EDIT_SINGLEPRODUCT,
-  singleProduct,
-});
+
 /**
  * THUNK CREATORS
  */

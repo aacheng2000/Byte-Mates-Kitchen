@@ -17,10 +17,20 @@ module.exports = router;
 // });
 
 //Paignation
+
+router.get("/fullCatalog", async (req, res, next) => {
+  try {
+    const products = await Product.findAll({})
+    res.send(products)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.get("/:idx?", async (req, res, next) => {
   try {
     const pageSize = process.env.PAGE_SIZE || 8;
-    const idx = req.params.idx ? req.params.idx * 1 : 0;
+    const idx = req.params.idx*1 ? req.params.idx * 1 : 0;
     const [total, products] = await Promise.all([
       Product.count(),
       Product.findAll({
@@ -50,6 +60,7 @@ router.get("/singleproduct/:productId", async (req, res, next) => {
     next(err);
   }
 });
+
 
 //Display Knives
 router.get("/category/knives", async (req, res, next) => {
