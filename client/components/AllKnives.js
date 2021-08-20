@@ -44,10 +44,12 @@ class AllKnives extends React.Component {
                 <center>
                   <div>
                     <div id="productName">
-                      <Link to={`/products/${knife.id}`}>{knife.name}</Link>
+                      <Link to={`/products/singleproduct/${knife.id}`}>
+                        {knife.name}
+                      </Link>
                     </div>
                     <div>
-                      <a href={`/products/${knife.id}`}>
+                      <a href={`/products/singleproduct/${knife.id}`}>
                         <div id="picSquare">
                           <img id="productImage" src={knife.picture}></img>
                         </div>{" "}
@@ -57,7 +59,7 @@ class AllKnives extends React.Component {
                   </div>
                   <div>
                     <button
-                      onClick={() => this.addToCart(fork.id)}
+                      onClick={() => this.addToCart(knife.id)}
                       className="addToCart"
                     >
                       Add to Cart
