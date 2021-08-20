@@ -26,7 +26,7 @@ class Navbar extends Component {
       <div id="wholeBar">
         <div id="leftColumn" className="image-with-link-to-main-page">
           <Link to="/home">
-            <img src="/group.png" id="pic4"></img>
+            <img src="http://localhost:8080/group.png" id="pic4"></img>
           </Link>
         </div>
 
@@ -37,7 +37,7 @@ class Navbar extends Component {
             <div className="nav-btn" id="all-products">
               <Link to="/products">
                 All Products
-                <img src="/square.png" className="imgNav"></img>
+                <img src="http://localhost:8080/square.png" className="imgNav"></img>
               </Link>
             </div>
 
@@ -83,7 +83,7 @@ class Navbar extends Component {
 
                   <Link className="nav-btn" to={`/cart/${username}`}>
                     Cart
-                    <img src="/cart.png" className="imgNav"></img>
+                    <img src="http://localhost:8080/cart.png" className="imgNav"></img>
                   </Link>
 
                   {user.isAdmin ? (
@@ -93,7 +93,7 @@ class Navbar extends Component {
                       <div className="dropdown-content">
                         <Link to={"/users"}>User profiles</Link>
 
-                        <Link to={"/adminproducts"}>All products (Admin)</Link>
+                        <Link to={"http://localhost:8080/adminproducts"}>All products (Admin)</Link>
 
                         <a>All orders</a>
                       </div>
@@ -111,7 +111,7 @@ class Navbar extends Component {
                   <div className="nav-btn" id="all-products">
                     <Link to="/login">
                       Sign In / Track Order
-                      <img src="admin.png" className="imgNav"></img>
+                      <img src="http://localhost:8080/admin.png" className="imgNav"></img>
                     </Link>
                   </div>
 
