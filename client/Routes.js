@@ -23,6 +23,8 @@ import Wishlist from "./components/Wishlist";
 
 import AllUsers from "./components/AllUsers";
 
+import Search from "./components/Search";
+
 /**
  * COMPONENT
  */
@@ -72,6 +74,7 @@ class Routes extends Component {
             <Route path="/category/forks" exact component={AllForks} />
             <Route path="/category/knives" exact component={AllKnives} />
             <Route path="/category/spoons" exact component={AllSpoons} />
+            <Route path="/search/:id" component={Search} />
             <Route
               exact
               path="/products/:productId"

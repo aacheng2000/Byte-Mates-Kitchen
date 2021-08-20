@@ -8,7 +8,16 @@ import { myCart } from "../store";
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {searchTerm: '1'}
+    
+    
   }
+
+  myChangeHandler = (event) => {
+    this.setState({searchTerm: event.target.value})
+  }
+  
+  
 
   render() {
     const { isLoggedIn, username, handleClick, usernameId, user } = this.props;
@@ -38,9 +47,13 @@ class Navbar extends Component {
                 id="header-search"
                 placeholder="Search product.."
                 name="s"
+                onChange={this.myChangeHandler}
               />
               <button id="searchButton" type="submit">
-                Search
+                    <Link to={`/search/${this.state.searchTerm}`}>
+                      Search
+                    </Link>
+                
               </button>
             </div>
 
