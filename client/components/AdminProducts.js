@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts, deleteSingleProduct } from "../store/allProducts";
+import {
+  fetchAllProductsTotal,
+  deleteSingleProduct,
+} from "../store/allProducts";
 
 class AdminProducts extends React.Component {
   constructor() {
@@ -10,7 +13,7 @@ class AdminProducts extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.fetchAllProducts();
+    await this.props.fetchAllProductsTotal();
   }
 
   render() {
@@ -60,6 +63,6 @@ class AdminProducts extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllProducts, deleteSingleProduct };
+const mapDispatchToProps = { fetchAllProductsTotal, deleteSingleProduct };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminProducts);
