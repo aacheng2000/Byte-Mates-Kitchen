@@ -14,24 +14,24 @@ class Home extends Component {
 
     return (
       <div>
-        <h2>Welcome, {username}</h2>
+        <h1 className="homeTitle">Welcome {username}!</h1>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <div className='homeItem'>
-              <Link to="/category/knives">
-                <div>All Knives</div>
+            <div>
+              <Link to="/category/knives"className='homeItem'>
+                <div>Shop Knives</div>
                 <img src="knifie.png"/>
               </Link>
             </div>
-            <div className='homeItem'>
-              <Link to="/category/forks">
-              <div>All Forks</div>
+            <div>
+              <Link to="/category/forks" className='homeItem'>
+              <div>Shop Forks</div>
               <img src="forkie.png"/>
               </Link>
             </div>
-              <div className='homeItem'>
-                <Link to="/category/spoons">
-                <div>All Spoons</div>
+              <div>
+                <Link to="/category/spoons" className='homeItem'>
+                <div>Shop Spoons</div>
                 <img src="spoonie.png"/>
                 </Link>
               </div>
