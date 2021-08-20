@@ -24,20 +24,26 @@ class SingleProduct extends Component {
   }
 
   async addToCart(_productId) {
-    const token = window.localStorage.getItem("token");
+    const loggedIn = this.props.auth.username;
     const cart = JSON.parse(window.localStorage.getItem("cart"));
-    console.log("storagecart =>", cart);
-    if (token) {
+    if (loggedIn) {
       await this.props.myCart(this.props.auth.username);
       this.props.addOrder({
         cartId: this.props.cart.id,
         productId: _productId,
       });
     } else {
-      window.localStorage.setItem(
-        "cart",
-        JSON.stringify({ product: [...cart.product, _productId] })
-      );
+      if (cart) {
+        window.localStorage.setItem(
+          "cart",
+          JSON.stringify({ product: [...cart.product, _productId] })
+        );
+      } else {
+        window.localStorage.setItem(
+          "cart",
+          JSON.stringify({ product: [_productId] })
+        );
+      }
     }
     console.log("new cart~~~", JSON.parse(window.localStorage.getItem("cart")));
   }
