@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
  */
 
 class Home extends Component {
-
   render() {
     const { username, isLoggedIn } = this.props;
     const token = window.localStorage.getItem("token");
@@ -16,26 +15,30 @@ class Home extends Component {
       <div>
         <h1 className="homeTitle">Welcome {username}!</h1>
         <div id="homeTableCategory">
+          <Link to="/products" className="homeItem">
+            <div>Shop All Products</div>
+          </Link>
+        </div>
+        <div id="homeTableCategory">
           <div id="homeTableFirstRow">
             <div>
-              <Link to="/category/knives"className='homeItem'>
+              <Link to="/category/knives" className="homeItem">
                 <div>Shop Knives</div>
-                <img src="knifie.png"/>
+                <img src="knifie.png" />
               </Link>
             </div>
             <div>
-              <Link to="/category/forks" className='homeItem'>
-              <div>Shop Forks</div>
-              <img src="forkie.png"/>
+              <Link to="/category/forks" className="homeItem">
+                <div>Shop Forks</div>
+                <img src="forkie.png" />
               </Link>
             </div>
-              <div>
-                <Link to="/category/spoons" className='homeItem'>
+            <div>
+              <Link to="/category/spoons" className="homeItem">
                 <div>Shop Spoons</div>
-                <img src="spoonie.png"/>
-                </Link>
-              </div>
-              
+                <img src="spoonie.png" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -52,6 +55,5 @@ const mapState = (state) => {
     order: state.order,
   };
 };
-
 
 export default connect(mapState)(Home);

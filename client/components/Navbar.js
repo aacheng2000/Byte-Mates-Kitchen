@@ -8,20 +8,16 @@ import { myCart } from "../store";
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {searchTerm: '1'}
-    
-    
+    this.state = { searchTerm: "1" };
   }
 
   myChangeHandler = (event) => {
-    this.setState({searchTerm: event.target.value})
-  }
-  
-  
+    this.setState({ searchTerm: event.target.value });
+  };
 
   render() {
     const { isLoggedIn, username, handleClick, usernameId, user } = this.props;
-    console.log('my user:', user);
+    console.log("my user:", user);
     return (
       <div id="wholeBar">
         <div id="leftColumn" className="image-with-link-to-main-page">
@@ -34,13 +30,6 @@ class Navbar extends Component {
           <div id="navTitle">Byte-Mates-Kitchen</div>
 
           <nav id="navBar">
-            <div className="nav-btn" id="all-products">
-              <Link to="/products">
-                All Products
-                <img src="http://localhost:8080/square.png" className="imgNav"></img>
-              </Link>
-            </div>
-
             <div className="search-bar">
               <input
                 type="text"
@@ -50,11 +39,18 @@ class Navbar extends Component {
                 onChange={this.myChangeHandler}
               />
               <button id="searchButton" type="submit">
-                    <Link to={`/search/${this.state.searchTerm}`}>
-                      Search
-                    </Link>
-                
+                <Link to={`/search/${this.state.searchTerm}`}>Search</Link>
               </button>
+            </div>
+
+            <div className="nav-btn" id="all-products">
+              <Link to="/products">
+                All Products
+                <img
+                  src="http://localhost:8080/square.png"
+                  className="imgNav"
+                ></img>
+              </Link>
             </div>
 
             <div className="logged-or-not">
@@ -67,23 +63,20 @@ class Navbar extends Component {
                     </Link>
 
                     <div className="dropdown-content">
-
-                      <Link to={`/users/${usernameId}`} >
-                        Profile details
-                      </Link>
+                      <Link to={`/users/${usernameId}`}>Profile details</Link>
 
                       <Link to={`/history/${username}`}>Past Orders</Link>
-                      
-                      <Link to={`/wishlist/${username}`} >
-                        Wishlist
-                      </Link>
-                      
+
+                      <Link to={`/wishlist/${username}`}>Wishlist</Link>
                     </div>
                   </div>
 
                   <Link className="nav-btn" to={`/cart/${username}`}>
                     Cart
-                    <img src="http://localhost:8080/cart.png" className="imgNav"></img>
+                    <img
+                      src="http://localhost:8080/cart.png"
+                      className="imgNav"
+                    ></img>
                   </Link>
 
                   {user.isAdmin ? (
@@ -93,7 +86,9 @@ class Navbar extends Component {
                       <div className="dropdown-content">
                         <Link to={"/users"}>User profiles</Link>
 
-                        <Link to={"http://localhost:8080/adminproducts"}>All products (Admin)</Link>
+                        <Link to={"http://localhost:8080/adminproducts"}>
+                          All products (Admin)
+                        </Link>
 
                         <a>All orders</a>
                       </div>
@@ -111,7 +106,10 @@ class Navbar extends Component {
                   <div className="nav-btn" id="all-products">
                     <Link to="/login">
                       Sign In / Track Order
-                      <img src="http://localhost:8080/admin.png" className="imgNav"></img>
+                      <img
+                        src="http://localhost:8080/admin.png"
+                        className="imgNav"
+                      ></img>
                     </Link>
                   </div>
 
@@ -122,7 +120,7 @@ class Navbar extends Component {
                     </Link>
                   </div>
 
-               {/*   <div className="nav-btn">
+                  {/*   <div className="nav-btn">
                     <Link to="/wishlist">
                       Wishlist
                       <img src="/heart.png" className="imgNav"></img>
@@ -146,8 +144,6 @@ class Navbar extends Component {
   }
 }
 
-
-
 /**
  * CONTAINER
  */
@@ -168,6 +164,5 @@ const mapDispatch = (dispatch) => {
     },
   };
 };
-
 
 export default connect(mapState, mapDispatch)(Navbar);

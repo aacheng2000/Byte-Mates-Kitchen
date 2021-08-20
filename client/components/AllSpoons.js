@@ -30,10 +30,10 @@ class AllKnives extends React.Component {
         <h2>Our Spoons Selection</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <Link to="/home">Home</Link>
-            <Link to="/category/knives">All Knives</Link>
-            <Link to="/category/forks">All Forks</Link>
-            <Link to="/category/spoons">All Spoons</Link>
+            <Link to="/products">Shop All Products</Link>
+            <Link to="/category/knives">Shop Knives</Link>
+            <Link to="/category/forks">Shop Forks</Link>
+            <Link to="/category/spoons">Shop Spoons</Link>
           </div>
         </div>
         <div id="productContainer">
@@ -51,9 +51,13 @@ class AllKnives extends React.Component {
                       <a href={`/products/singleproduct/${spoon.id}`}>
                         <div id="picSquare">
                           <img id="productImage" src={spoon.picture}></img>
-                        </div>{" "}
-                        {/* Zoe, added image tag - not sure if you like this */}
+                        </div>
                       </a>
+                    </div>
+                    <div id="productPrice">
+                      <Link to={`/products/singleproduct/${spoon.id}`}>
+                        ${spoon.price}
+                      </Link>
                     </div>
                   </div>
                   <div>

@@ -85,16 +85,20 @@ class AllProducts extends React.Component {
         text: idx + 1,
       };
     });
-
+    const idx = this.props.match.params.idx
+      ? this.props.match.params.idx * 1
+      : 0;
     if (!this.props.products) return <h4>Loading...</h4>;
     return (
       <div>
-        <h2>All Products</h2>
-        <div id="navBar">
-          <div className="nav-btn">
-            <Link to="/category/knives">All Knives</Link>
-            <Link to="/category/forks">All Forks</Link>
-            <Link to="/category/spoons">All Spoons</Link>
+        <h2 className="homeTitle">Our Products</h2>
+        <div id="homeTableCategory">
+          <div id="homeTableFirstRow" className="nav-btn">
+            <Link to="/category/knives">
+              <div>Shop Knives</div>
+            </Link>
+            <Link to="/category/forks">Shop Forks</Link>
+            <Link to="/category/spoons">Shop Spoons</Link>
           </div>
         </div>
         <div id="productContainer">
@@ -107,9 +111,6 @@ class AllProducts extends React.Component {
                       <Link to={`/products/singleproduct/${product.id}`}>
                         {product.name}
                       </Link>
-                      <Link to={`/products/singleproduct/${product.id}`}>
-                        ${product.price}
-                      </Link>
                     </div>
                     <div>
                       <a href={`/products/singleproduct/${product.id}`}>
@@ -117,6 +118,11 @@ class AllProducts extends React.Component {
                           <img id="productImage" src={product.picture}></img>
                         </div>
                       </a>
+                    </div>
+                    <div id="productPrice">
+                      <Link to={`/products/singleproduct/${product.id}`}>
+                        ${product.price}
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -143,7 +149,7 @@ class AllProducts extends React.Component {
         <ul className="pager">
           {pages.map((page) => {
             return (
-              <li key={page.idx} className="selected">
+              <li key={page.idx} className={page.idx === idx ? "selected" : ""}>
                 <Link to={`/products/${page.idx}`}>{page.text}</Link>
               </li>
             );
