@@ -44,13 +44,13 @@ class AllForks extends React.Component {
                   <div>
                     <div id="productName">
                       <Link to={`/products/${fork.id}`}>{fork.name}</Link>
+                      <Link to={`/products/${fork.id}`}>${fork.price}</Link>
                     </div>
                     <div>
                       <a href={`/products/${fork.id}`}>
                         <div id="picSquare">
                           <img id="productImage" src={fork.picture}></img>
-                        </div>{" "}
-                        {/* Zoe, added image tag - not sure if you like this */}
+                        </div>
                       </a>
                     </div>
                   </div>

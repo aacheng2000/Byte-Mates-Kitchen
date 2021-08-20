@@ -7,7 +7,6 @@ import { myCart } from "../store";
 import { addWishlistItem } from "../store/allWishlists";
 import axios from "axios";
 
-
 class AllProducts extends React.Component {
   constructor() {
     super();
@@ -107,6 +106,9 @@ class AllProducts extends React.Component {
                     <div id="productName">
                       <Link to={`/products/singleproduct/${product.id}`}>
                         {product.name}
+                      </Link>
+                      <Link to={`/products/singleproduct/${product.id}`}>
+                        ${product.price}
                       </Link>
                     </div>
                     <div>
