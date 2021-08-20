@@ -78,34 +78,34 @@ li.selected a {
   margin-top: 100px;
 }
 
-.signInFormDiv{
+.signInFormDiv {
   text-align: center;
 }
 
-.authSignUpForm{
+.authSignUpForm {
   display: flex;
   flex-direction: column;
 }
 
-.authSignUpForm div{
-  padding:10px
+.authSignUpForm div {
+  padding: 10px;
 }
 
-.authSignInput{
+.authSignInput {
   width: calc(50% - 30px);
   height: 30px;
   background-color: antiquewhite;
   font-size: 20px;
   letter-spacing: 2px;
-  }
-
-.loginBtn{
-  font-size: 18px;
-  padding: 16px 22px;
-  background-color: rgb(255, 219, 153)
 }
 
-.authSignErr{
+.loginBtn {
+  font-size: 18px;
+  padding: 16px 22px;
+  background-color: rgb(255, 219, 153);
+}
+
+.authSignErr {
   color: firebrick;
 }
 
@@ -166,6 +166,9 @@ li.selected a {
 
 #header-search {
   width: 50vh;
+  background-color: antiquewhite;
+  font-family: sans-serif;
+  letter-spacing: 2px;
 }
 
 #unlogged-nav {
@@ -429,7 +432,6 @@ li.selected a {
   will-change: transform, background-color, box-shadow;
   border: none;
 }
-
 
 button:active {
   background-color: #d782d9;
