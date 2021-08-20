@@ -92,15 +92,30 @@ class AllProducts extends React.Component {
     return (
       <div>
         <h2 className="homeTitle">Our Products</h2>
+
         <div id="homeTableCategory">
-          <div id="homeTableFirstRow" className="nav-btn">
-            <Link to="/category/knives">
-              <div>Shop Knives</div>
-            </Link>
-            <Link to="/category/forks">Shop Forks</Link>
-            <Link to="/category/spoons">Shop Spoons</Link>
+          <div id="homeTableFirstRow">
+            <div>
+              <Link to="/category/knives" className="homeItem">
+                <div>Shop Knives</div>
+                <img src="http://localhost:8080/knifie.png" />
+              </Link>
+            </div>
+            <div>
+              <Link to="/category/forks" className="homeItem">
+                <div>Shop Forks</div>
+                <img src="http://localhost:8080/forkie.png" />
+              </Link>
+            </div>
+            <div>
+              <Link to="/category/spoons" className="homeItem">
+                <div>Shop Spoons</div>
+                <img src="http://localhost:8080/spoonie.png" />
+              </Link>
+            </div>
           </div>
         </div>
+
         <div id="productContainer">
           {products.map((product) => {
             return (
