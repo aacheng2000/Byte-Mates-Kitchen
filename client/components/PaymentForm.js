@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import Complete from './Complete'
+import { connect } from "react-redux";
+import { myCart, placeOrder } from "../store";
 
 const CARD_OPTIONS = {
     iconStyle: "solid",
@@ -27,10 +29,16 @@ const CARD_OPTIONS = {
     },
   };
 
-export default function PaymentForm() {
+function PaymentForm(props) {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+
+    const placeOrder = async () => {
+        const cart = props.orders[0].cart.id
+        const username = props.state.auth.username
+        await props.placeOrderThunk(cart, username)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -48,6 +56,7 @@ export default function PaymentForm() {
             })
 
             if (response.data.success) {
+                placeOrder()
                 console.log('Successful payment')
                 setSuccess(true)
             }
@@ -58,7 +67,7 @@ export default function PaymentForm() {
         console.log(error.message)
     }
     }
-
+    console.log('stripes props~~~', props)
     return (
         <>
             <div className='stripe-box'>
@@ -80,3 +89,23 @@ export default function PaymentForm() {
         </>
     )
 } 
+
+const mapState = state => {
+    return {
+      state,
+      cart: state.cart,
+      orders: state.order
+    }
+  }
+const mapDispatch = dispatch => {
+return {
+    loadCartData(username) {
+        dispatch(myCart(username))
+    },
+    placeOrderThunk(cartId, username) {
+        dispatch(placeOrder(cartId, username))
+    }
+}
+}
+
+export default connect(mapState, mapDispatch)(PaymentForm)
