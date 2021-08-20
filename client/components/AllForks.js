@@ -65,7 +65,9 @@ class AllForks extends React.Component {
                     >
                       Add to Cart
                     </button>
-                    <button className="addToWishList">Add to Wishlist</button>
+                    {this.props.auth.username ? (
+                      <button className="addToWishList">Add to Wishlist</button>
+                    ) : null}
                   </div>
                 </center>
               </div>

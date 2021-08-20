@@ -76,6 +76,7 @@ class AllProducts extends React.Component {
 
   render() {
     console.log("all Products props!!~~~~~~~~", this.props);
+
     const { products } = this.state;
     const pageCount = Math.ceil(this.props.total / 8);
     const pages = new Array(pageCount).fill("-").map((_, idx) => {
@@ -84,7 +85,6 @@ class AllProducts extends React.Component {
         text: idx + 1,
       };
     });
-    const idx = this.computeIdx();
 
     if (!this.props.products) return <h4>Loading...</h4>;
     return (
@@ -125,12 +125,14 @@ class AllProducts extends React.Component {
                       >
                         Add to Cart
                       </button>
-                      <button
-                        onClick={() => this.addToWishlist(product.id)}
-                        className="addToWishList"
-                      >
-                        Add to Wishlist
-                      </button>
+                      {this.props.auth.username ? (
+                        <button
+                          onClick={() => this.addToWishlist(product.id)}
+                          className="addToWishList"
+                        >
+                          Add to Wishlist
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                 </center>
