@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export default class Complete extends Component {
     render(){
-        console.log('im here!!!!')
         return(
             <div className='historyCartStyle'>
                 <h2>
@@ -15,7 +14,7 @@ export default class Complete extends Component {
                 <Link to='/products'><button className='cartBtn'>
                     Continue Shopping
                 </button></Link>
-                <img src="robo.gif"/>
+                <img src="http://localhost:8080/robo.gif"/>
             </div>
         )
     }

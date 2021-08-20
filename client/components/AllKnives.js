@@ -30,10 +30,10 @@ class AllKnives extends React.Component {
         <h2>Our Knives Selection</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <Link to="/home">Home</Link>
-            <Link to="/category/knives">All Knives</Link>
-            <Link to="/category/forks">All Forks</Link>
-            <Link to="/category/spoons">All Spoons</Link>
+            <Link to="/products">Shop All Products</Link>
+            <Link to="/category/knives">Shop Knives</Link>
+            <Link to="/category/forks">Shop Forks</Link>
+            <Link to="/category/spoons">Shop Spoons</Link>
           </div>
         </div>
 
@@ -52,9 +52,13 @@ class AllKnives extends React.Component {
                       <a href={`/products/singleproduct/${knife.id}`}>
                         <div id="picSquare">
                           <img id="productImage" src={knife.picture}></img>
-                        </div>{" "}
-                        {/* Zoe, added image tag - not sure if you like this */}
+                        </div>
                       </a>
+                    </div>
+                    <div id="productPrice">
+                      <Link to={`/products/singleproduct/${knife.id}`}>
+                        ${knife.price}
+                      </Link>
                     </div>
                   </div>
                   <div>
@@ -64,7 +68,9 @@ class AllKnives extends React.Component {
                     >
                       Add to Cart
                     </button>
-                    <button className="addToWishList">Add to Wishlist</button>
+                    {this.props.auth.username ? (
+                      <button className="addToWishList">Add to Wishlist</button>
+                    ) : null}
                   </div>
                 </center>
               </div>

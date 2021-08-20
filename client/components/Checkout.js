@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {myCart, myOrders, placeOrder} from '../store'
 import { Link } from "react-router-dom";
+import StripeContainer from './StripeContainer';
 
 class Checkout extends Component {
     constructor(props){
@@ -28,22 +29,19 @@ class Checkout extends Component {
                     <div>
                         <h2>Checkout</h2>
                     </div>
+                </div>   
+                <div className='stripeBox'>
                     <div>
-                        <div>
-                            Order total: ({allOrders[0] ? allOrders.length:'0' } items): $ 
-                            {
-                            allOrders.reduce((acc, cur) => {
-                                return acc + (cur.product.price * 1) * cur.quantity
-                            }, 0).toLocaleString('en-US')
-                            }
-                        </div>
-                            <button onClick={this.placeOrder} className='cartBtn'>
-                                <Link to='/complete'>
-                                    Place your order
-                                </Link>
-                            </button>
+                        <h2>Order total: ({allOrders[0] ? allOrders.length:'0' } items): $ 
+                        {
+                        allOrders.reduce((acc, cur) => {
+                            return acc + (cur.product.price * 1) * cur.quantity
+                        }, 0).toLocaleString('en-US')
+                        }</h2>
                     </div>
+                    <StripeContainer/>
                 </div>
+                
                 <div><h2>Review Your Order</h2></div>
                 <div className="cartStyle">
                     {allOrders[0] ? (

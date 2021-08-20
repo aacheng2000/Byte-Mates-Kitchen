@@ -30,10 +30,10 @@ class AllForks extends React.Component {
         <h2>Our Forks Selection</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <Link to="/home">Home</Link>
-            <Link to="/category/knives">All Knives</Link>
-            <Link to="/category/forks">All Forks</Link>
-            <Link to="/category/spoons">All Spoons</Link>
+            <Link to="/products">Shop All Products</Link>
+            <Link to="/category/knives">Shop Knives</Link>
+            <Link to="/category/forks">Shop Forks</Link>
+            <Link to="/category/spoons">Shop Spoons</Link>
           </div>
         </div>
         <div id="productContainer">
@@ -46,9 +46,6 @@ class AllForks extends React.Component {
                       <Link to={`/products/singleproduct/${fork.id}`}>
                         {fork.name}
                       </Link>
-                      <Link to={`/products/singleproduct/${fork.id}`}>
-                        ${fork.price}
-                      </Link>
                     </div>
                     <div>
                       <a href={`/products/singleproduct/${fork.id}`}>
@@ -56,6 +53,11 @@ class AllForks extends React.Component {
                           <img id="productImage" src={fork.picture}></img>
                         </div>
                       </a>
+                    </div>
+                    <div id="productPrice">
+                      <Link to={`/products/singleproduct/${fork.id}`}>
+                        ${fork.price}
+                      </Link>
                     </div>
                   </div>
                   <div>
@@ -65,7 +67,9 @@ class AllForks extends React.Component {
                     >
                       Add to Cart
                     </button>
-                    <button className="addToWishList">Add to Wishlist</button>
+                    {this.props.auth.username ? (
+                      <button className="addToWishList">Add to Wishlist</button>
+                    ) : null}
                   </div>
                 </center>
               </div>
