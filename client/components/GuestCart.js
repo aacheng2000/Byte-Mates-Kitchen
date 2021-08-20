@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchAllProducts } from "../store/allProducts";
 import { Link } from "react-router-dom";
 import QuantityCounter from "./QuantityCounter";
+import axios from "axios";
 /**
  * COMPONENT
  */
@@ -10,15 +11,19 @@ class GuestCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        storageProduct: []
+        storageProduct: [],
+        catalog: []
     }
   }
 
-  componentDidMount() {
-    this.props.fetchAllProducts();
+  async componentDidMount() {
+    const products = await axios.get('/api/products/fullCatalog')
     const storageList = JSON.parse(window.localStorage.getItem('cart'))
     if(storageList){
-    this.setState({storageProduct: storageList.product});
+    this.setState({
+        storageProduct: storageList.product,
+        catalog: products.data
+    });
     }
   }
 
@@ -34,13 +39,14 @@ class GuestCart extends Component {
   render() {
     console.log("My carts component props~~~", this.state);
     const stateProducts = this.state.storageProduct
-    const cartList = this.props.productCatalog.filter((product) => {
+    const cartList = this.state.catalog.filter((product) => {
         return stateProducts.includes(product.id)
     })
     const totalPrice = cartList.reduce((acc, cur) => {
         return acc + cur.price * 1;
       }, 0)
       .toLocaleString("en-US")
+    console.log('whats the cartlist????', cartList)
     return (
       <div>
         <div className="cartBar">
@@ -51,7 +57,7 @@ class GuestCart extends Component {
             <div>
                 <div>
                 Subtotal ({stateProducts.length} items): $
-                {totalPrice}
+                {totalPrice ? totalPrice:''}
                 </div>
                 {stateProducts ? (
                 <Link to={`/signup`}>
@@ -72,7 +78,7 @@ class GuestCart extends Component {
                   </div>
                   <div className="cartItemDetails">
                     <div>
-                      <Link to={`/products/${cartItem.id}`}>
+                      <Link to={`/products/singleproduct/${cartItem.id}`}>
                         {cartItem.name}
                       </Link>
                     </div>

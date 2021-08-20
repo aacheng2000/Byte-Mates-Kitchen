@@ -67,7 +67,7 @@ class Cart extends Component {
                   </div>
                   <div className="cartItemDetails">
                     <div>
-                      <Link to={`/products/${order.product.id}`}>
+                      <Link to={`/products/singleproduct/${order.product.id}`}>
                         {order.product.name}
                       </Link>
                     </div>
