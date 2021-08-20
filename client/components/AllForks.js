@@ -27,7 +27,7 @@ class AllForks extends React.Component {
 
     return (
       <div>
-        <h2>Our Forks Selection</h2>
+        <h2 className="homeTitle">Our Forks Selection</h2>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
             <Link to="/products">Shop All Products</Link>
