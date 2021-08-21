@@ -86,11 +86,7 @@ class Navbar extends Component {
                       <div className="dropdown-content">
                         <Link to={"/users"}>User profiles</Link>
 
-                        <Link to={"http://localhost:8080/adminproducts"}>
-                          All products (Admin)
-                        </Link>
-
-                        <a>All orders</a>
+                        <Link to={"/adminproducts"}>All products (Admin)</Link>
                       </div>
                     </div>
                   ) : null}

@@ -13,6 +13,11 @@ label {
   display: block;
 }
 
+button {
+  font-family: sans-serif;
+  background-color: rgb(255, 219, 153);
+  margin: 10px;
+}
 nav {
   display: flex;
   margin-left: 3em;
@@ -73,34 +78,34 @@ li.selected a {
   margin-top: 100px;
 }
 
-.signInFormDiv{
+.signInFormDiv {
   text-align: center;
 }
 
-.authSignUpForm{
+.authSignUpForm {
   display: flex;
   flex-direction: column;
 }
 
-.authSignUpForm div{
-  padding:10px
+.authSignUpForm div {
+  padding: 10px;
 }
 
-.authSignInput{
+.authSignInput {
   width: calc(50% - 30px);
   height: 30px;
   background-color: antiquewhite;
   font-size: 20px;
   letter-spacing: 2px;
-  }
-
-.loginBtn{
-  font-size: 18px;
-  padding: 16px 22px;
-  background-color: rgb(255, 219, 153)
 }
 
-.authSignErr{
+.loginBtn {
+  font-size: 18px;
+  padding: 16px 22px;
+  background-color: rgb(255, 219, 153);
+}
+
+.authSignErr {
   color: firebrick;
 }
 
@@ -161,6 +166,9 @@ li.selected a {
 
 #header-search {
   width: 50vh;
+  background-color: antiquewhite;
+  font-family: sans-serif;
+  letter-spacing: 2px;
 }
 
 #unlogged-nav {
@@ -197,17 +205,21 @@ li.selected a {
 
 #navBar {
   align-items: flex-start;
-
   color: black;
-
   margin-top: 75px;
   font-size: 15px;
   margin-left: 80px;
   min-width: 1050px;
 }
 
-#homeTable {
+#homeTableCategory {
+  font-family: sans-serif;
   width: 100%;
+  height: 100%;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #homeTableFirstRow {
@@ -261,17 +273,25 @@ li.selected a {
 #productItem {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   margin: 20px;
   width: 300px;
-  height: 370px;
+  height: 400px;
   background-color: white;
-  border: 1px solid;
+  border: 2px solid;
 }
 
 #productName {
   height: 40px;
   width: 250px;
   margin: 15px;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+}
+
+#productPrice {
+  margin: 10px;
   text-align: center;
   background-color: white;
   font-weight: bold;
@@ -412,7 +432,6 @@ li.selected a {
   will-change: transform, background-color, box-shadow;
   border: none;
 }
-
 
 button:active {
   background-color: #d782d9;
