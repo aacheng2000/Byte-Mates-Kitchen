@@ -84,9 +84,9 @@ class Navbar extends Component {
                       <button className="nav-btn">Admin settings</button>
 
                       <div className="dropdown-content">
-                        <Link to={"/users"}>User profiles</Link>
+                        <Link to={"/users"}>All User Profiles (Admin)</Link>
 
-                        <Link to={"/adminproducts"}>All products (Admin)</Link>
+                        <Link to={"/adminproducts"}>All Products (Admin)</Link>
                       </div>
                     </div>
                   ) : null}

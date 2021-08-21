@@ -367,6 +367,24 @@ li.selected a {
   display: flex;
 }
 
+#adminUsers {
+  display: flex;
+  height: 40px;
+  width: 200px;
+  margin: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.adminUsers {
+  display: flex;
+  height: 40px;
+  width: 200px;
+  margin: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .cartBar {
   display: flex;
   justify-content: space-between;
