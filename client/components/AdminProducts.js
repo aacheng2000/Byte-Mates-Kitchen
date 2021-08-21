@@ -32,7 +32,7 @@ class AdminProducts extends React.Component {
                 <center>
                   <div id="adminproductBox">
                     <div>
-                      <div id="productName">
+                      <div id="adminproductName">
                         <div>Product ID: {product.id}</div>
                         <div>Name: {product.name}</div>
                         <div id="productPrice">
@@ -48,6 +48,8 @@ class AdminProducts extends React.Component {
                               Edit Product
                             </Link>
                           </button>
+                        </div>
+                        <div>
                           <button
                             onClick={() =>
                               this.props.deleteSingleProduct(product.id)

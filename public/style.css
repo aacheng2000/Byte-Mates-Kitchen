@@ -283,6 +283,7 @@ li.selected a {
 #adminproductBox {
   flex-wrap: wrap;
   align-items: center;
+  width: 300px;
 }
 #adminproductItem {
   display: flex;
@@ -290,13 +291,23 @@ li.selected a {
   flex-wrap: wrap;
   margin: 30px;
   width: 300px;
-  height: 200px;
+  height: 210px;
   background-color: white;
   border: 2px solid;
   text-align: center;
 }
 
 #productName {
+  display: flex;
+  height: 40px;
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+}
+
+#adminproductName {
   height: 40px;
   width: 200px;
   margin: 15px;
