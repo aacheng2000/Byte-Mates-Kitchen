@@ -15,6 +15,8 @@ class SingleProduct extends Component {
       display: "flex",
       padding: "10px",
       justifyContent: "space-around",
+      alignItems: 'center',
+      margin: "100px"
     };
   }
 
@@ -57,20 +59,23 @@ class SingleProduct extends Component {
     return (
       <div>
         <div style={this.singleStyle}>
-          <img src={this.props.singleProduct.picture} />
-          <ul key={this.props.singleProduct.id}>
-            <li>Name: {this.props.singleProduct.name}</li>
-            <li>Description: {this.props.singleProduct.description}</li>
-            <li>Price: ${this.props.singleProduct.price}</li>
-            <li>Color: ${this.props.singleProduct.color}</li>
-          </ul>
-        </div>
-        <button
+          <div className='singleProdImage'>
+            <img  src={this.props.singleProduct.picture} />
+          </div>
+          <div className= 'singleItemBox' key={this.props.singleProduct.id}>
+            <div>Name: {this.props.singleProduct.name}</div>
+            <div className='descriptionBox'>Description: {this.props.singleProduct.description}</div>
+            <div>Price: ${this.props.singleProduct.price}</div>
+            <div>Color: {this.props.singleProduct.color}</div>
+            <div className='singleItemBtn'> <button
           type="submit"
-          onClick={() => this.addToCart(this.props.singleProduct.id)}
-        >
+          onClick={() => this.addToCart(this.props.singleProduct.id)}>
           Add to Cart
-        </button>
+        </button></div>
+           
+          </div>
+        </div>
+        
         {isAdmin ? (
           <div>
             <h3>Edit Product Details Below (Admin View) </h3>
