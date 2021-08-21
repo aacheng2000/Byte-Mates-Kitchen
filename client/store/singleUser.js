@@ -45,6 +45,15 @@ export const updateUser = (user, history) => {
     };
 };
 
+export const updateAddress = (user, address, history, username) => {
+    return async (dispatch) => {
+        console.log('the addresSSSSSS', address)
+        const newUser = await axios.put(`/api/users/address/${user}`, [address]);
+        dispatch(editUser(newUser.data));
+        history.push(`/checkout/${username}`);
+    };
+};
+
 /**
 * REDUCER
 */

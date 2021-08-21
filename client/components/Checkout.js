@@ -11,6 +11,14 @@ class Checkout extends Component {
     async componentDidMount() {
         const myName =  this.props.match.params.id
         await this.props.loadOrderData(myName)
+        await this.props.loadUserData(this.props.auth.id)
+    }
+
+    async componentDidUpdate(prevState){
+        if(prevState.user.address !== this.props.user.address){
+            const myId =  this.props.auth.id
+            await this.props.loadUserData(myId)
+        }
     }
 
     placeOrder = async () => {
@@ -22,7 +30,7 @@ class Checkout extends Component {
 
     render(){
         const allOrders = this.props.orders
-        const address = this.props.state.auth.address
+        const address = this.props.user.address
         return (
             <div>
                 <div className='cartBar'>
@@ -79,7 +87,8 @@ class Checkout extends Component {
           state,
           cart: state.cart,
           orders: state.order,
-          user: state.user
+          user: state.user,
+          auth: state.auth
         }
       }
     const mapDispatch = dispatch => {
