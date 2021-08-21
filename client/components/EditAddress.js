@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../store';
+import { updateAddress } from '../store';
 
 class EditAddress extends Component {
     constructor(props) {
@@ -37,12 +37,13 @@ class EditAddress extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        this.props.updateUser({ ...this.props.user, ...this.state });
+        this.props.updateAddress( this.props.match.params.id, this.state.address, this.props.history, this.props.auth.username );
     }
 
     render() {
         const { address } = this.state;
         const { handleSubmit, handleChange } = this;
+        console.log('coming from edit address props',this.props)
 
         return (
             <div>
@@ -57,14 +58,15 @@ class EditAddress extends Component {
     }
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, auth }) => {
   return {
-    user
+    user,
+    auth
   };
 };
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  updateUser: (user) => dispatch(updateUser(user, history))
+  updateAddress: (user, address, history, username) => dispatch(updateAddress(user, address, history, username))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAddress);

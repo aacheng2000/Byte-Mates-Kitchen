@@ -35,12 +35,19 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-
+router.put("/address/:id", async (req, res, next) => {
+  try { 
+    const user = await User.findByPk(req.params.id);
+    const editedUser = await user.update({address: req.body[0]});
+    res.send(editedUser);
+  } catch (err) {
+    next(err);
+  }
+});
 
 //Edit user
 router.put("/:id", async (req, res, next) => {
   try { 
-    console.log(`XXXXXXXXXXXXXXXXXXXXx ${JSON.stringify(req.body)}`)
     const user = await User.findByPk(req.params.id);
     const editedUser = await user.update(req.body);
     res.send(editedUser);
@@ -49,16 +56,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-// router.put("/address/:id", async (req, res, next) => {
-//   try { 
-//     console.log(`Aaaaaaaaaaaaa aaaa ${req.body}`)
-//     const user = await User.findByPk(req.params.id);
-//     const editedUser = await user.update(req.body);
-//     res.send(editedUser);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+
 
 
 

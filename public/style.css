@@ -196,6 +196,7 @@ li.selected a {
   font-size: 50px;
   text-align: center;
   margin-top: 20px;
+  font-weight: bold;
 }
 
 #rightColumn {
