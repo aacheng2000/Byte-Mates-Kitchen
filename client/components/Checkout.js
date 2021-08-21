@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {myCart, myOrders, placeOrder} from '../store'
+import {myCart, myOrders, placeOrder, fetchSingleUser} from '../store'
 import { Link } from "react-router-dom";
 import StripeContainer from './StripeContainer';
 
@@ -21,14 +21,23 @@ class Checkout extends Component {
     
 
     render(){
-        const username = this.props.match.params.id
         const allOrders = this.props.orders
+        const address = this.props.state.auth.address
         return (
             <div>
                 <div className='cartBar'>
                     <div>
                         <h2>Checkout</h2>
+                        <h3>Review your address:</h3>
+                        <h3>{ address }
+                            <span>
+                                <Link to={`/users/edit/address/${this.props.state.auth.id}`}>
+                                    <button className='edit-btn'>Edit</button>
+                                </Link>
+                            </span>
+                        </h3>
                     </div>
+
                 </div>   
                 <div className='stripeBox'>
                     <div>
@@ -69,7 +78,8 @@ class Checkout extends Component {
         return {
           state,
           cart: state.cart,
-          orders: state.order
+          orders: state.order,
+          user: state.user
         }
       }
     const mapDispatch = dispatch => {
@@ -82,6 +92,9 @@ class Checkout extends Component {
         },
         placeOrderThunk(cartId, username) {
             dispatch(placeOrder(cartId, username))
+        },
+        loadUserData: (username) => {
+            dispatch(fetchSingleUser(username))
         }
     }
     }

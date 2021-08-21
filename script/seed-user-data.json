@@ -5,7 +5,7 @@
     "lastName": "snyder",
     "email": "snyder@gmail.com",
     "phoneNumber": "1112223344",
-    "address": "1155 Big st.",
+    "address": "1155 Big st., Newton, NJ, 07860",
     "password": "123",
     "isAdmin": true
   },
@@ -15,7 +15,7 @@
     "lastName": "duncan",
     "email": "duncan@gmail.com",
     "phoneNumber": "4443332211",
-    "address": "8877 Small st.",
+    "address": "8877 Small st., Waterbury, CT, 06702",
     "password": "123",
     "isAdmin": false
   },
@@ -25,7 +25,7 @@
     "lastName": "jenkins",
     "email": "jenkins@gmail.com",
     "phoneNumber": "5554447799",
-    "address": "3359 Medium st.",
+    "address": "3359 Medium st., Lakewood, NY, 10606",
     "password": "123",
     "isAdmin": false
   }
