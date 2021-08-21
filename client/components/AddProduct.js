@@ -96,6 +96,9 @@ class AddProduct extends Component {
             />
             <button type="submit">Add New Product</button>
             <button>
+              <Link to={`/adminproducts`}>Back to Admin Products</Link>
+            </button>
+            <button>
               <Link to="/adminproducts">Cancel</Link>
             </button>
           </form>

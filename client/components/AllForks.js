@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllForks } from "../store/allProducts";
 import { addOrder } from "../store/order";
+import { addWishlistItem } from "../store/allWishlists";
 import { myCart } from "../store";
 
 class AllForks extends React.Component {
@@ -22,20 +23,35 @@ class AllForks extends React.Component {
     this.props.addOrder({ cartId: this.props.cart.id, productId: _productId });
   }
 
+  async addToWishlist(_productId) {
+    console.dir(this.props.auth);
+    await this.props.myCart(this.props.auth.username);
+
+    const countExisting = this.props.wishlists.filter(
+      (x) => x.productId === _productId
+    ).length;
+
+    console.log("coutn existing = " + countExisting);
+
+    this.props.addWishlistItem({
+      userId: this.props.cart.userId,
+      productId: _productId,
+    });
+  }
+
   render() {
     if (!this.props.products) return <h4>Loading...</h4>;
 
     return (
       <div>
-        <h2 className="homeTitle">Our Forks Selection</h2>
-
+        <h1 className="homeTitle">Our Forks Selection</h1>
+        <div id="homeTableCategory">
+          <Link to="/products" className="homeItem">
+            <div>Shop All Products</div>
+          </Link>
+        </div>
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">
-            <div>
-              <Link to="/products" className="homeItem">
-                Shop All Products
-              </Link>
-            </div>
             <div>
               <Link to="/category/knives" className="homeItem">
                 <div>Shop Knives</div>
@@ -89,7 +105,12 @@ class AllForks extends React.Component {
                       Add to Cart
                     </button>
                     {this.props.auth.username ? (
-                      <button className="addToWishList">Add to Wishlist</button>
+                      <button
+                        onClick={() => this.addToWishlist(fork.id)}
+                        className="addToWishList"
+                      >
+                        Add to Wishlist
+                      </button>
                     ) : null}
                   </div>
                 </center>
@@ -105,6 +126,6 @@ class AllForks extends React.Component {
 const mapStateToProps = (state) => {
   return state;
 };
-const mapDispatchToProps = { fetchAllForks, addOrder, myCart };
+const mapDispatchToProps = { addWishlistItem, fetchAllForks, addOrder, myCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllForks);

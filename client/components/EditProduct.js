@@ -86,6 +86,9 @@ class EditProduct extends Component {
           <input value={themeId} onChange={handleChange} name="themeId" />
           <button type="submit">Submit Update</button>
           <button>
+            <Link to={`/adminproducts`}>Back to Admin Products</Link>
+          </button>
+          <button>
             <Link to="/adminproducts">Cancel</Link>
           </button>
         </form>
