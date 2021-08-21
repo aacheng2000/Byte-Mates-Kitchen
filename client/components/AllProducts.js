@@ -91,7 +91,7 @@ class AllProducts extends React.Component {
     if (!this.props.products) return <h4>Loading...</h4>;
     return (
       <div>
-        <h2 className="homeTitle">Our Products</h2>
+        <h1 className="homeTitle">Our Products</h1>
 
         <div id="homeTableCategory">
           <div id="homeTableFirstRow">

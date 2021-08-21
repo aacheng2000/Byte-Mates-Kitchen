@@ -28,31 +28,38 @@ class AdminProducts extends React.Component {
         <div id="productContainer">
           {this.props.products.map((product) => {
             return (
-              <div key={product.id}>
-                <div>
-                  <div id="productName">
-                    <div>Product ID: {product.id}</div>
-                    <div>Name: {product.name}</div>
-                    <div>Price: ${product.price}</div>
-                    {/* <div>{product.description}</div>
+              <div id="adminproductItem" key={product.id}>
+                <center>
+                  <div id="adminproductBox">
+                    <div>
+                      <div id="productName">
+                        <div>Product ID: {product.id}</div>
+                        <div>Name: {product.name}</div>
+                        <div id="productPrice">
+                          <div>Price: ${product.price}</div>
+                          {/* <div>{product.description}</div>
                     <div>{product.size}</div>
                     <div>{product.picture}</div>
                     <div>{product.funId}</div> */}
+                        </div>
+                        <div>
+                          <button>
+                            <Link to={`/products/singleproduct/${product.id}`}>
+                              Edit Product
+                            </Link>
+                          </button>
+                          <button
+                            onClick={() =>
+                              this.props.deleteSingleProduct(product.id)
+                            }
+                          >
+                            Delete Product
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <button className="editProduct">
-                    <Link to={`/products/singleproduct/${product.id}`}>
-                      Edit Product
-                    </Link>
-                  </button>
-                  <button
-                    onClick={() => this.props.deleteSingleProduct(product.id)}
-                    className="deleteProduct"
-                  >
-                    Delete Product
-                  </button>
-                </div>
+                </center>
               </div>
             );
           })}
