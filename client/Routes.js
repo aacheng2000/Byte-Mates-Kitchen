@@ -18,6 +18,7 @@ import Complete from "./components/Complete";
 import { fetchTotal, me, myCart } from "./store";
 import SingleUser from "./components/SingleUser";
 import EditUser from "./components/EditUser";
+import EditAddress from './components/EditAddress';
 
 import Wishlist from "./components/Wishlist";
 
@@ -52,12 +53,9 @@ class Routes extends Component {
             <Route exact path="/users" component={AllUsers} />
             <Route exact path="/users/:id" component={SingleUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
+            <Route exact path="/users/edit/address/:id" component={EditAddress} />
             <Route path="/search/:id" component={Search} />
-            <Route
-              exact
-              path="/products/singleproduct/:productId"
-              component={SingleProduct}
-            />
+            <Route exact path="/products/singleproduct/:productId" component={SingleProduct} />
             <Route exact path="/checkout/:id" component={Checkout} />
             <Route exact path="/complete" component={Complete} />
             <Route exact path="/wishlist/:id" component={Wishlist} />
@@ -75,11 +73,7 @@ class Routes extends Component {
             <Route path="/category/knives" exact component={AllKnives} />
             <Route path="/category/spoons" exact component={AllSpoons} />
             <Route path="/search/:id" component={Search} />
-            <Route
-              exact
-              path="/products/singleproduct/:productId"
-              component={SingleProduct}
-            />
+            <Route exact path="/products/singleproduct/:productId" component={SingleProduct} />
             <Redirect to="/home" />
           </Switch>
         )}
