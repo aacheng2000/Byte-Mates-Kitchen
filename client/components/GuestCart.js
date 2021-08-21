@@ -108,7 +108,7 @@ class GuestCart extends Component {
  */
 const mapState = (state) => {
   return {
-      productCatalog: state.products
+      productCatalog: state.catalog
   };
 }
 

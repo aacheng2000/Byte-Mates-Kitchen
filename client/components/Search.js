@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProductsTotal } from "../store/allProducts";
+import { fetchCatalog } from "../store";
 import { addOrder } from "../store/order";
 import { myCart } from "../store";
 import { addWishlistItem } from "../store/allWishlists";
@@ -13,7 +13,8 @@ class AllProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllProductsTotal();
+    console.log('search component did mount happened')
+    this.props.fetchCatalog();
   }
 
   async addToCart(_productId) {
@@ -58,15 +59,15 @@ class AllProducts extends React.Component {
   }
 
   render() {
-    console.log("all Products props!!~~~~~~~~", this.props);
-    if (!this.props.products) return <h4>Loading...</h4>;
+    console.log("this is the search props!!~~~~~~~~", this.props);
+    if (!this.props.catalog) return <h4>Loading...</h4>;
     return (
       <div>
         <h2>Products Search</h2>
         <h2>
           Search Results:{" "}
           {
-            this.props.products.filter((z) =>
+            this.props.catalog.filter((z) =>
               z.name
                 .toUpperCase()
                 .includes(this.props.match.params.id.toUpperCase())
@@ -77,7 +78,7 @@ class AllProducts extends React.Component {
         <div id="productContainer">
           {this.props.match.params.id === "undefined"
             ? null
-            : this.props.products
+            : this.props.catalog
                 .filter((z) =>
                   z.name
                     .toUpperCase()
@@ -136,7 +137,7 @@ const mapStateToProps = (state) => {
   return state;
 };
 const mapDispatchToProps = {
-  fetchAllProductsTotal,
+  fetchCatalog,
   addOrder,
   myCart,
   addWishlistItem,
