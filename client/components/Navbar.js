@@ -22,7 +22,7 @@ class Navbar extends Component {
       <div id="wholeBar">
         <div id="leftColumn" className="image-with-link-to-main-page">
           <Link to="/home">
-            <img src="http://localhost:8080/group.png" id="pic4"></img>
+            <img src="/group.png" id="pic4"></img>
           </Link>
         </div>
 
@@ -46,10 +46,7 @@ class Navbar extends Component {
             <div className="nav-btn" id="all-products">
               <Link to="/products">
                 All Products
-                <img
-                  src="http://localhost:8080/square.png"
-                  className="imgNav"
-                ></img>
+                <img src="/square.png" className="imgNav"></img>
               </Link>
             </div>
 
@@ -73,10 +70,7 @@ class Navbar extends Component {
 
                   <Link className="nav-btn" to={`/cart/${username}`}>
                     Cart
-                    <img
-                      src="http://localhost:8080/cart.png"
-                      className="imgNav"
-                    ></img>
+                    <img src="/cart.png" className="imgNav"></img>
                   </Link>
 
                   {user.isAdmin ? (
@@ -102,10 +96,7 @@ class Navbar extends Component {
                   <div className="nav-btn" id="all-products">
                     <Link to="/login">
                       Sign In / Track Order
-                      <img
-                        src="http://localhost:8080/admin.png"
-                        className="imgNav"
-                      ></img>
+                      <img src="/admin.png" className="imgNav"></img>
                     </Link>
                   </div>
 
@@ -121,6 +112,7 @@ class Navbar extends Component {
                       Wishlist
                       <img src="/heart.png" className="imgNav"></img>
                     </Link>
+                    check
                   </div>     */}
 
                   <div className="nav-btn">
