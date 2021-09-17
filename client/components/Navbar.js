@@ -112,6 +112,7 @@ class Navbar extends Component {
                       Wishlist
                       <img src="/heart.png" className="imgNav"></img>
                     </Link>
+                    check
                   </div>     */}
 
                   <div className="nav-btn">
