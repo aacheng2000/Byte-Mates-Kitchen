@@ -74,7 +74,7 @@ class AllForks extends React.Component {
             <div>
               <Link to="/category/knives" className="homeItem">
                 <div>Shop Knives</div>
-                <img src="./knifie.png" />
+                <img src="../knifie.png" />
               </Link>
             </div>
             <div>
@@ -86,7 +86,7 @@ class AllForks extends React.Component {
             <div>
               <Link to="/category/spoons" className="homeItem">
                 <div>Shop Spoons</div>
-                <img src=".spoonie.png" />
+                <img src="../spoonie.png" />
               </Link>
             </div>
           </div>
