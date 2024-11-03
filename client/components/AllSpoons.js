@@ -88,7 +88,7 @@ class AllKnives extends React.Component {
             <div>
               <Link to="/category/spoons" className="homeItem">
                 <div>Shop Spoons</div>
-                <img src="spoonie.png" />
+                <img src="category/spoonie.png" />
               </Link>
             </div>
           </div>
